@@ -1,10 +1,9 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View} from 'react-native';
 import {ThemeProvider} from 'styled-components';
 import Button from './components/Button';
-import Header from './components/Header';
 import Icon from './components/Icon';
-import Text from './components/Text';
 
 import useAppearance from './hooks/useAppearance';
 
@@ -25,6 +24,9 @@ const App: React.FC = () => {
           <Icon icon="morte" size={150} />
           <Icon icon="fantasma" size={150} />
         </View>
+        <Button color="surface" mode="outlined" loading>
+          Change icons
+        </Button>
       </Container>
     </ThemeProvider>
   );
