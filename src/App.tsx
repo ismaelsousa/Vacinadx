@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import React from 'react';
+import {View} from 'react-native';
 import {ThemeProvider} from 'styled-components';
 import Button from './components/Button';
 import Header from './components/Header';
+import Icon from './components/Icon';
+import Text from './components/Text';
 
 import useAppearance from './hooks/useAppearance';
 
@@ -14,8 +16,15 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container>
-        <Header />
-        <Button onPress={() => {}} />
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+          }}>
+          <Icon icon="morte" size={150} />
+          <Icon icon="fantasma" size={150} />
+        </View>
       </Container>
     </ThemeProvider>
   );
