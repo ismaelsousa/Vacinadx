@@ -8,8 +8,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "preandroid":"npx react-native-asset",
-    "preios":"npx react-native-asset"
+    "preandroid": "npx react-native-asset",
+    "preios": "npx react-native-asset"
   },
   "dependencies": {
     "react": "17.0.1",
@@ -27,6 +27,7 @@
     "@types/styled-components-react-native": "^5.1.1",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
     "babel-jest": "^26.6.3",
+    "babel-plugin-root-import": "^6.6.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
