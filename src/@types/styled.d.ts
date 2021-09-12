@@ -1,6 +1,22 @@
 import 'styled-components';
 
 declare module 'styled-components' {
+  export interface Spacing {
+    ty: number;
+    xs: number;
+    sm: number;
+    md: number;
+    lg: number;
+    xl: number;
+    xxl: number;
+    xxxl: number;
+  }
+  export interface Border {
+    radius: {
+      xs: number;
+      sm: number;
+    };
+  }
   export interface ColorType {
     main: string;
     onMain: string;
@@ -63,5 +79,7 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     colors: PaletteType;
     typography: Typography;
+    spacing: Spacing;
+    borders: Border;
   }
 }
