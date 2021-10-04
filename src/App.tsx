@@ -9,6 +9,7 @@ import Input from '~/components/Input';
 import {InputValueRef} from '~/components/Input/types';
 import Separator from '~/components/Separator';
 import useAppearance from '~/hooks/useAppearance';
+import {NavigationContainer} from '@react-navigation/native';
 
 import {Container} from './styles';
 
@@ -27,36 +28,38 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-          }}>
-          <Icon icon="fantasma" size={150} />
-        </View>
-        <View>
-          <Input
-            ref={refEmail}
-            placeholder="jonhdoe@gmail.com"
-            icon="grafico"
-            iconPosition="right"
-            label="E-mail"
-          />
-          <Separator height={10} />
-          <Input
-            ref={refPassword}
-            placeholder="Sua senha"
-            secureTextEntry
-            label="Password"
-          />
-        </View>
-        <Button color="surface" mode="outlined" onPress={handlePress}>
-          Login
-        </Button>
-        <Separator />
-      </Container>
+      <NavigationContainer>
+        <Container>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+            }}>
+            <Icon icon="fantasma" size={150} />
+          </View>
+          <View>
+            <Input
+              ref={refEmail}
+              placeholder="jonhdoe@gmail.com"
+              icon="grafico"
+              iconPosition="right"
+              label="E-mail"
+            />
+            <Separator height={10} />
+            <Input
+              ref={refPassword}
+              placeholder="Sua senha"
+              secureTextEntry
+              label="Password"
+            />
+          </View>
+          <Button color="surface" mode="outlined" onPress={handlePress}>
+            Login
+          </Button>
+          <Separator />
+        </Container>
+      </NavigationContainer>
     </ThemeProvider>
   );
 };
