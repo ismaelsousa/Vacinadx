@@ -12,53 +12,15 @@ import useAppearance from '~/hooks/useAppearance';
 import {NavigationContainer} from '@react-navigation/native';
 
 import {Container} from './styles';
+import Routes from './navigation';
 
 const App: React.FC = () => {
   const {theme} = useAppearance();
 
-  const refEmail = useRef<InputValueRef>({value: ''});
-  const refPassword = useRef<InputValueRef>({value: ''});
-
-  const handlePress = () => {
-    Alert.alert(
-      refEmail.current?.value || 'n tinha',
-      refPassword.current?.value || 'n t',
-    );
-  };
-
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
-        <Container>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-            }}>
-            <Icon icon="fantasma" size={150} />
-          </View>
-          <View>
-            <Input
-              ref={refEmail}
-              placeholder="jonhdoe@gmail.com"
-              icon="grafico"
-              iconPosition="right"
-              label="E-mail"
-            />
-            <Separator height={10} />
-            <Input
-              ref={refPassword}
-              placeholder="Sua senha"
-              secureTextEntry
-              label="Password"
-            />
-          </View>
-          <Button color="surface" mode="outlined" onPress={handlePress}>
-            Login
-          </Button>
-          <Separator />
-        </Container>
+        <Routes />
       </NavigationContainer>
     </ThemeProvider>
   );
