@@ -6,7 +6,7 @@ import {Container} from './styles';
 const Home: React.FC = () => {
   return (
     <Container>
-      <Text>Home</Text>
+      <Text>Homess</Text>
     </Container>
   );
 };
