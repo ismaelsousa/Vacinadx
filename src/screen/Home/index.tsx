@@ -14,7 +14,7 @@ const Home = ({navigation, route}) => {
   return (
     <Container>
       <TouchableOpacity onPress={handleNavigation}>
-        <Text>{`Home: ${data?.selectedUser}`}</Text>
+        <Text>{'Home'}</Text>
       </TouchableOpacity>
     </Container>
   );
