@@ -1,11 +1,14 @@
+import {useNavigation} from '@react-navigation/core';
 import React from 'react';
 import {Button, View} from 'react-native';
 
 // import {Container} from './styles'
 
-const Feed: React.FC = ({navigation}) => {
+const Feed: React.FC = () => {
+  const navigation = useNavigation();
+
   const handlePress = () => {
-    navigation.navigate('stories');
+    navigation.navigate('stories', {para: 'ismael'});
   };
   const handlePressToPost = () => {
     navigation.navigate('profile', {
