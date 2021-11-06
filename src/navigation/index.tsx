@@ -1,17 +1,13 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {DevSettings} from 'react-native';
-import {AuthContext} from '~/context/Auth';
+import React from 'react';
+
+import useAuth from '~/hooks/useAuth';
 import BottomTabNavigator from './SignedInNavigator/BottomTabNavigator';
 import SignInNavigator from './SignInNavigator';
 
-// import {Container} from './styles'
-
 const Routes: React.FC = () => {
-  const {isLoggedIn} = useContext(AuthContext);
+  const {isSignedIn} = useAuth();
 
-  console.log(isLoggedIn);
-
-  return isLoggedIn ? <BottomTabNavigator /> : <SignInNavigator />;
+  return isSignedIn ? <BottomTabNavigator /> : <SignInNavigator />;
 };
 
 export default Routes;
