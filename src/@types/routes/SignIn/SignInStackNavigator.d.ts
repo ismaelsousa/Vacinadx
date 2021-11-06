@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-// import {RouteProp} from '@react-navigation/core';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 declare global {
   export type SignInStackParamList = {
