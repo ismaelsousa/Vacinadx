@@ -5,12 +5,12 @@ import Login from '~/screen/SignIn/Login';
 import OnBoarding from '~/screen/SignIn/OnBoarding';
 import SignUp from '~/screen/SignIn/SignUp';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<SignInStackParamList>();
 
 const SignInNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="onboarding" component={OnBoarding} />
+      <Stack.Screen name="onBoarding" component={OnBoarding} />
       <Stack.Screen name="access" component={Access} />
       <Stack.Screen name="login" component={Login} />
       <Stack.Screen name="signUp" component={SignUp} />
