@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ThemeProvider} from 'styled-components';
 
 import useAppearance from '~/hooks/useAppearance';

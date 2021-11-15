@@ -12,3 +12,7 @@ export interface AuthContextProp {
   signIn: (data: RequestSignData) => Promise<void>;
   signOut: () => void;
 }
+
+export const asyncUserKeys = {
+  user: 'vacinadx:user',
+};
