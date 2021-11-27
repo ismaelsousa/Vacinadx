@@ -1,10 +1,18 @@
 import React from 'react';
-import {View} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
+import Button from '~/components/Button';
+import useAuth from '~/hooks/useAuth';
 
 // import {Container} from './styles'
 
 const Home: React.FC = () => {
-  return <View />;
+  const {signOut} = useAuth();
+
+  return (
+    <SafeAreaView>
+      <Button onPress={signOut}>Sign Out</Button>
+    </SafeAreaView>
+  );
 };
 
 export default Home;
