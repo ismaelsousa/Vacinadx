@@ -25,8 +25,8 @@ const Access: React.FC = () => {
   /**
    * Callback
    */
-  const handleNavigatoToLogin = () => navigation.navigate('login');
-  const handleNavigatoToSignUp = () => navigation.navigate('signUp');
+  const handleNavigateToLogin = () => navigation.navigate('login');
+  const handleNavigateToSignUp = () => navigation.navigate('signUp');
 
   return (
     <Container source={splashImage}>
@@ -46,9 +46,9 @@ const Access: React.FC = () => {
         <Separator height={spacing.sm} />
         <Text typography="subtitle1">Acesse ao app</Text>
         <Separator height={spacing.xxl} />
-        <Button onPress={handleNavigatoToLogin}>Login</Button>
+        <Button onPress={handleNavigateToLogin}>Login</Button>
         <Separator height={spacing.lg} />
-        <Button onPress={handleNavigatoToSignUp} mode="outlined">
+        <Button onPress={handleNavigateToSignUp} mode="outlined">
           Cadastro
         </Button>
         <Separator height={bottom + spacing.xxxl} />
