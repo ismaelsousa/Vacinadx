@@ -8,8 +8,8 @@ export const typographyCommon: Typography = {
     fontFamily: Fonts.openSansLight,
   },
   h2: {
-    fontSize: 60,
-    fontFamily: Fonts.openSansLight,
+    fontSize: 48,
+    fontFamily: Fonts.montserratBold,
   },
   h3: {
     fontSize: 32,
@@ -63,7 +63,7 @@ export const spacing: Spacing = {
   sm: 10,
   md: 20,
   lg: 25,
-  xl: 32,
+  xl: 38,
   xxl: 45,
   xxxl: 100,
 };
