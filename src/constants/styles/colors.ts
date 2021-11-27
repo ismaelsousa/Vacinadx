@@ -4,7 +4,7 @@ export const gray = '#ccc';
 export const red = '#D93936';
 export const purple = '#B68BDA';
 
-export const brand01 = '#018786';
+export const brand01 = '#3C9BA6';
 export const brand02 = '#03dac6';
 export const brand03 = '#89CAD9';
 export const brand04 = '#3700b3';
