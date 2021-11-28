@@ -10,7 +10,7 @@ export const themeLight: DefaultTheme = {
       onMain: Colors.white,
     },
     secondary: {
-      main: Colors.brand01,
+      main: Colors.brand02,
       onMain: Colors.white,
     },
     error: {
@@ -23,6 +23,14 @@ export const themeLight: DefaultTheme = {
     },
     surface: {
       main: Colors.black,
+      onMain: Colors.white,
+    },
+    surface500: {
+      main: Colors.grey500,
+      onMain: Colors.white,
+    },
+    surface600: {
+      main: Colors.grey600,
       onMain: Colors.white,
     },
   },
