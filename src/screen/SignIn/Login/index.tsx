@@ -12,8 +12,9 @@ import Separator from '~/components/Separator';
 import Text from '~/components/Text';
 import useSignInNavigation from '~/hooks/useSignInNavigation';
 
-import {Container, AccessText, PressableX} from './styles';
+import {Container, AccessText} from './styles';
 import {schemaLogin} from './validation';
+import BackButton from '~/components/BackButton';
 
 const Login: React.FC = () => {
   const {spacing} = useTheme();
@@ -50,11 +51,7 @@ const Login: React.FC = () => {
     <Container>
       <StatusBar barStyle="dark-content" />
       <HeaderOptions
-        left={
-          <PressableX onPress={handleGoBack}>
-            <Icon icon="closeX" size={15} />
-          </PressableX>
-        }
+        left={<BackButton icon="closeX" onPress={handleGoBack} />}
         right={
           <Text color="primary" typography="body3">
             Esqueci minha senha
