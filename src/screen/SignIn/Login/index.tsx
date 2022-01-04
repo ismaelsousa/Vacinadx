@@ -1,7 +1,7 @@
 import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {StatusBar} from 'react-native';
+import {Platform, StatusBar} from 'react-native';
 import {useTheme} from 'styled-components';
 
 import Button from '~/components/Button';
@@ -15,6 +15,9 @@ import useSignInNavigation from '~/hooks/useSignInNavigation';
 import {Container, AccessText} from './styles';
 import {schemaLogin} from './validation';
 import BackButton from '~/components/BackButton';
+import appleAuth, {
+  appleAuthAndroid,
+} from '@invertase/react-native-apple-authentication';
 
 const Login: React.FC = () => {
   const {spacing} = useTheme();
@@ -45,6 +48,26 @@ const Login: React.FC = () => {
     await handleSubmit(({email, password}) => {
       console.log({email, password});
     })();
+  };
+
+  const handleAppleButton = async () => {
+    // performs login request
+    const appleAuthRequestResponse = await appleAuth.performRequest({
+      requestedOperation: appleAuth.Operation.LOGIN,
+      requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+    });
+    console.log(appleAuthRequestResponse);
+
+    // get current authentication state for user
+    // /!\ This method must be tested on a real device. On the iOS simulator it always throws an error.
+    const credentialState = await appleAuth.getCredentialStateForUser(
+      appleAuthRequestResponse.user,
+    );
+
+    // use credentialState response to ensure the user is authenticated
+    if (credentialState === appleAuth.State.AUTHORIZED) {
+      // user is authenticated
+    }
   };
 
   return (
@@ -107,14 +130,19 @@ const Login: React.FC = () => {
         ou acesse com login social
       </AccessText>
       <Separator height={spacing.md} />
-      <Button
-        typography="caption"
-        icon={<Icon icon="apple" />}
-        color="secondary"
-        mode="outlined">
-        Continuar com a Apple
-      </Button>
-      <Separator height={spacing.md} />
+      {(appleAuthAndroid.isSupported || Platform.OS === 'ios') && (
+        <>
+          <Button
+            onPress={handleAppleButton}
+            typography="caption"
+            icon={<Icon icon="apple" />}
+            color="secondary"
+            mode="outlined">
+            Continuar com a Apple
+          </Button>
+          <Separator height={spacing.md} />
+        </>
+      )}
       <Button
         typography="caption"
         icon={<Icon icon="google" />}
