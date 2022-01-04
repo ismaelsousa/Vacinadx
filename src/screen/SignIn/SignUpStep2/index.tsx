@@ -9,31 +9,36 @@ import Input from '~/components/Input';
 import Separator from '~/components/Separator';
 import Text from '~/components/Text';
 import useSignInNavigation from '~/hooks/useSignInNavigation';
-import {schemaSignUp} from './validation';
+import {schemaSignUpStep2} from './validation';
 import Bar from 'react-native-progress/Bar';
 
 import {Container} from './styles';
 import BackButton from '~/components/BackButton';
+import {useRoute} from '@react-navigation/native';
 
-const SignUp = () => {
+const SignUpStep2 = () => {
   const {spacing, colors} = useTheme();
   const navigation = useSignInNavigation();
+  const {
+    params: {email, firstName, lastName},
+  } = useRoute<SignUpStep2SignInStackRouteProp>();
   const {width} = useWindowDimensions();
+
+  console.log({email, firstName, lastName});
+
   /**
    * Forms
    */
-
   const {
     control,
     handleSubmit,
     setValue,
     formState: {errors},
   } = useForm({
-    resolver: yupResolver(schemaSignUp),
+    resolver: yupResolver(schemaSignUpStep2),
     defaultValues: {
-      email: '',
-      firstName: '',
-      lastName: '',
+      password: '',
+      confirmPassword: '',
     },
   });
   /**
@@ -56,11 +61,6 @@ const SignUp = () => {
   const onSubmit = async () => {
     await handleSubmit(({email, firstName, lastName}) => {
       console.log({email, firstName, lastName});
-      navigation.navigate('signUpStep2', {
-        email,
-        firstName,
-        lastName,
-      });
     })();
   };
 
@@ -68,11 +68,11 @@ const SignUp = () => {
     <Container>
       <StatusBar barStyle="dark-content" />
       <HeaderOptions
-        left={<BackButton icon="closeX" onPress={handleGoBack} />}
+        left={<BackButton icon="back" onPress={handleGoBack} />}
         center={<Separator width={spacing.md} />}
         right={
           <Bar
-            progress={0.5}
+            progress={1}
             color={colors.primary.main}
             unfilledColor={colors.surface50.main}
             borderWidth={0}
@@ -85,63 +85,53 @@ const SignUp = () => {
       <Text typography="h3">Cadastro</Text>
       <Separator height={spacing.md} />
       <Text color="surface100" typography="caption">
-        Informações pessoais
+        {'Sua senha precisa ter pelo menos  \n8 caracteres'}
       </Text>
       <Separator height={spacing.md} />
       <Controller
         control={control}
-        name="firstName"
+        name="password"
         render={({field: {onBlur, onChange, value, ref}}) => (
           <Input
             ref={ref}
-            label="Nome"
-            onChange={onChange}
-            onChangeText={text => setValue('firstName', text)}
-            value={value}
-            onBlur={onBlur}
-            error={errors.firstName?.message}
-          />
-        )}
-      />
-      <Controller
-        control={control}
-        name="lastName"
-        render={({field: {onBlur, onChange, value, ref}}) => (
-          <Input
-            ref={ref}
-            label="Sobrenome"
-            onChange={onChange}
-            onChangeText={text => setValue('lastName', text)}
-            value={value}
-            onBlur={onBlur}
-            error={errors.lastName?.message}
-          />
-        )}
-      />
-      <Controller
-        control={control}
-        name="email"
-        render={({field: {onBlur, onChange, value, ref}}) => (
-          <Input
-            ref={ref}
+            label="Senha"
             autoCapitalize="none"
-            autoCompleteType="email"
-            keyboardType="email-address"
+            autoCompleteType="password"
+            secureTextEntry
+            iconColor="primary"
             onChange={onChange}
-            onChangeText={text => setValue('email', text)}
+            onChangeText={text => setValue('password', text)}
             value={value}
             onBlur={onBlur}
-            label="Email"
-            error={errors.email?.message}
+            error={errors.password?.message}
+          />
+        )}
+      />
+      <Controller
+        control={control}
+        name="confirmPassword"
+        render={({field: {onBlur, onChange, value, ref}}) => (
+          <Input
+            ref={ref}
+            label="Confirmar Senha"
+            autoCapitalize="none"
+            autoCompleteType="password"
+            secureTextEntry
+            iconColor="primary"
+            onChange={onChange}
+            onChangeText={text => setValue('confirmPassword', text)}
+            value={value}
+            onBlur={onBlur}
+            error={errors.confirmPassword?.message}
           />
         )}
       />
 
       <Separator height={spacing.md} />
-      <Button onPress={onSubmit}>Continuar</Button>
+      <Button onPress={onSubmit}>Finalizar</Button>
       <Separator height={spacing.md} />
     </Container>
   );
 };
 
-export default SignUp;
+export default SignUpStep2;

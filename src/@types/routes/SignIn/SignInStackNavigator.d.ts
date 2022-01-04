@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
+import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 declare global {
   export type SignInStackParamList = {
@@ -7,6 +8,11 @@ declare global {
     login: undefined;
     onBoarding: undefined;
     signUp: undefined;
+    signUpStep2: {
+      email: string;
+      firstName: string;
+      lastName: string;
+    };
   };
 
   /**
@@ -20,8 +26,8 @@ declare global {
   /**
    * useRoute types
    */
-  // export type StoriesSignInStackRouteProp = RouteProp<
-  //   SignInStackParamList,
-  //   'access'
-  // >;
+  export type SignUpStep2SignInStackRouteProp = RouteProp<
+    SignInStackParamList,
+    'signUpStep2'
+  >;
 }
