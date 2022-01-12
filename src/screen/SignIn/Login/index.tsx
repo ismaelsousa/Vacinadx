@@ -3,7 +3,6 @@ import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {Platform, StatusBar} from 'react-native';
 import {useTheme} from 'styled-components';
-
 import Button from '~/components/Button';
 import HeaderOptions from '~/components/HeaderOptions';
 import Icon from '~/components/Icon';
@@ -18,6 +17,7 @@ import BackButton from '~/components/BackButton';
 import appleAuth, {
   appleAuthAndroid,
 } from '@invertase/react-native-apple-authentication';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 const Login: React.FC = () => {
   const {spacing} = useTheme();
@@ -70,6 +70,14 @@ const Login: React.FC = () => {
     }
   };
 
+  async function onGoogleButtonPress() {
+    try {
+      const {user} = await GoogleSignin.signIn();
+      console.log(user);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <Container>
       <StatusBar barStyle="dark-content" />
@@ -144,6 +152,7 @@ const Login: React.FC = () => {
         </>
       )}
       <Button
+        onPress={onGoogleButtonPress}
         typography="caption"
         icon={<Icon icon="google" />}
         color="secondary"
