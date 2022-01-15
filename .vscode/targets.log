@@ -7,18 +7,21 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
  
-Makefile:5: *** missing separator.  Stop.
+make: *** No rule to make target `all'.  Stop.
  
 
-# Make data base, printed on Tue Jan 11 21:18:27 2022
+# Make data base, printed on Sat Jan 15 13:40:48 2022
 
- 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+LC_CTYPE = UTF-8
 # environment
 VSCODE_LOG_NATIVE = false
 # environment
@@ -32,6 +35,7 @@ NVM_INC = /Users/ismael/.nvm/versions/node/v14.18.1/include/node
 # makefile
 CURDIR := /Users/ismael/projects/catapulta/rn-na-veia/RN_APP
 # makefile
+ 
 SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
@@ -44,9 +48,9 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/xr/f7znv3p10kg87sw3vpsbl1vr0000gn/T/vscode-ipc-55b19738-55c3-4c04-b674-7ff8f584f8c7.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/xr/f7znv3p10kg87sw3vpsbl1vr0000gn/T/vscode-ipc-bbacf882-09d5-4779-8bcb-91380028edb4.sock
 # environment
-VSCODE_CWD = /
+VSCODE_CWD = /Users/ismael/projects/catapulta/workshop/magnus-andre/doggo
 # environment
 PATH = /Users/ismael/.nvm/versions/node/v14.18.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/ismael/Library/Android/sdk/emulator:/Users/ismael/Library/Android/sdk/tools:/Users/ismael/Library/Android/sdk/tools/bin:/Users/ismael/Library/Android/sdk/platform-tools
 # environment
@@ -62,7 +66,7 @@ ANDROID_HOME = /Users/ismael/Library/Android/sdk
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.riRwblKZ9i/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.DH6pMUNkjd/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -77,6 +81,8 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProce
 HOME = /Users/ismael
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+# environment
+VSCODE_CLI = 1
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/ismael/Library/Application Support/Code/CachedData/899d46d82c4c95423fb7e10e68eba52050e30ba3
 # environment
@@ -98,7 +104,7 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 1
+SHLVL = 3
 # default
 MAKE_VERSION := 3.81
 # environment
@@ -106,11 +112,15 @@ USER = ismael
 # makefile
 .DEFAULT_GOAL := sha1
 # environment
+TERM_SESSION_ID = EF45AB82-AB35-4E03-BA7E-572F13A6793C
+# environment
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# environment
+TERM_PROGRAM = Apple_Terminal
 # default
 .VARIABLES := 
 # environment
@@ -126,9 +136,11 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
+TERM_PROGRAM_VERSION = 440
+# environment
 NVM_DIR = /Users/ismael/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.7159691.7159697
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.7159691.7159697.B29AB33D-B694-46D1-9D2C-B09EDB6F61E2
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -150,7 +162,6 @@ LC_ALL = C
 # automatic
 ^F = $(notdir $^)
 # default
- 
 SUFFIXES := 
 # default
 .INCLUDE_DIRS = /usr/local/include
@@ -159,9 +170,11 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1147
+TERM = xterm-256color
+# environment
+VSCODE_PID = 3924
 # variable set hash-table stats:
-# Load=72/1024=7%, Rehash=0, Collisions=1/87=1%
+# Load=79/1024=8%, Rehash=0, Collisions=1/103=1%
 
 # Pattern-specific Variable Values
 
@@ -182,9 +195,11 @@ VSCODE_PID = 1147
 # Not a target:
 all:
 #  Command-line target.
-#  Implicit rule search has not been done.
-#  Modification time never checked.
+#  Implicit rule search has been done.
+#  File does not exist.
 #  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 sha1:
 #  Implicit rule search has not been done.
@@ -192,6 +207,7 @@ sha1:
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 2):
 	cd android && cd app && keytool -keystore ./debug.keystore -list -v
+ 
 	
 
 # Not a target:
@@ -202,9 +218,12 @@ sha1:
 
 # Not a target:
 Makefile:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-01-11 21:23:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .DEFAULT:
@@ -216,9 +235,12 @@ create-keystore:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+#  commands to execute (from `Makefile', line 5):
+	keytool -genkey -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android -keyalg RSA -validity 10000
+	
 
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/7=0%
+# Load=6/1024=1%, Rehash=0, Collisions=0/18=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -230,6 +252,6 @@ create-keystore:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Jan 11 21:18:27 2022
+# Finished Make data base on Sat Jan 15 13:40:48 2022
 
  

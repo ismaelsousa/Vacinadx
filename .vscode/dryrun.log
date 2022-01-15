@@ -1,6 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/ismael/projects/catapulta/rn-na-veia/RN_APP'
+cd android && cd app && keytool -keystore ./debug.keystore -list -v
 make: Leaving directory `/Users/ismael/projects/catapulta/rn-na-veia/RN_APP'
- 
-Makefile:5: *** missing separator.  Stop.
  

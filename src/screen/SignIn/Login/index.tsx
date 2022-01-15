@@ -71,6 +71,8 @@ const Login: React.FC = () => {
   };
 
   async function onGoogleButtonPress() {
+    // await GoogleSignin.signOut();
+    // return;
     try {
       const {user} = await GoogleSignin.signIn();
       console.log(user);
