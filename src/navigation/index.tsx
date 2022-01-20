@@ -9,6 +9,9 @@ const Routes: React.FC = () => {
   const {isSignedIn, signOut} = useAuth();
 
   useEffect(() => {
+    if (!appleAuth.isSupported) {
+      return;
+    }
     return appleAuth.onCredentialRevoked(async () => {
       signOut();
       console.log(
