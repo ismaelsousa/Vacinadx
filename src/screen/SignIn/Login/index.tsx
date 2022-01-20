@@ -3,6 +3,7 @@ import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {Platform, StatusBar} from 'react-native';
 import {useTheme} from 'styled-components';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 import Button from '~/components/Button';
 import HeaderOptions from '~/components/HeaderOptions';
@@ -67,6 +68,15 @@ const Login: React.FC = () => {
     // use credentialState response to ensure the user is authenticated
     if (credentialState === appleAuth.State.AUTHORIZED) {
       // user is authenticated
+    }
+  };
+
+  const handleGoogleButton = async () => {
+    try {
+      const {user} = await GoogleSignin.signIn();
+      console.log(user);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -144,6 +154,7 @@ const Login: React.FC = () => {
         </>
       )}
       <Button
+        onPress={handleGoogleButton}
         typography="caption"
         icon={<Icon icon="google" />}
         color="secondary"
