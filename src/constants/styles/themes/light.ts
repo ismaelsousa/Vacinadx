@@ -6,11 +6,11 @@ import {typographyCommon, borders, spacing} from './common';
 export const themeLight: DefaultTheme = {
   colors: {
     primary: {
-      main: Colors.brand04,
+      main: Colors.brand01,
       onMain: Colors.white,
     },
     secondary: {
-      main: Colors.brand01,
+      main: Colors.brand02,
       onMain: Colors.white,
     },
     error: {
@@ -23,6 +23,22 @@ export const themeLight: DefaultTheme = {
     },
     surface: {
       main: Colors.black,
+      onMain: Colors.white,
+    },
+    surface50: {
+      main: Colors.grey50,
+      onMain: Colors.white,
+    },
+    surface100: {
+      main: Colors.grey100,
+      onMain: Colors.white,
+    },
+    surface500: {
+      main: Colors.grey500,
+      onMain: Colors.white,
+    },
+    surface600: {
+      main: Colors.grey600,
       onMain: Colors.white,
     },
   },

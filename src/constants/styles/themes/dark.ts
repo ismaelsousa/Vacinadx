@@ -6,7 +6,7 @@ import {borders, spacing, typographyCommon} from './common';
 export const themeDark: DefaultTheme = {
   colors: {
     primary: {
-      main: Colors.brand05,
+      main: Colors.brand01,
       onMain: Colors.white,
     },
     secondary: {
@@ -18,12 +18,28 @@ export const themeDark: DefaultTheme = {
       onMain: Colors.white,
     },
     background: {
+      main: Colors.white,
+      onMain: Colors.black,
+    },
+    surface: {
       main: Colors.black,
       onMain: Colors.white,
     },
-    surface: {
-      main: Colors.white,
-      onMain: Colors.neutrais,
+    surface50: {
+      main: Colors.grey50,
+      onMain: Colors.white,
+    },
+    surface100: {
+      main: Colors.grey100,
+      onMain: Colors.white,
+    },
+    surface500: {
+      main: Colors.grey500,
+      onMain: Colors.white,
+    },
+    surface600: {
+      main: Colors.grey600,
+      onMain: Colors.white,
     },
   },
   typography: typographyCommon,

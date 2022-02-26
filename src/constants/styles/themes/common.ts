@@ -8,16 +8,16 @@ export const typographyCommon: Typography = {
     fontFamily: Fonts.openSansLight,
   },
   h2: {
-    fontSize: 60,
-    fontFamily: Fonts.openSansLight,
+    fontSize: 48,
+    fontFamily: Fonts.montserratBold,
   },
   h3: {
-    fontSize: 48,
-    fontFamily: Fonts.openSansRegular,
+    fontSize: 32,
+    fontFamily: Fonts.montserratBold,
   },
   h4: {
     fontSize: 32,
-    fontFamily: Fonts.montserratBold,
+    fontFamily: Fonts.montserratSemiBold,
   },
   h5: {
     fontSize: 24,
@@ -28,7 +28,7 @@ export const typographyCommon: Typography = {
     fontFamily: Fonts.montserratRegular,
   },
   subtitle1: {
-    fontSize: 16,
+    fontSize: 18,
     fontFamily: Fonts.openSansRegular,
   },
   subtitle2: {
@@ -48,7 +48,7 @@ export const typographyCommon: Typography = {
     fontFamily: Fonts.openSansRegular,
   },
   caption: {
-    fontSize: 12,
+    fontSize: 16,
     fontFamily: Fonts.openSansRegular,
   },
   overline: {
@@ -63,9 +63,9 @@ export const spacing: Spacing = {
   sm: 10,
   md: 20,
   lg: 25,
-  xl: 32,
-  xxl: 40,
-  xxxl: 42,
+  xl: 38,
+  xxl: 45,
+  xxxl: 100,
 };
 
 export const borders: Border = {

@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import {TypographyType} from 'styled-components';
 import styled from 'styled-components/native';
 
 import {Mode} from './types';
@@ -26,15 +27,23 @@ export const Container = styled.TouchableOpacity<ContainerProps>`
 
 interface TitleProps {
   readonly color: string;
+  readonly typography: TypographyType;
 }
 
 export const Title = styled.Text<TitleProps>`
-  font-family: ${({theme}) => theme.typography.body2.fontFamily};
-  font-size: ${({theme}) => theme.typography.body2.fontSize}px;
+  font-family: ${({theme, typography}) =>
+    theme.typography[typography].fontFamily};
+  font-size: ${({theme, typography}) =>
+    theme.typography[typography].fontSize}px;
   align-self: center;
   color: ${({color}) => color};
 `;
 
 export const Loading = styled.ActivityIndicator`
   margin-left: ${({theme}) => theme.spacing.sm}px;
+`;
+
+export const AbsoluteIcon = styled.View`
+  position: absolute;
+  left: ${({theme}) => theme.spacing.md}px;
 `;

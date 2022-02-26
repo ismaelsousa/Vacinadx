@@ -3,10 +3,12 @@ import React, {useContext, useMemo} from 'react';
 import {ThemeContext} from 'styled-components';
 import {ButtonProps} from './types';
 
-import {Container, Title, Loading} from './styles';
+import {Container, Title, Loading, AbsoluteIcon} from './styles';
 
 const Button = ({
   children,
+  icon,
+  typography = 'body2',
   mode = 'contained',
   color = 'primary',
   loading,
@@ -26,7 +28,10 @@ const Button = ({
       color={colors[color].main}
       onPress={onPress}
       {...rest}>
-      <Title color={colorByMode}>{children}</Title>
+      {!!icon && <AbsoluteIcon>{icon}</AbsoluteIcon>}
+      <Title typography={typography} color={colorByMode}>
+        {children}
+      </Title>
       {loading && <Loading size={15} color={colorByMode} />}
     </Container>
   );
