@@ -19,10 +19,16 @@ import BackButton from '~/components/BackButton';
 import appleAuth, {
   appleAuthAndroid,
 } from '@invertase/react-native-apple-authentication';
+import useAuth from '~/hooks/useAuth';
 
 const Login: React.FC = () => {
   const {spacing} = useTheme();
   const navigation = useSignInNavigation();
+
+  /**
+   * Hooks
+   */
+  const {loading, signIn} = useAuth();
 
   /**
    * Forms
@@ -36,8 +42,8 @@ const Login: React.FC = () => {
   } = useForm({
     resolver: yupResolver(schemaLogin),
     defaultValues: {
-      email: '',
-      password: '',
+      email: __DEV__ ? 'ismael.sousa@gmail.com' : '',
+      password: __DEV__ ? 'B4gJQR@o@AnXVkU!A4CaYJl68LR!jhuVm&flaPu$C*0' : '',
     },
   });
   /**
@@ -46,8 +52,8 @@ const Login: React.FC = () => {
   const handleGoBack = () => navigation.goBack();
 
   const onSubmit = async () => {
-    await handleSubmit(({email, password}) => {
-      console.log({email, password});
+    await handleSubmit(async ({email, password}) => {
+      await signIn({email, password});
     })();
   };
 
@@ -134,7 +140,9 @@ const Login: React.FC = () => {
         )}
       />
       <Separator height={spacing.md} />
-      <Button onPress={onSubmit}>Login</Button>
+      <Button loading={loading} disabled={loading} onPress={onSubmit}>
+        Login
+      </Button>
       <Separator height={spacing.md} />
       <AccessText color="surface500" typography="body3">
         ou acesse com login social
