@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {UserDTO} from '~/@types/dtos/user';
+import {RequestCreateUserData} from '~/services/resource/user/types';
 
 interface RequestSignData {
   email: string;
@@ -10,6 +11,7 @@ export interface AuthContextProp {
   loading: boolean;
   user?: UserDTO;
   signIn: (data: RequestSignData) => Promise<void>;
+  signUp: (data: RequestCreateUserData) => Promise<void>;
   signOut: () => void;
 }
 

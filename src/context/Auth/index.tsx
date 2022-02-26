@@ -6,6 +6,10 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {signInResource} from '~/services/resource/auth';
 import {RequestSignInData} from '~/services/resource/auth/types';
+import {Alert} from 'react-native';
+import api from '~/services/api';
+import {RequestCreateUserData} from '~/services/resource/user/types';
+import {createUserResource} from '~/services/resource/user';
 
 export const AuthContext = createContext<AuthContextProp>(
   {} as AuthContextProp,
@@ -20,24 +24,48 @@ export const AuthProvider: React.FC = ({children}) => {
   /**
    * Callbacks
    */
-  const signIn = async (data: RequestSignInData) => {
-    try {
-      setLoading(true);
-      const response = await signInResource(data);
-      setUser(response.user);
-      setIsSignedIn(true);
-      // api.default.headers.Authorization = `Baerer ${response.data.token}`
-      AsyncStorage.setItem(asyncUserKeys.user, JSON.stringify(response.user));
-    } catch (error) {
-    } finally {
-      setLoading(false);
-    }
+
+  const saveUserToStorageAndConfigToken = async (data: UserDTO) => {
+    api.defaults.headers.Authorization = `Baerer ${data.token}`;
+    await AsyncStorage.setItem(asyncUserKeys.user, JSON.stringify(data));
   };
 
   const signOut = async () => {
     setIsSignedIn(false);
     setUser(undefined);
+    api.defaults.headers.Authorization = 'Baerer ';
     await AsyncStorage.clear();
+  };
+
+  const signIn = async (data: RequestSignInData) => {
+    try {
+      setLoading(true);
+      const response = await signInResource(data);
+
+      setUser(response.user);
+      await saveUserToStorageAndConfigToken(response.user);
+      setIsSignedIn(true);
+    } catch (error) {
+      Alert.alert('Não possível realizar o login', 'tente novamente!');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const signUp = async (data: RequestCreateUserData) => {
+    try {
+      setLoading(true);
+      const response = await createUserResource(data);
+      console.log(response.user);
+      setUser(response.user);
+      await saveUserToStorageAndConfigToken(response.user);
+      setIsSignedIn(true);
+    } catch (error) {
+      Alert.alert('Não possível realizar o cadastro', 'tente novamente!');
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const rehydrate = async () => {
@@ -58,7 +86,8 @@ export const AuthProvider: React.FC = ({children}) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{user, loading, isSignedIn, signIn, signOut}}>
+    <AuthContext.Provider
+      value={{user, loading, isSignedIn, signIn, signUp, signOut}}>
       {!rehydrateLoading && children}
     </AuthContext.Provider>
   );
