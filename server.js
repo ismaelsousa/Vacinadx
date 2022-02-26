@@ -13,6 +13,7 @@ createServer({
       email: 'ismael.sousa@gmail.com',
       password: 'B4gJQR@o@AnXVkU!A4CaYJl68LR!jhuVm&flaPu$C*0',
       token: 'eyasdjasdnansasdna3e33ne3_3d3nd3djnd',
+      avatar: 'https://avatars.githubusercontent.com/u/28990749?v=4',
     });
   },
   routes() {
