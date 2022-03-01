@@ -1,4 +1,3 @@
-import morte from '../assets/images/morte.png';
 import grafico from '../assets/images/grafico.png';
 
 import vaccinePlus from '../assets/icons/vaccine-plus/Vector.png';
@@ -14,8 +13,14 @@ import closeEye from '~/assets/icons/closeEye/Vector.png';
 
 import home from '~/assets/icons/home/Vector.png';
 import profile from '~/assets/icons/profile/profile.png';
+import pin from '~/assets/icons/pin/Vector.png';
+import plus from '~/assets/icons/plus/Mais.png';
+import vaccine from '~/assets/icons/vaccine/Vacina.png';
 
 export type NameIconTypes =
+  | 'pin'
+  | 'plus'
+  | 'vaccine'
   | 'profile'
   | 'home'
   | 'grafico'
@@ -30,6 +35,9 @@ export type NameIconTypes =
   | 'doctor';
 
 export default {
+  pin,
+  plus,
+  vaccine,
   profile,
   home,
   grafico,
