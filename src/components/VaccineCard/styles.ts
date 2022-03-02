@@ -38,6 +38,10 @@ export const Chip = styled.View<ChipProps>`
   background-color: ${({color}) => color};
 `;
 
+export const ChipWrap = styled.View`
+  flex-direction: row;
+`;
+
 export const VaccineDate = styled.View`
   flex-direction: row;
   align-items: center;

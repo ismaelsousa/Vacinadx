@@ -8,7 +8,13 @@ import Icon from '../Icon';
 import Separator from '../Separator';
 import Text from '../Text';
 
-import styles, {BadgeLeft, Chip, Container, VaccineDate} from './styles';
+import styles, {
+  BadgeLeft,
+  Chip,
+  ChipWrap,
+  Container,
+  VaccineDate,
+} from './styles';
 import {VaccineDateProps} from './types';
 import {useTheme} from 'styled-components';
 
@@ -53,9 +59,11 @@ const VaccineCard = ({date, shot, title, onPress}: VaccineDateProps) => {
         <View>
           <Text typography="body2">{title}</Text>
           <Separator height={18} />
-          <Chip color={dose.color}>
-            <Text color="background">{dose.title}</Text>
-          </Chip>
+          <ChipWrap>
+            <Chip color={dose.color}>
+              <Text color="background">{dose.title}</Text>
+            </Chip>
+          </ChipWrap>
         </View>
         <VaccineDate>
           <Icon icon="calendar" size={20} />

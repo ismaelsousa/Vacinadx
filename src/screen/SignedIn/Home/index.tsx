@@ -1,6 +1,5 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StatusBar, View} from 'react-native';
-import {useTheme} from 'styled-components';
+import {StatusBar} from 'react-native';
 import Button from '~/components/Button';
 import Separator from '~/components/Separator';
 import Text from '~/components/Text';
@@ -37,7 +36,7 @@ const Home: React.FC = () => {
         <VaccineCard
           date={new Date(2022, 3, 3).toISOString()}
           shot="first-dose"
-          title="Febre amarela ajasjsa "
+          title="Febre amarela "
         />
         <Separator height={15} />
         <VaccineCard
