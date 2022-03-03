@@ -5,6 +5,7 @@ import Separator from '~/components/Separator';
 import Text from '~/components/Text';
 import VaccineCard from '~/components/VaccineCard';
 import useAuth from '~/hooks/useAuth';
+import Banner from './localComponents/Banner';
 import Header from './localComponents/Header';
 import SmallCard from './localComponents/SmallCard';
 
@@ -44,6 +45,12 @@ const Home: React.FC = () => {
           shot="second-dose"
           title="Johnson"
         />
+        <Separator height={15} />
+        <Text typography="h7">Campanhas de vacinação</Text>
+        <Separator height={15} />
+        <Banner source={require('~/assets/images/Banner/covid.png')} />
+        <Separator height={15} />
+        <Banner source={require('~/assets/images/Banner/covid.png')} />
       </Content>
       <Separator height={20} />
       <Button onPress={signOut}>Sign Out</Button>
