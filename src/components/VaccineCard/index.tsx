@@ -1,17 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {format, isBefore} from 'date-fns';
 import React, {useMemo} from 'react';
 import {Pressable, View} from 'react-native';
 import {useTheme} from 'styled-components';
 import Icon from '../Icon';
 import Separator from '../Separator';
+import Shadow from '../Shadow';
 import Text from '../Text';
-import styles, {
-  BadgeLeft,
-  Chip,
-  ChipWrap,
-  Container,
-  VaccineDate,
-} from './styles';
+import {BadgeLeft, Chip, ChipWrap, Container, VaccineDate} from './styles';
 import {VaccineCardProps} from './types';
 
 const VaccineCard = ({date, shot, title, onPress}: VaccineCardProps) => {
@@ -47,7 +43,7 @@ const VaccineCard = ({date, shot, title, onPress}: VaccineCardProps) => {
   }, [shot, colors]);
 
   return (
-    <Pressable onPress={onPress} style={styles.shadow}>
+    <Shadow onPress={onPress}>
       <Container>
         <BadgeLeft
           color={isBeforeToday ? colors.lightGreen.main : colors.orange.main}
@@ -67,7 +63,7 @@ const VaccineCard = ({date, shot, title, onPress}: VaccineCardProps) => {
           <Text>{formattedDate}</Text>
         </VaccineDate>
       </Container>
-    </Pressable>
+    </Shadow>
   );
 };
 
