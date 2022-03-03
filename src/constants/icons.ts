@@ -16,11 +16,13 @@ import profile from '~/assets/icons/profile/profile.png';
 import pin from '~/assets/icons/pin/Vector.png';
 import plus from '~/assets/icons/plus/Mais.png';
 import vaccine from '~/assets/icons/vaccine/Vacina.png';
+import calendar from '~/assets/icons/calendar/calendar.png';
 
 export type NameIconTypes =
   | 'pin'
   | 'plus'
   | 'vaccine'
+  | 'calendar'
   | 'profile'
   | 'home'
   | 'grafico'
@@ -38,6 +40,7 @@ export default {
   pin,
   plus,
   vaccine,
+  calendar,
   profile,
   home,
   grafico,
