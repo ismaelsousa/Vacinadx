@@ -27,6 +27,10 @@ export const typographyCommon: Typography = {
     fontSize: 24,
     fontFamily: Fonts.montserratRegular,
   },
+  h7: {
+    fontSize: 20,
+    fontFamily: Fonts.montserratSemiBold,
+  },
   subtitle1: {
     fontSize: 18,
     fontFamily: Fonts.openSansRegular,

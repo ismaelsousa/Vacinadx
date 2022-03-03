@@ -41,6 +41,14 @@ export const themeDark: DefaultTheme = {
       main: Colors.grey600,
       onMain: Colors.white,
     },
+    orange: {
+      main: Colors.orange,
+      onMain: Colors.white,
+    },
+    lightGreen: {
+      main: Colors.lightGreen,
+      onMain: Colors.white,
+    },
   },
   typography: typographyCommon,
   borders,
