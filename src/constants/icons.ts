@@ -17,8 +17,14 @@ import pin from '~/assets/icons/pin/Vector.png';
 import plus from '~/assets/icons/plus/Mais.png';
 import vaccine from '~/assets/icons/vaccine/Vacina.png';
 import calendar from '~/assets/icons/calendar/calendar.png';
+import arrowRight from '~/assets/icons/arrowRight/Vector.png';
+import logout from '~/assets/icons/logout/Vector.png';
+import notification from '~/assets/icons/notification/Vector.png';
 
 export type NameIconTypes =
+  | 'notification'
+  | 'logout'
+  | 'arrowRight'
   | 'pin'
   | 'plus'
   | 'vaccine'
@@ -37,6 +43,9 @@ export type NameIconTypes =
   | 'doctor';
 
 export default {
+  notification,
+  logout,
+  arrowRight,
   pin,
   plus,
   vaccine,

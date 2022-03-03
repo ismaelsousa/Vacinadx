@@ -1,4 +1,3 @@
-import {StyleSheet} from 'react-native';
 import styled from 'styled-components/native';
 import Text from '~/components/Text';
 
