@@ -2,6 +2,7 @@
 import React, {useMemo} from 'react';
 import {useWindowDimensions} from 'react-native';
 import {useTheme} from 'styled-components';
+import Shadow from '~/components/Shadow';
 
 import {Container} from './styles';
 import {BannerProps} from './types';
@@ -25,12 +26,14 @@ const Banner = ({source}: BannerProps) => {
   }, [height, width, spacing]);
 
   return (
-    <Container
-      resizeMode="contain"
-      source={source}
-      h={HWBanner.height}
-      w={HWBanner.width}
-    />
+    <Shadow>
+      <Container
+        resizeMode="contain"
+        source={source}
+        h={HWBanner.height}
+        w={HWBanner.width}
+      />
+    </Shadow>
   );
 };
 

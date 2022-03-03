@@ -8,15 +8,10 @@ import Icon from '../Icon';
 import Separator from '../Separator';
 import Text from '../Text';
 
-import styles, {
-  BadgeLeft,
-  Chip,
-  ChipWrap,
-  Container,
-  VaccineDate,
-} from './styles';
+import {BadgeLeft, Chip, ChipWrap, Container, VaccineDate} from './styles';
 import {VaccineDateProps} from './types';
 import {useTheme} from 'styled-components';
+import Shadow from '../Shadow';
 
 const VaccineCard = ({date, shot, title, onPress}: VaccineDateProps) => {
   const {colors} = useTheme();
@@ -51,7 +46,7 @@ const VaccineCard = ({date, shot, title, onPress}: VaccineDateProps) => {
   }, [shot, colors]);
 
   return (
-    <Pressable style={styles.shadow} onPress={onPress}>
+    <Shadow onPress={onPress}>
       <Container>
         <BadgeLeft
           color={isBeforeToday ? colors.lightGreen.main : colors.orange.main}
@@ -71,7 +66,7 @@ const VaccineCard = ({date, shot, title, onPress}: VaccineDateProps) => {
           <Text>{formattedDate}</Text>
         </VaccineDate>
       </Container>
-    </Pressable>
+    </Shadow>
   );
 };
 
