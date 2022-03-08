@@ -13,7 +13,7 @@ const AddVaccine: React.FC = () => {
   const {goBack, navigate} = useNavigation();
   const {spacing} = useTheme();
 
-  const handleGotoQr = () => navigate('qr');
+  const handleGotoQrCode = () => navigate('qrCode');
 
   return (
     <Container>
@@ -29,7 +29,7 @@ const AddVaccine: React.FC = () => {
         {'Gostaria de adicionar por meio de \nqual método? '}
       </Text>
       <Separator height={spacing.lg} />
-      <Shadow onPress={handleGotoQr}>
+      <Shadow onPress={handleGotoQrCode}>
         <Card>
           <RowCard>
             <Icon icon="qr" size={22} />

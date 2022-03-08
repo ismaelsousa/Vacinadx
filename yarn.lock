@@ -1060,6 +1060,13 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@react-native-async-storage/async-storage@^1.13.4":
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.16.1.tgz#1dbaa9e0f9736e4ab8fc04c628bbb608fd80b068"
+  integrity sha512-aQ7ka+Ii1e/q+7AVFIZPt4kDeSH8b784wMDtz19Kf4A7hf+OgCHBlUQpOXsrv8XxhlBxu0hv4tfrDO15ChnV0Q==
+  dependencies:
+    merge-options "^3.0.4"
+
 "@react-native-async-storage/async-storage@^1.15.11":
   version "1.15.11"
   resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.15.11.tgz#da625b906529076414c32fd337d813b565149858"
@@ -5973,6 +5980,15 @@ prompts@^2.0.1, prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
+prop-types@^15.5.10, prop-types@^15.6.2:
+  version "15.8.1"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
+  integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.13.1"
+
 prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
@@ -6043,10 +6059,17 @@ react-hook-form@^7.20.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1:
+react-is@^16.13.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-native-camera@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-4.2.1.tgz#caf74081f055e89d7e9b0cd5108965d808c60e90"
+  integrity sha512-+Vkql24PFYQfsPRznJCvPwJQfyzCnjlcww/iZ4Ej80bgivKjL9eU0IMQIXp4yi6XCrKi4voWXxIDPMupQZKeIQ==
+  dependencies:
+    prop-types "^15.6.2"
 
 react-native-codegen@^0.0.6:
   version "0.0.6"
@@ -6057,12 +6080,31 @@ react-native-codegen@^0.0.6:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
+react-native-permissions@^2.0.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-2.2.2.tgz#3d2a63f6b7d6be52fc86e30f77412a9566283028"
+  integrity sha512-ihf4shQDSX5Oo9ChQXb9kr13mmyyNem5MaEvOpr3dCjhBOBWyEMztXm9/uPK1Qg5PsNpaYLa1KpcPZDCw87LXg==
+
+react-native-permissions@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-3.3.0.tgz#f63b7f91457dd2b11991ca46ebe4262a8eb1f73c"
+  integrity sha512-F0Yjcp0V340lQW2ibg1lTGmStsMoWsBtosSCRIZOatOQAsNMp77zL6SdYcIGwJUBMVDX3BMraB4AX4Ph3cW1NA==
+
 react-native-progress@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-native-progress/-/react-native-progress-5.0.0.tgz#f5ac6ceaeee27f184c660b00f29419e82a9d0ab0"
   integrity sha512-KjnGIt3r9i5Kn2biOD9fXLJocf0bwxPRxOyAgXEnZTJQU2O+HyzgGFRCbM5h3izm9kKIkSc1txh8aGmMafCD9A==
   dependencies:
     prop-types "^15.7.2"
+
+react-native-qrcode-scanner@^1.5.5:
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/react-native-qrcode-scanner/-/react-native-qrcode-scanner-1.5.5.tgz#0d20101712715da108742a2bbbd0397569031b01"
+  integrity sha512-il79uStkFqUvofqXJQfOL30qgQyU17MUKxj7IGHv6oT2OxIY/vutTwuPPDbsivtv0yTMHP4dGx/79oys4eAuNw==
+  dependencies:
+    "@react-native-async-storage/async-storage" "^1.13.4"
+    prop-types "^15.5.10"
+    react-native-permissions "^2.0.2"
 
 react-native-safe-area-context@^3.3.2:
   version "3.3.2"
