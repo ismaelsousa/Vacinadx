@@ -33,7 +33,7 @@ const Home: React.FC = () => {
         <SmallCard icon="pin" title={'Procurar local\n de vacinação'} />
       </ScrollViewItems>
       <Content>
-        <Text typography="h7">Próximas vacinas</Text>
+        <Text typography="h8">Próximas vacinas</Text>
         <Separator height={20} />
         <VaccineCard
           date={new Date(2022, 3, 1).toISOString()}
@@ -53,7 +53,7 @@ const Home: React.FC = () => {
           title="Johnson"
         />
         <Separator height={15} />
-        <Text typography="h7">Campanhas de vacinação</Text>
+        <Text typography="h8">Campanhas de vacinação</Text>
         <Separator height={15} />
         <Banner source={require('~/assets/images/Banner/covid.png')} />
         <Separator height={15} />

@@ -20,8 +20,12 @@ import calendar from '~/assets/icons/calendar/calendar.png';
 import arrowRight from '~/assets/icons/arrowRight/Vector.png';
 import logout from '~/assets/icons/logout/Vector.png';
 import notification from '~/assets/icons/notification/Vector.png';
+import pencil from '~/assets/icons/pencil/Vector.png';
+import qr from '~/assets/icons/qr/Vector.png';
 
 export type NameIconTypes =
+  | 'pencil'
+  | 'qr'
   | 'notification'
   | 'logout'
   | 'arrowRight'
@@ -43,6 +47,8 @@ export type NameIconTypes =
   | 'doctor';
 
 export default {
+  pencil,
+  qr,
   notification,
   logout,
   arrowRight,
