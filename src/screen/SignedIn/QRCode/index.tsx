@@ -42,7 +42,7 @@ const QRCode: React.FC = () => {
             <Icon icon="back" size={15} />
           </Pressable>
           <Separator height={spacing.md} />
-          <Text typography="h7">Ler Code code</Text>
+          <Text typography="h7">Ler QR code</Text>
           <Separator height={spacing.sm} />
           <Text typography="caption">
             {'Posicione o código QR dentro da área'}
