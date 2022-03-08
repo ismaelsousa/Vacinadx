@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {StatusBar} from 'react-native';
 import Button from '~/components/Button';
@@ -13,7 +14,9 @@ import {Container, Content, ScrollViewItems} from './styles';
 
 const Home: React.FC = () => {
   const {signOut} = useAuth();
+  const {navigate} = useNavigation();
 
+  const handleAddVaccine = () => navigate('addVaccine');
   return (
     <Container>
       <StatusBar barStyle={'light-content'} />
@@ -21,7 +24,11 @@ const Home: React.FC = () => {
       <ScrollViewItems horizontal>
         <SmallCard icon="vaccine" title={'Minhas\nvacinas'} />
         <Separator width={15} />
-        <SmallCard icon="plus" title={'Adicionar\nvacinas'} />
+        <SmallCard
+          icon="plus"
+          onPress={handleAddVaccine}
+          title={'Adicionar\nvacinas'}
+        />
         <Separator width={15} />
         <SmallCard icon="pin" title={'Procurar local\n de vacinação'} />
       </ScrollViewItems>
