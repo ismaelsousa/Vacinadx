@@ -2,6 +2,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import AddVaccine from '~/screen/SignedIn/AddVaccine';
 import Home from '~/screen/SignedIn/Home';
+import QR from '~/screen/SignedIn/QR';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ const HomeStack: React.FC = () => {
         options={{header: () => null}}
         component={AddVaccine}
       />
+      <Stack.Screen name="qr" options={{header: () => null}} component={QR} />
     </Stack.Navigator>
   );
 };
