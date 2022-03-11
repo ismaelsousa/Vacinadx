@@ -65,6 +65,7 @@ declare module 'styled-components' {
     h5: TypographyProps;
     h6: TypographyProps;
     h7: TypographyProps;
+    h8: TypographyProps;
     subtitle1: TypographyProps;
     subtitle2: TypographyProps;
     body1: TypographyProps;

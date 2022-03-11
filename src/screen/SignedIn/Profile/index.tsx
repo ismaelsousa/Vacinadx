@@ -21,8 +21,8 @@ const Profile: React.FC = () => {
           <Avatar source={{uri: user?.avatar}} />
           <Separator width={spacing.sm} />
           <View>
-            <Text typography="h7">{user?.firstName}</Text>
-            <Text typography="h7">{user?.lastName}</Text>
+            <Text typography="h8">{user?.firstName}</Text>
+            <Text typography="h8">{user?.lastName}</Text>
           </View>
         </Row>
         <Separator height={spacing.lg} />

@@ -28,6 +28,10 @@ export const typographyCommon: Typography = {
     fontFamily: Fonts.montserratRegular,
   },
   h7: {
+    fontSize: 24,
+    fontFamily: Fonts.montserratSemiBold,
+  },
+  h8: {
     fontSize: 20,
     fontFamily: Fonts.montserratSemiBold,
   },
