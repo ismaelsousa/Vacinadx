@@ -10,9 +10,10 @@ import Text from '~/components/Text';
 import {Card, Container, RowCard} from './styles';
 
 const AddVaccine: React.FC = () => {
-  const {goBack} = useNavigation();
+  const {goBack, navigate} = useNavigation();
   const {spacing} = useTheme();
 
+  const handleGotoQrCode = () => navigate('qrCode');
   return (
     <Container>
       <StatusBar barStyle={'dark-content'} />
@@ -27,7 +28,7 @@ const AddVaccine: React.FC = () => {
         {'Gostaria de adicionar por meio de \nqual método?'}
       </Text>
       <Separator height={spacing.lg} />
-      <Shadow>
+      <Shadow onPress={handleGotoQrCode}>
         <Card>
           <RowCard>
             <Icon icon="qrcode" size={22} />

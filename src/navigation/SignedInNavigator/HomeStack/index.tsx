@@ -2,6 +2,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import AddVaccine from '~/screen/SignedIn/AddVaccine';
 import Home from '~/screen/SignedIn/Home';
+import Qrcode from '~/screen/SignedIn/Qrcode';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,11 @@ const HomeStack: React.FC = () => {
       <Stack.Screen
         name="addVaccine"
         component={AddVaccine}
+        options={{header: () => null}}
+      />
+      <Stack.Screen
+        name="qrCode"
+        component={Qrcode}
         options={{header: () => null}}
       />
     </Stack.Navigator>
