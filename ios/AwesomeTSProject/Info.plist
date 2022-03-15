@@ -20,6 +20,16 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+  <key>NSCameraUsageDescription</key>
+  <string>Allow camera to scanner the QR code</string>
+
+  <!-- Include this only if you are planning to use the camera roll -->
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>Allow photo library to scanner the QR code</string>
+
+  <!-- Include this only if you are planning to use the microphone for video recording -->
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Allow microsphone to scanner the QR code</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

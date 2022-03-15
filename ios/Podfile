@@ -5,6 +5,9 @@ platform :ios, '10.0'
 
 target 'AwesomeTSProject' do
   config = use_native_modules!
+  # To QR code
+  permissions_path = '../node_modules/react-native-permissions/ios'
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
 
   use_react_native!(
     :path => config[:reactNativePath],
