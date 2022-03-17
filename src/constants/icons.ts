@@ -22,8 +22,12 @@ import logout from '~/assets/icons/logout/Vector.png';
 import notification from '~/assets/icons/notification/Vector.png';
 import pencil from '~/assets/icons/pencil/Vector.png';
 import qr from '~/assets/icons/qr/Vector.png';
+import radioButton from '~/assets/icons/radioButton/Vector.png';
+import radioButtonChecked from '~/assets/icons/radioButtonChecked/Vector.png';
 
 export type NameIconTypes =
+  | 'radioButton'
+  | 'radioButtonChecked'
   | 'pencil'
   | 'qr'
   | 'notification'
@@ -47,6 +51,8 @@ export type NameIconTypes =
   | 'doctor';
 
 export default {
+  radioButton,
+  radioButtonChecked,
   pencil,
   qr,
   notification,

@@ -14,6 +14,7 @@ const AddVaccine: React.FC = () => {
   const {spacing} = useTheme();
 
   const handleGotoQrCode = () => navigate('qrCode');
+  const handleGotoAddVaccineManually = () => navigate('addVaccineManually');
 
   return (
     <Container>
@@ -40,7 +41,7 @@ const AddVaccine: React.FC = () => {
         </Card>
       </Shadow>
       <Separator height={spacing.md} />
-      <Shadow>
+      <Shadow onPress={handleGotoAddVaccineManually}>
         <Card>
           <RowCard>
             <Icon icon="pencil" size={22} />

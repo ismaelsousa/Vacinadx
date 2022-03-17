@@ -39,7 +39,7 @@ const QRCode: React.FC = () => {
           <StatusBar barStyle={'dark-content'} />
           <Separator height={spacing.md} />
           <Pressable onPress={goBack}>
-            <Icon icon="back" size={15} />
+            <Icon icon="closeX" size={15} />
           </Pressable>
           <Separator height={spacing.md} />
           <Text typography="h7">Ler QR code</Text>
