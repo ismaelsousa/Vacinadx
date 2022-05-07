@@ -6,11 +6,10 @@ export const Container = styled.SafeAreaView`
 
 export const Content = styled.View`
   padding: 0 ${({theme}) => theme.spacing.md}px;
-`;
-
-export const Scroll = styled.ScrollView`
   flex: 1;
 `;
+
+export const Scroll = styled.ScrollView``;
 
 export const ContainerSelect = styled.View`
   flex-direction: row;

@@ -11,6 +11,8 @@ import Icon from '~/components/Icon';
 import Input from '~/components/Input';
 import Separator from '~/components/Separator';
 import Text from '~/components/Text';
+import HeaderOptions from '~/components/HeaderOptions';
+import AvoidKeyboard from '~/components/AvoidKeyboard';
 import Select from './localComponents/Select';
 
 import {Container, ContainerSelect, Content, Scroll} from './styles';
@@ -29,7 +31,6 @@ const AddVaccineManually: React.FC = () => {
     control,
     handleSubmit,
     setValue,
-    getValues,
     setFocus,
     formState: {errors},
   } = useForm({
@@ -56,128 +57,160 @@ const AddVaccineManually: React.FC = () => {
   };
 
   return (
-    <Container>
-      <Scroll>
+    <AvoidKeyboard>
+      <Container>
         <Content>
-          <StatusBar barStyle={'dark-content'} />
-          <Separator height={spacing.md} />
-          <Pressable onPress={goBack}>
-            <Icon icon="closeX" size={15} />
-          </Pressable>
-          <Separator height={spacing.md} />
-          <Text typography="h7">Adicione as informações da vacina</Text>
+          <StatusBar
+            barStyle={'dark-content'}
+            translucent
+            backgroundColor={'transparent'}
+          />
+          <HeaderOptions
+            left={
+              <Pressable onPress={goBack}>
+                <Icon icon="closeX" size={15} />
+              </Pressable>
+            }
+          />
 
-          <Separator height={spacing.lg} />
-          <Controller
-            control={control}
-            name="name"
-            render={({field: {onBlur, onChange, value, ref}}) => (
-              <Input
-                ref={ref}
-                label="Nome da vacina"
-                onChange={onChange}
-                onChangeText={text => setValue('name', text)}
-                value={value}
-                onBlur={onBlur}
-                error={errors.name?.message}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="brand"
-            render={({field: {onBlur, onChange, value, ref}}) => (
-              <Input
-                ref={ref}
-                label="Marca da vacina"
-                onChange={onChange}
-                onChangeText={text => setValue('brand', text)}
-                value={value}
-                onBlur={onBlur}
-                error={errors.brand?.message}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="applicationDate"
-            render={({field: {onBlur, onChange, value, ref}}) => (
-              <Input
-                ref={ref}
-                label="Data da aplicação"
-                onChange={onChange}
-                onChangeText={text => setValue('applicationDate', text)}
-                value={value}
-                onBlur={onBlur}
-                error={errors.applicationDate?.message}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="applicationLocation"
-            render={({field: {onBlur, onChange, value, ref}}) => (
-              <Input
-                ref={ref}
-                label="Local da aplicação"
-                onChange={onChange}
-                onChangeText={text => setValue('applicationLocation', text)}
-                value={value}
-                onBlur={onBlur}
-                icon="pin"
-                error={errors.applicationLocation?.message}
-              />
-            )}
-          />
-          <Separator height={spacing.sm} />
-          <Text color="surface600" typography="body3">
-            Possui segunda dose?
-          </Text>
-          <Separator height={spacing.sm} />
-          <ContainerSelect>
-            <Select
-              onPress={() => setHasSecondShot(HasSecondShotEnum.YES)}
-              isSelected={hasSecondShot === HasSecondShotEnum.YES}
-              title="Sim"
-            />
-            <Select
-              onPress={() => setHasSecondShot(HasSecondShotEnum.NO)}
-              isSelected={hasSecondShot === HasSecondShotEnum.NO}
-              title="Não"
-            />
-            <Select
-              onPress={() => {
-                setHasSecondShot(HasSecondShotEnum.SINGLE);
-              }}
-              isSelected={hasSecondShot === HasSecondShotEnum.SINGLE}
-              title="Dose única"
-            />
-          </ContainerSelect>
-          {hasSecondShot === HasSecondShotEnum.YES && (
-            <>
-              <Separator height={spacing.sm} />
-              <Controller
-                control={control}
-                name="nextApplicationDate"
-                render={({field: {onBlur, onChange, value, ref}}) => (
-                  <Input
-                    ref={ref}
-                    label="Data da próxima aplicação"
-                    onChange={onChange}
-                    onChangeText={text => setValue('nextApplicationDate', text)}
-                    value={value}
-                    onBlur={onBlur}
-                    error={errors.nextApplicationDate?.message}
-                  />
-                )}
-              />
-            </>
-          )}
           <Separator height={spacing.md} />
-          <Button>Salvar</Button>
+          <Scroll>
+            <Text typography="h7">Adicione as informações da vacina</Text>
+
+            <Separator height={spacing.lg} />
+            <Controller
+              control={control}
+              name="name"
+              render={({field: {onBlur, onChange, value, ref}}) => (
+                <Input
+                  ref={ref}
+                  label="Nome da vacina"
+                  onChange={onChange}
+                  onChangeText={text => setValue('name', text)}
+                  value={value}
+                  onBlur={onBlur}
+                  error={errors.name?.message}
+                  onSubmitEditing={() => {
+                    setFocus('brand');
+                  }}
+                  returnKeyType="next"
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="brand"
+              render={({field: {onBlur, onChange, value, ref}}) => (
+                <Input
+                  ref={ref}
+                  label="Marca da vacina"
+                  onChange={onChange}
+                  onChangeText={text => setValue('brand', text)}
+                  value={value}
+                  onBlur={onBlur}
+                  error={errors.brand?.message}
+                  onSubmitEditing={() => {
+                    setFocus('applicationDate');
+                  }}
+                  returnKeyType="next"
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="applicationDate"
+              render={({field: {onBlur, onChange, value, ref}}) => (
+                <Input
+                  ref={ref}
+                  label="Data da aplicação"
+                  onChange={onChange}
+                  onChangeText={text => setValue('applicationDate', text)}
+                  value={value}
+                  onBlur={onBlur}
+                  error={errors.applicationDate?.message}
+                  onSubmitEditing={() => {
+                    setFocus('applicationLocation');
+                  }}
+                  returnKeyType="next"
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="applicationLocation"
+              render={({field: {onBlur, onChange, value, ref}}) => (
+                <Input
+                  ref={ref}
+                  label="Local da aplicação"
+                  onChange={onChange}
+                  onChangeText={text => setValue('applicationLocation', text)}
+                  value={value}
+                  onBlur={onBlur}
+                  icon="pin"
+                  error={errors.applicationLocation?.message}
+                  returnKeyType="next"
+                />
+              )}
+            />
+            <Separator height={spacing.sm} />
+            <Text color="surface600" typography="body3">
+              Possui segunda dose?
+            </Text>
+            <Separator height={spacing.sm} />
+            <ContainerSelect>
+              <Select
+                onPress={() => {
+                  setHasSecondShot(HasSecondShotEnum.YES);
+                }}
+                isSelected={hasSecondShot === HasSecondShotEnum.YES}
+                title="Sim"
+              />
+              <Select
+                onPress={() => {
+                  setHasSecondShot(HasSecondShotEnum.NO);
+                }}
+                isSelected={hasSecondShot === HasSecondShotEnum.NO}
+                title="Não"
+              />
+              <Select
+                onPress={() => {
+                  setHasSecondShot(HasSecondShotEnum.SINGLE);
+                }}
+                isSelected={hasSecondShot === HasSecondShotEnum.SINGLE}
+                title="Dose única"
+              />
+            </ContainerSelect>
+            {hasSecondShot === HasSecondShotEnum.YES && (
+              <>
+                <Separator height={spacing.sm} />
+                <Controller
+                  control={control}
+                  name="nextApplicationDate"
+                  render={({field: {onBlur, onChange, value, ref}}) => (
+                    <Input
+                      ref={ref}
+                      label="Data da próxima aplicação"
+                      onChange={onChange}
+                      onChangeText={text =>
+                        setValue('nextApplicationDate', text)
+                      }
+                      value={value}
+                      onBlur={onBlur}
+                      error={errors.nextApplicationDate?.message}
+                      returnKeyType="done"
+                      onSubmitEditing={onSubmit}
+                    />
+                  )}
+                />
+              </>
+            )}
+            <Separator height={spacing.md} />
+            <Button>Salvar</Button>
+            <Separator height={spacing.xxl} />
+          </Scroll>
         </Content>
-      </Scroll>
-    </Container>
+      </Container>
+    </AvoidKeyboard>
   );
 };
 export default AddVaccineManually;
