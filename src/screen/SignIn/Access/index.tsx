@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatusBar, View} from 'react-native';
+import {StatusBar} from 'react-native';
 
 import splashImage from '~/assets/images/splash/splashScreen.png';
 import Button from '~/components/Button';
@@ -30,7 +30,11 @@ const Access: React.FC = () => {
 
   return (
     <Container source={splashImage}>
-      <StatusBar barStyle="light-content" />
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={'transparent'}
+        translucent
+      />
       <Column>
         <IconRoundedVaccine>
           <IconVaccine icon="vaccinePlus" size={80} />

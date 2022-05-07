@@ -152,6 +152,7 @@ const SignUp = () => {
                 label="Email"
                 error={errors.email?.message}
                 returnKeyType="done"
+                onSubmitEditing={onSubmit}
               />
             )}
           />

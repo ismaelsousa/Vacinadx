@@ -112,7 +112,7 @@ const SignUpStep2 = () => {
                 value={value}
                 onBlur={onBlur}
                 error={errors.password?.message}
-                onEndEditing={() => setFocus('confirmPassword')}
+                onSubmitEditing={() => setFocus('confirmPassword')}
                 returnKeyType="next"
               />
             )}
@@ -133,6 +133,7 @@ const SignUpStep2 = () => {
                 value={value}
                 onBlur={onBlur}
                 error={errors.confirmPassword?.message}
+                onSubmitEditing={onSubmit}
                 returnKeyType="done"
               />
             )}
