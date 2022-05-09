@@ -24,6 +24,7 @@ import pencil from '~/assets/icons/pencil/Vector.png';
 import qr from '~/assets/icons/qr/Vector.png';
 import radioButton from '~/assets/icons/radioButton/Vector.png';
 import radioButtonChecked from '~/assets/icons/radioButtonChecked/Vector.png';
+import search from '~/assets/icons/search/Vector.png';
 
 export type NameIconTypes =
   | 'radioButton'
@@ -48,7 +49,8 @@ export type NameIconTypes =
   | 'checkCircle'
   | 'apple'
   | 'google'
-  | 'doctor';
+  | 'doctor'
+  | 'search';
 
 export default {
   radioButton,
@@ -74,4 +76,5 @@ export default {
   apple,
   google,
   doctor,
+  search,
 };

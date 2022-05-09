@@ -17,6 +17,7 @@ const Home: React.FC = () => {
   const {navigate} = useNavigation();
 
   const handleAddVaccine = () => navigate('addVaccine');
+  const handleMyVaccine = () => navigate('MyVaccine');
 
   return (
     <Container>
@@ -27,7 +28,11 @@ const Home: React.FC = () => {
       />
       <Header />
       <ScrollViewItems horizontal>
-        <SmallCard icon="vaccine" title={'Minhas\nvacinas'} />
+        <SmallCard
+          icon="vaccine"
+          onPress={handleMyVaccine}
+          title={'Minhas\nvacinas'}
+        />
         <Separator width={15} />
         <SmallCard
           icon="plus"

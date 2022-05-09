@@ -3,6 +3,7 @@ import React from 'react';
 import AddVaccine from '~/screen/SignedIn/AddVaccine';
 import AddVaccineManually from '~/screen/SignedIn/AddVaccineManually';
 import Home from '~/screen/SignedIn/Home';
+import MyVaccine from '~/screen/SignedIn/MyVaccine';
 
 import QRCode from '~/screen/SignedIn/QRCode';
 
@@ -30,6 +31,11 @@ const HomeStack: React.FC = () => {
         name="addVaccineManually"
         options={{header: () => null}}
         component={AddVaccineManually}
+      />
+      <Stack.Screen
+        name="MyVaccine"
+        options={{header: () => null}}
+        component={MyVaccine}
       />
     </Stack.Navigator>
   );
