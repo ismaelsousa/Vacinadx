@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useMemo} from 'react';
-import {Pressable, View} from 'react-native';
+import {View} from 'react-native';
 
 import {format, isBefore} from 'date-fns';
 

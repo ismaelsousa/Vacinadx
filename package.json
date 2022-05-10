@@ -10,8 +10,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preandroid": "npx react-native-asset",
     "preios": "npx react-native-asset",
-    "listemul":"emulator -list-avds",
-    "emu":"emulator -avd Pixel_API_30_-_5_polegadas",
+    "listemul": "emulator -list-avds",
+    "emu": "emulator -avd Pixel_API_30_-_5_polegadas",
     "reverse": "adb reverse tcp:8081 tcp:8081"
   },
   "dependencies": {
@@ -33,8 +33,10 @@
     "react-native-permissions": "^3.3.0",
     "react-native-progress": "^5.0.0",
     "react-native-qrcode-scanner": "^1.5.5",
+    "react-native-qrcode-svg": "^6.1.2",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.8.0",
+    "react-native-svg": "^12.3.0",
     "styled-components": "^5.3.1",
     "yup": "^0.32.11"
   },

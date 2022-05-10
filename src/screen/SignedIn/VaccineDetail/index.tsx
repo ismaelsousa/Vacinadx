@@ -2,13 +2,14 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import React, {useMemo} from 'react';
 import {Pressable, ScrollView, StatusBar} from 'react-native';
 import {useTheme} from 'styled-components';
+import QRCode from 'react-native-qrcode-svg';
 import Icon from '~/components/Icon';
 import Separator from '~/components/Separator';
 import Shadow from '~/components/Shadow';
 import Text from '~/components/Text';
+import Center from '~/components/Center';
 import {getRandomImageUnsplash} from '~/constants/unsplash';
 import useConvertDose from '~/hooks/useConvertDose';
-
 import {
   Container,
   Content,
@@ -26,6 +27,7 @@ const VaccineDetail: React.FC = () => {
   } = useRoute<VaccineSignedInStackRouteProp>();
 
   console.log(vaccine);
+  //TODO: Add real data
 
   const randomImage = useMemo(() => getRandomImageUnsplash(100), []);
   const dose = useConvertDose({shot: vaccine.shot});
@@ -98,10 +100,13 @@ const VaccineDetail: React.FC = () => {
             <RowTextDetail>
               <Text typography="caption">{dose.title}</Text>
             </RowTextDetail>
+            <Separator height={spacing.md} />
+            <RowTextDetail>
+              <Center>
+                <QRCode value="1283183" />
+              </Center>
+            </RowTextDetail>
           </Content>
-          {
-            //TODO: Create QR Code
-          }
         </Shadow>
         <Separator height={spacing.lg} />
       </ScrollView>

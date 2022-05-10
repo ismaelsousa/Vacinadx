@@ -77,7 +77,7 @@ const MyVaccine: React.FC = () => {
         keyExtractor={item => `${item}`}
         ItemSeparatorComponent={() => <Separator height={15} />}
         ListFooterComponent={() => <Separator height={15} />}
-        renderItem={({item, index}) => (
+        renderItem={({item}) => (
           <VaccineCard
             onPress={() => {
               handleNavigateToVaccineDetail({
