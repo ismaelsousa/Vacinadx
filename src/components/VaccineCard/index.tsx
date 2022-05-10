@@ -12,6 +12,7 @@ import {BadgeLeft, Chip, ChipWrap, Container, VaccineDate} from './styles';
 import {VaccineDateProps} from './types';
 import {useTheme} from 'styled-components';
 import Shadow from '../Shadow';
+import useConvertDose from '~/hooks/useConvertDose';
 
 const VaccineCard = ({date, shot, title, onPress}: VaccineDateProps) => {
   const {colors} = useTheme();
@@ -24,26 +25,7 @@ const VaccineCard = ({date, shot, title, onPress}: VaccineDateProps) => {
     return isBefore(new Date(date), new Date());
   }, [date]);
 
-  const dose = useMemo(() => {
-    switch (shot) {
-      case 'first-dose':
-        return {
-          color: colors.primary.main,
-          title: '1ª dose',
-        };
-      case 'second-dose':
-        return {
-          color: colors.orange.main,
-          title: '2ª dose',
-        };
-
-      default:
-        return {
-          color: colors.secondary.main,
-          title: 'Dose única',
-        };
-    }
-  }, [shot, colors]);
+  const dose = useConvertDose({shot});
 
   return (
     <Shadow onPress={onPress}>

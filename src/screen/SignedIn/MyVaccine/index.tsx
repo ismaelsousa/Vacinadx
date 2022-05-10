@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {FlatList, Pressable, StatusBar, View} from 'react-native';
+import {FlatList, Pressable, StatusBar} from 'react-native';
 import {useTheme} from 'styled-components';
 import Button from '~/components/Button';
 import Icon from '~/components/Icon';
@@ -14,7 +14,7 @@ import {Container, RowFilterVaccine} from './styles';
 import {FilterVaccine} from './types';
 
 const MyVaccine: React.FC = () => {
-  const {goBack} = useNavigation();
+  const {goBack, navigate} = useNavigation<SignedInStackNavigatorProp>();
   const {spacing} = useTheme();
 
   /**
@@ -29,6 +29,9 @@ const MyVaccine: React.FC = () => {
   const handleToggleFilter = () => {
     setToggleFilter(old => (old === 'all' ? 'next' : 'all'));
   };
+
+  const handleNavigateToVaccineDetail = vaccine =>
+    navigate('VaccineDetail', {vaccine});
 
   return (
     <Container>
@@ -74,8 +77,14 @@ const MyVaccine: React.FC = () => {
         keyExtractor={item => `${item}`}
         ItemSeparatorComponent={() => <Separator height={15} />}
         ListFooterComponent={() => <Separator height={15} />}
-        renderItem={({item}) => (
+        renderItem={({item, index}) => (
           <VaccineCard
+            onPress={() => {
+              handleNavigateToVaccineDetail({
+                shot: 'second-dose',
+                title: 'Johnson',
+              });
+            }}
             key={item}
             date={new Date(2022, 1, 3).toISOString()}
             shot="second-dose"

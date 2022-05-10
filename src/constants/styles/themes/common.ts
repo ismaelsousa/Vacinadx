@@ -40,8 +40,8 @@ export const typographyCommon: Typography = {
     fontFamily: Fonts.openSansRegular,
   },
   subtitle2: {
-    fontSize: 14,
-    fontFamily: Fonts.openSansLight,
+    fontSize: 18,
+    fontFamily: Fonts.montserratBold,
   },
   body1: {
     fontSize: 14,
