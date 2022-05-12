@@ -20,6 +20,8 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Allow to find vaccines near from you</string>
   <key>NSCameraUsageDescription</key>
   <string>Allow camera to scanner the QR code</string>
 

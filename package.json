@@ -12,7 +12,8 @@
     "preios": "npx react-native-asset",
     "listemul": "emulator -list-avds",
     "emu": "emulator -avd Pixel_API_30_-_5_polegadas",
-    "reverse": "adb reverse tcp:8081 tcp:8081"
+    "reverse": "adb reverse tcp:8081 tcp:8081",
+    "pod-install-x86":"arch -x86_64 pod install"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.3",

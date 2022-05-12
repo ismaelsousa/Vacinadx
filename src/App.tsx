@@ -3,6 +3,9 @@
 import React, {useEffect} from 'react';
 import {ThemeProvider} from 'styled-components';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {enableLatestRenderer} from 'react-native-maps';
+
+enableLatestRenderer();
 
 import useAppearance from '~/hooks/useAppearance';
 import {NavigationContainer} from '@react-navigation/native';
