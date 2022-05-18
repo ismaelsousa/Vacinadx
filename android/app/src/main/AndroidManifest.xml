@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.awesometsproject">
+  package="club.catapulta.vacinadx">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -22,7 +22,7 @@
 
       <meta-data
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyAWBWJ0WwPTaFE7GzT7_xaQgACyDHOH2G8"/>
+        android:value="AIzaSyBb_mzaCkjGoYgZzWQNrPlcGM7C6NadUjs"/>
 
       <activity
         android:name=".MainActivity"
