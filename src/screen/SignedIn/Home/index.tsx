@@ -19,7 +19,11 @@ const Home: React.FC = () => {
   const handleAddVaccine = () => navigate('addVaccine');
   return (
     <Container>
-      <StatusBar barStyle={'light-content'} />
+      <StatusBar
+        barStyle={'light-content'}
+        translucent
+        backgroundColor="transparent"
+      />
       <Header />
       <ScrollViewItems horizontal>
         <SmallCard icon="vaccine" title={'Minhas\nvacinas'} />
