@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {FlatList, Pressable, StatusBar, View} from 'react-native';
+import {FlatList, Pressable, StatusBar} from 'react-native';
 import {useTheme} from 'styled-components';
 
 import HeaderOptions from '~/components/HeaderOptions';
@@ -15,7 +16,7 @@ import Text from '~/components/Text';
 import VaccineCard from '~/components/VaccineCard';
 
 const MyVaccine: React.FC = () => {
-  const {goBack} = useNavigation();
+  const {goBack, navigate} = useNavigation<SignedInStackNavigatorProp>();
   const {spacing} = useTheme();
 
   /**
@@ -30,6 +31,8 @@ const MyVaccine: React.FC = () => {
   const handleToggleFilter = () => {
     setToggleFilter(old => (old === 'all' ? 'next' : 'all'));
   };
+  const handleNavigateToVaccineDetail = vaccine =>
+    navigate('VaccineDetail', {vaccine});
 
   return (
     <Container>
@@ -80,6 +83,13 @@ const MyVaccine: React.FC = () => {
         renderItem={({item}) => {
           return (
             <VaccineCard
+              //FIXME: Handle to open the detail screen
+              onPress={() => {
+                handleNavigateToVaccineDetail({
+                  shot: 'second-dose',
+                  title: 'Johnson',
+                });
+              }}
               key={item}
               date={
                 toggleFilter === 'all'

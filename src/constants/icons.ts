@@ -25,8 +25,10 @@ import qrcode from '~/assets/icons/qrcode/Vector.png';
 import radioButtonChecked from '~/assets/icons/radioButtonChecked/Vector.png';
 import radioButton from '~/assets/icons/radioButton/Vector.png';
 import search from '~/assets/icons/search/Vector.png';
+import dose from '~/assets/icons/dose/Vector.png';
 
 export type NameIconTypes =
+  | 'dose'
   | 'search'
   | 'radioButtonChecked'
   | 'radioButton'
@@ -53,6 +55,7 @@ export type NameIconTypes =
   | 'doctor';
 
 export default {
+  dose,
   search,
   radioButton,
   radioButtonChecked,

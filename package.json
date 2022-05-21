@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preandroid": "npx react-native-asset",
     "preios": "npx react-native-asset",
-    "rev":"adb reverse tcp:8081 tcp:8081"
+    "rev": "adb reverse tcp:8081 tcp:8081"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.3",
@@ -31,8 +31,10 @@
     "react-native-permissions": "^3.3.1",
     "react-native-progress": "^5.0.0",
     "react-native-qrcode-scanner": "^1.5.5",
+    "react-native-qrcode-svg": "^6.1.2",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.8.0",
+    "react-native-svg": "^12.3.0",
     "styled-components": "^5.3.1",
     "yup": "^0.32.11"
   },

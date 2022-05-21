@@ -2,7 +2,7 @@ import appleAuth from '@invertase/react-native-apple-authentication';
 import React, {useEffect} from 'react';
 
 import useAuth from '~/hooks/useAuth';
-import BottomTabNavigator from './SignedInNavigator/BottomTabNavigator';
+import SignedInNavigator from './SignedInNavigator';
 import SignInNavigator from './SignInNavigator';
 
 const Routes: React.FC = () => {
@@ -20,7 +20,7 @@ const Routes: React.FC = () => {
     });
   }, [signOut]);
 
-  return isSignedIn ? <BottomTabNavigator /> : <SignInNavigator />;
+  return isSignedIn ? <SignedInNavigator /> : <SignInNavigator />;
 };
 
 export default Routes;
