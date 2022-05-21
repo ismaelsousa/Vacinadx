@@ -30,7 +30,11 @@ const Access: React.FC = () => {
 
   return (
     <Container source={splashImage}>
-      <StatusBar barStyle="light-content" />
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor={'transparent'}
+      />
       <Column>
         <IconRoundedVaccine>
           <IconVaccine icon="vaccinePlus" size={80} />

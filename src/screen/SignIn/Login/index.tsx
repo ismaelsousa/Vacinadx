@@ -1,7 +1,7 @@
 import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {Platform, StatusBar} from 'react-native';
+import {Platform, ScrollView, StatusBar} from 'react-native';
 import {useTheme} from 'styled-components';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
@@ -20,6 +20,7 @@ import appleAuth, {
   appleAuthAndroid,
 } from '@invertase/react-native-apple-authentication';
 import useAuth from '~/hooks/useAuth';
+import AvoidKeyboard from '~/components/AvoidKeyboard';
 
 const Login: React.FC = () => {
   const {spacing} = useTheme();
@@ -38,6 +39,7 @@ const Login: React.FC = () => {
     control,
     handleSubmit,
     setValue,
+    setFocus,
     formState: {errors},
   } = useForm({
     resolver: yupResolver(schemaLogin),
@@ -87,89 +89,98 @@ const Login: React.FC = () => {
   };
 
   return (
-    <Container>
-      <StatusBar barStyle="dark-content" />
-      <HeaderOptions
-        left={<BackButton icon="closeX" onPress={handleGoBack} />}
-        right={
-          <Text color="primary" typography="body3">
-            Esqueci minha senha
-          </Text>
-        }
-      />
-      <Separator height={spacing.md} />
-      <Text typography="h3">Login</Text>
-      <Separator height={spacing.md} />
-      <Controller
-        control={control}
-        name="email"
-        render={({field: {onBlur, onChange, value, ref}}) => (
-          <Input
-            ref={ref}
-            autoCapitalize="none"
-            autoCompleteType="email"
-            keyboardType="email-address"
-            onChange={onChange}
-            onChangeText={text => setValue('email', text)}
-            value={value}
-            onBlur={onBlur}
-            label="Email"
-            icon="checkCircle"
-            iconColor="primary"
-            error={errors.email?.message}
+    <AvoidKeyboard>
+      <Container>
+        <StatusBar barStyle="dark-content" />
+        <HeaderOptions
+          left={<BackButton icon="closeX" onPress={handleGoBack} />}
+          right={
+            <Text color="primary" typography="body3">
+              Esqueci minha senha
+            </Text>
+          }
+        />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Separator height={spacing.md} />
+          <Text typography="h3">Login</Text>
+          <Separator height={spacing.md} />
+          <Controller
+            control={control}
+            name="email"
+            render={({field: {onBlur, onChange, value, ref}}) => (
+              <Input
+                ref={ref}
+                autoCapitalize="none"
+                autoCompleteType="email"
+                keyboardType="email-address"
+                onChange={onChange}
+                onChangeText={text => setValue('email', text)}
+                value={value}
+                onBlur={onBlur}
+                label="Email"
+                icon="checkCircle"
+                iconColor="primary"
+                error={errors.email?.message}
+                returnKeyType="next"
+                onSubmitEditing={() => setFocus('password')}
+              />
+            )}
           />
-        )}
-      />
-      <Controller
-        control={control}
-        name="password"
-        render={({field: {onBlur, onChange, value, ref}}) => (
-          <Input
-            ref={ref}
-            label="Senha"
-            autoCapitalize="none"
-            autoCompleteType="password"
-            secureTextEntry
-            iconColor="primary"
-            onChange={onChange}
-            onChangeText={text => setValue('password', text)}
-            value={value}
-            onBlur={onBlur}
-            error={errors.password?.message}
+          <Controller
+            control={control}
+            name="password"
+            render={({field: {onBlur, onChange, value, ref}}) => (
+              <Input
+                ref={ref}
+                label="Senha"
+                autoCapitalize="none"
+                autoCompleteType="password"
+                secureTextEntry
+                iconColor="primary"
+                onChange={onChange}
+                onChangeText={text => setValue('password', text)}
+                value={value}
+                onBlur={onBlur}
+                error={errors.password?.message}
+                returnKeyType="done"
+                onSubmitEditing={onSubmit}
+              />
+            )}
           />
-        )}
-      />
-      <Separator height={spacing.md} />
-      <Button loading={loading} disabled={loading} onPress={onSubmit}>
-        Login
-      </Button>
-      <Separator height={spacing.md} />
-      <AccessText color="surface500" typography="body3">
-        ou acesse com login social
-      </AccessText>
-      <Separator height={spacing.md} />
-      {(appleAuthAndroid.isSupported || Platform.OS === 'ios') && (
-        <>
-          <Button
-            onPress={handleAppleButton}
-            typography="caption"
-            icon={<Icon icon="apple" />}
-            color="secondary"
-            mode="outlined">
-            Continuar com a Apple
+          <Separator height={spacing.md} />
+          <Button loading={loading} disabled={loading} onPress={onSubmit}>
+            Login
           </Button>
           <Separator height={spacing.md} />
-        </>
-      )}
-      <Button
-        onPress={handleGoogleButton}
-        typography="caption"
-        icon={<Icon icon="google" />}
-        color="secondary"
-        mode="outlined">
-        Continuar com o Google
-      </Button>
-    </Container>
+          <AccessText color="surface500" typography="body3">
+            ou acesse com login social
+          </AccessText>
+          <Separator height={spacing.md} />
+          {(appleAuthAndroid.isSupported || Platform.OS === 'ios') && (
+            <>
+              <Button
+                onPress={handleAppleButton}
+                typography="caption"
+                icon={<Icon icon="apple" />}
+                color="secondary"
+                mode="outlined">
+                Continuar com a Apple
+              </Button>
+              <Separator height={spacing.md} />
+            </>
+          )}
+          <Button
+            onPress={handleGoogleButton}
+            typography="caption"
+            icon={<Icon icon="google" />}
+            color="secondary"
+            mode="outlined">
+            Continuar com o Google
+          </Button>
+          <Separator height={spacing.xxl} />
+        </ScrollView>
+      </Container>
+    </AvoidKeyboard>
   );
 };
 

@@ -70,7 +70,11 @@ const SignUp = () => {
     <AvoidKeyboard>
       <Container>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <StatusBar barStyle="dark-content" />
+          <StatusBar
+            barStyle="dark-content"
+            translucent
+            backgroundColor={'transparent'}
+          />
           <HeaderOptions
             left={<BackButton icon="closeX" onPress={handleGoBack} />}
             center={<Separator width={spacing.md} />}
