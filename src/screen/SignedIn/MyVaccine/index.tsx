@@ -39,7 +39,7 @@ const MyVaccine: React.FC = () => {
       <StatusBar barStyle={'dark-content'} />
       <HeaderOptions
         left={
-          <Pressable>
+          <Pressable onPress={goBack}>
             <Icon icon="back" size={15} />
           </Pressable>
         }
