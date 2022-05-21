@@ -17,6 +17,8 @@ const Home: React.FC = () => {
   const {signOut} = useAuth();
 
   const handleAddVaccine = () => navigate('addVaccine');
+  const handleMyVaccine = () => navigate('myVaccine');
+
   return (
     <Container>
       <StatusBar
@@ -26,7 +28,11 @@ const Home: React.FC = () => {
       />
       <Header />
       <ScrollViewItems horizontal>
-        <SmallCard icon="vaccine" title={'Minhas\nvacinas'} />
+        <SmallCard
+          icon="vaccine"
+          onPress={handleMyVaccine}
+          title={'Minhas\nvacinas'}
+        />
         <Separator width={15} />
         <SmallCard
           icon="plus"

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {TypographyType} from 'styled-components';
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 
 import {Mode} from './types';
 
@@ -8,9 +8,28 @@ interface ContainerProps {
   readonly color: string;
   readonly borderColor: string;
   readonly mode: Mode;
+  readonly paddingHorizontal?: number;
+  readonly paddingVertical?: number;
 }
 export const Container = styled.TouchableOpacity<ContainerProps>`
   padding: 12px 0 12px 0;
+  ${({paddingHorizontal}) => {
+    if (paddingHorizontal) {
+      return css`
+        padding-left: ${paddingHorizontal}px;
+        padding-right: ${paddingHorizontal}px;
+      `;
+    }
+  }}
+  ${({paddingVertical}) => {
+    if (paddingVertical) {
+      return css`
+        padding-top: ${paddingVertical}px;
+        padding-bottom: ${paddingVertical}px;
+      `;
+    }
+  }}
+
   background-color: ${({color, mode}) => {
     if (mode === 'outlined') {
       return 'transparent';
