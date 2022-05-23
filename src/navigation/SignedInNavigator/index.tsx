@@ -1,9 +1,10 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import VaccineDetail from '~/screen/SignedIn/VaccineDetail';
+import VaccineOnMaps from '~/screen/SignedIn/VaccineOnMaps';
 import BottomTabNavigator from './BottomTabNavigator';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<SignedInStackParamList>();
 
 const SignedInNavigator: React.FC = () => {
   return (
@@ -13,6 +14,11 @@ const SignedInNavigator: React.FC = () => {
         name="VaccineDetail"
         options={{header: () => null}}
         component={VaccineDetail}
+      />
+      <Stack.Screen
+        name="VaccineOnMaps"
+        options={{header: () => null}}
+        component={VaccineOnMaps}
       />
     </Stack.Navigator>
   );
