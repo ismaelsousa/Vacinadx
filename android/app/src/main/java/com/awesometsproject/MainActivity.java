@@ -1,4 +1,4 @@
-package club.catapulta.vacinadx;
+package club.catapulta.vacinadx.app;
 
 import com.facebook.react.ReactActivity;
 import android.os.Bundle;

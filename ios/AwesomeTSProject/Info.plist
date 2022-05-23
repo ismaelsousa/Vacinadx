@@ -30,6 +30,11 @@
   <!-- Include this only if you are planning to use the microphone for video recording -->
   <key>NSMicrophoneUsageDescription</key>
   <string>Allow microsphone to scanner the QR code</string>
+
+  <!-- Google Maps-->
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Allow to find vaccines near from you</string>
+
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

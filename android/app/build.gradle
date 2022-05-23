@@ -131,7 +131,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "club.catapulta.vacinadx"
+        applicationId "club.catapulta.vacinadx.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
