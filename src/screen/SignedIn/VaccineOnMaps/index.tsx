@@ -4,7 +4,6 @@ import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 // import {Container} from './styles'
 
 const VaccineOnMaps: React.FC = () => {
-  return <View />;
   return (
     <View style={styles.container}>
       <MapView
@@ -26,7 +25,6 @@ export default VaccineOnMaps;
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    height: 400,
     width: 400,
     justifyContent: 'flex-end',
     alignItems: 'center',
