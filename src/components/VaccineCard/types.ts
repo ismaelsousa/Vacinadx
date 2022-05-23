@@ -1,6 +1,9 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import {shot} from '~/@types/dtos/shot';
+
 export interface VaccineDateProps {
   title: string;
-  shot: 'single-dose' | 'first-dose' | 'second-dose';
+  shot: shot;
   date: string;
   onPress?: () => void;
 }

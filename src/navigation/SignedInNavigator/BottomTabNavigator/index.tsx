@@ -1,7 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from '~/components/Icon';
-import Home from '~/screen/SignedIn/Home';
 import Profile from '~/screen/SignedIn/Profile';
 import {useTheme} from 'styled-components';
 import HomeStack from './HomeStack';
