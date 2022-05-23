@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preandroid": "npx react-native-asset",
     "preios": "npx react-native-asset",
-    "rev": "adb reverse tcp:8081 tcp:8081"
+    "rev": "adb reverse tcp:8081 tcp:8081",
+    "pod-install-x86":"arch -x86_64 pod install"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.3",
