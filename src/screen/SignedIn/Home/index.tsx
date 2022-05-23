@@ -14,10 +14,11 @@ import {Container, Content, ScrollViewItems} from './styles';
 
 const Home: React.FC = () => {
   const {signOut} = useAuth();
-  const {navigate} = useNavigation();
+  const {navigate} = useNavigation<SignedInStackNavigatorProp>();
 
   const handleAddVaccine = () => navigate('addVaccine');
   const handleMyVaccine = () => navigate('MyVaccine');
+  const handleVaccineOnMaps = () => navigate('VaccineOnMaps');
 
   return (
     <Container>
@@ -40,7 +41,11 @@ const Home: React.FC = () => {
           title={'Adicionar\nvacinas'}
         />
         <Separator width={15} />
-        <SmallCard icon="pin" title={'Procurar local\n de vacinação'} />
+        <SmallCard
+          icon="pin"
+          title={'Procurar local\n de vacinação'}
+          onPress={handleVaccineOnMaps}
+        />
       </ScrollViewItems>
       <Content>
         <Text typography="h8">Próximas vacinas</Text>

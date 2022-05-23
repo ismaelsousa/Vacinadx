@@ -3,6 +3,9 @@
 import React, {useEffect} from 'react';
 import {ThemeProvider} from 'styled-components';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {enableLatestRenderer} from 'react-native-maps';
+
+enableLatestRenderer();
 
 import useAppearance from '~/hooks/useAppearance';
 import {NavigationContainer} from '@react-navigation/native';
@@ -18,7 +21,7 @@ const App: React.FC = () => {
       offlineAccess: true,
       scopes: ['profile', 'email'],
       webClientId:
-        '1093132382683-5ba7jsua3jo8on2244b5kjtrd343u3i7.apps.googleusercontent.com',
+        '814263965390-oi9s27icghvh94ocqc8rdfbf583hed9m.apps.googleusercontent.com',
     });
   }, []);
 
