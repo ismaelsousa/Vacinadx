@@ -5,6 +5,7 @@ import {useTheme} from 'styled-components';
 import Icon from '~/components/Icon';
 import Input from '~/components/Input';
 import Separator from '~/components/Separator';
+import icons from '~/constants/icons';
 import {Header, HeaderContent, HeaderContentRow, InputRow} from './styles';
 
 // import {Container} from './styles'
@@ -45,6 +46,7 @@ const VaccineOnMaps: React.FC = () => {
             latitude: 37.7885,
             longitude: -122.4324,
           }}
+          image={icons.marker}
         />
       </MapView>
     </View>
