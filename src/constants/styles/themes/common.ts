@@ -61,7 +61,7 @@ export const typographyCommon: Typography = {
   },
   overline: {
     fontSize: 14,
-    fontFamily: Fonts.openSansLight,
+    fontFamily: Fonts.openSansSemiBold,
   },
 };
 

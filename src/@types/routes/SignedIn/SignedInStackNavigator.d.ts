@@ -7,6 +7,7 @@ declare global {
     BottomTabHome: undefined;
     //FIXME: Create real interface to vaccine
     VaccineDetail: {vaccine: any};
+    VaccineOnMaps: undefined;
   };
 
   /**
