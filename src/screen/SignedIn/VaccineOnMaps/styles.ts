@@ -11,7 +11,6 @@ export const Header = styled.View`
 
 export const HeaderContent = styled.View`
   flex: 1;
-  background-color: red;
   justify-content: flex-end;
 `;
 
@@ -25,6 +24,7 @@ export const HeaderContentRow = styled.View`
 
 export const InputRow = styled.View`
   flex: 1;
-  background-color: blue;
   justify-content: center;
+  background-color: ${({theme}) => theme.colors.background.main};
+  border-radius: ${({theme}) => theme.borders.radius.sm}px;
 `;

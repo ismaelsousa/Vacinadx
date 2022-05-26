@@ -18,7 +18,14 @@ const VaccineOnMaps: React.FC = () => {
           <HeaderContentRow>
             <Icon icon="back" size={15} activeColor={colors.background.main} />
             <Separator width={spacing.lg} />
-            <InputRow>{/* <Input /> */}</InputRow>
+            <InputRow>
+              <Input
+                icon="search"
+                iconColor="primary"
+                iconPosition="left"
+                placeholder="Busque por bairro"
+              />
+            </InputRow>
           </HeaderContentRow>
           <Separator height={spacing.lg} />
         </HeaderContent>
