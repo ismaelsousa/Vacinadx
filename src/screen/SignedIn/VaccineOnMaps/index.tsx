@@ -1,23 +1,34 @@
-import React from 'react';
-import {Platform, StyleSheet, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import React, {useState} from 'react';
+import {Platform, Pressable, StyleSheet, View} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useTheme} from 'styled-components';
 import Icon from '~/components/Icon';
 import Input from '~/components/Input';
 import Separator from '~/components/Separator';
 import icons from '~/constants/icons';
+import CardMap from './localComponents/CardMap';
 import {Header, HeaderContent, HeaderContentRow, InputRow} from './styles';
 
 // import {Container} from './styles'
 
 const VaccineOnMaps: React.FC = () => {
+  const {goBack} = useNavigation();
   const {colors, spacing} = useTheme();
+  const [selectedMarker, setSelectedMarker] = useState(false);
+
   return (
     <View style={styles.container}>
       <Header>
         <HeaderContent>
           <HeaderContentRow>
-            <Icon icon="back" size={15} activeColor={colors.background.main} />
+            <Pressable onPress={goBack}>
+              <Icon
+                icon="back"
+                size={15}
+                activeColor={colors.background.main}
+              />
+            </Pressable>
             <Separator width={spacing.lg} />
             <InputRow>
               <Input
@@ -41,7 +52,10 @@ const VaccineOnMaps: React.FC = () => {
           longitudeDelta: 0.0421,
         }}>
         <Marker
-          onPress={e => console.log(e)}
+          onPress={e => {
+            setSelectedMarker(old => !old);
+            console.log(e);
+          }}
           coordinate={{
             latitude: 37.7885,
             longitude: -122.4324,
@@ -49,6 +63,13 @@ const VaccineOnMaps: React.FC = () => {
           image={icons.marker}
         />
       </MapView>
+      {!!selectedMarker && (
+        <CardMap
+          distance="1,5 km"
+          image={require('~/assets/images/Banner/covid.png')}
+          title="Bairro do Hospital"
+        />
+      )}
     </View>
   );
 };
