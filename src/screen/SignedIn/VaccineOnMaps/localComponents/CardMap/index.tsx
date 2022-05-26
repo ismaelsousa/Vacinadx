@@ -16,7 +16,7 @@ const CardMap = ({distance, image, title}: CardMapProps) => {
       <ImageLocal source={image} />
       <Separator width={spacing.sm} />
       <ContainerDescription>
-        <Text>{title}</Text>
+        <Text typography="overline">{title}</Text>
         <Separator height={spacing.sm} />
         <Text>{distance}</Text>
       </ContainerDescription>
