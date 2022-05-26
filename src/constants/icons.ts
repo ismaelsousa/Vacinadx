@@ -26,8 +26,10 @@ import radioButtonChecked from '~/assets/icons/radioButtonChecked/Vector.png';
 import radioButton from '~/assets/icons/radioButton/Vector.png';
 import search from '~/assets/icons/search/Vector.png';
 import dose from '~/assets/icons/dose/Vector.png';
+import marker from '~/assets/icons/marker/Vector.png';
 
 export type NameIconTypes =
+  | 'marker'
   | 'dose'
   | 'search'
   | 'radioButtonChecked'
@@ -55,6 +57,7 @@ export type NameIconTypes =
   | 'doctor';
 
 export default {
+  marker,
   dose,
   search,
   radioButton,
