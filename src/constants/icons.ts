@@ -26,8 +26,10 @@ import radioButton from '~/assets/icons/radioButton/Vector.png';
 import radioButtonChecked from '~/assets/icons/radioButtonChecked/Vector.png';
 import search from '~/assets/icons/search/Vector.png';
 import marker from '~/assets/icons/marker/Vector.png';
+import emptyBox from '~/assets/icons/emptyBox/Vector.png';
 
 export type NameIconTypes =
+  | 'emptyBox'
   | 'marker'
   | 'radioButton'
   | 'radioButtonChecked'
@@ -55,6 +57,7 @@ export type NameIconTypes =
   | 'search';
 
 export default {
+  emptyBox,
   marker,
   radioButton,
   radioButtonChecked,
