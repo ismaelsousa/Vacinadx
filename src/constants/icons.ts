@@ -25,8 +25,10 @@ import qr from '~/assets/icons/qr/Vector.png';
 import radioButton from '~/assets/icons/radioButton/Vector.png';
 import radioButtonChecked from '~/assets/icons/radioButtonChecked/Vector.png';
 import search from '~/assets/icons/search/Vector.png';
+import marker from '~/assets/icons/marker/Vector.png';
 
 export type NameIconTypes =
+  | 'marker'
   | 'radioButton'
   | 'radioButtonChecked'
   | 'pencil'
@@ -53,6 +55,7 @@ export type NameIconTypes =
   | 'search';
 
 export default {
+  marker,
   radioButton,
   radioButtonChecked,
   pencil,

@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import styled from 'styled-components/native';
 import Text from '../Text';
 import {InputProps} from './types';
 
 export const Container = styled.View`
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
+  /* FIXME: Update screen that use the input */
 `;
 
 export const InputInternal = styled.TextInput`

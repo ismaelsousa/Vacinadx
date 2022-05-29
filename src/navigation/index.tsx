@@ -3,7 +3,6 @@ import React, {useEffect} from 'react';
 
 import useAuth from '~/hooks/useAuth';
 import SignedInNavigator from './SignedInNavigator';
-import BottomTabNavigator from './SignedInNavigator/BottomTabNavigator';
 import SignInNavigator from './SignInNavigator';
 
 const Routes: React.FC = () => {
