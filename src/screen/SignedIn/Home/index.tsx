@@ -61,11 +61,7 @@ const Home: React.FC = () => {
         keyExtractor={item => item.id.toString()}
         renderItem={({item}) => (
           <Content>
-            <VaccineCard
-              date={item.nextApplicationDate}
-              shot={item.dose}
-              title={item.name}
-            />
+            <VaccineCard vaccine={item} />
           </Content>
         )}
         refreshing={loading}

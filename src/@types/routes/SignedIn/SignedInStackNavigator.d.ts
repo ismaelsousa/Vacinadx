@@ -2,10 +2,11 @@
 
 import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {VaccineDTO} from '~/@types/dtos/vaccine';
 declare global {
   export type SignedInStackParamList = {
     BottomTabHome: undefined;
-    VaccineDetail: {vaccine: any};
+    VaccineDetail: {vaccine: VaccineDTO};
     VaccineOnMaps: undefined;
   };
 
