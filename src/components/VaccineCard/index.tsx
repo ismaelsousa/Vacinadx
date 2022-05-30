@@ -8,8 +8,15 @@ import Icon from '../Icon';
 import Separator from '../Separator';
 import Shadow from '../Shadow';
 import Text from '../Text';
-import {BadgeLeft, Chip, ChipWrap, Container, VaccineDate} from './styles';
 import {VaccineCardProps} from './types';
+import {
+  BadgeLeft,
+  Chip,
+  ChipWrap,
+  Container,
+  VaccineDate,
+  TitleContainer,
+} from './styles';
 
 const VaccineCard = ({date, shot, title, onPress}: VaccineCardProps) => {
   const {colors} = useTheme();
@@ -30,15 +37,17 @@ const VaccineCard = ({date, shot, title, onPress}: VaccineCardProps) => {
         <BadgeLeft
           color={isBeforeToday ? colors.lightGreen.main : colors.orange.main}
         />
-        <View>
-          <Text typography="body2">{title}</Text>
+        <TitleContainer>
+          <Text numberOfLines={1} typography="body2">
+            {title}
+          </Text>
           <Separator height={18} />
           <ChipWrap>
             <Chip color={dose.color}>
               <Text color="background">{dose.title}</Text>
             </Chip>
           </ChipWrap>
-        </View>
+        </TitleContainer>
         <VaccineDate>
           <Icon icon="calendar" />
           <Separator width={12} />

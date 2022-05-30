@@ -27,8 +27,10 @@ import radioButton from '~/assets/icons/radioButton/Vector.png';
 import search from '~/assets/icons/search/Vector.png';
 import dose from '~/assets/icons/dose/Vector.png';
 import marker from '~/assets/icons/marker/Vector.png';
+import emptyBox from '~/assets/icons/emptyBox/Vector.png';
 
 export type NameIconTypes =
+  | 'emptyBox'
   | 'marker'
   | 'dose'
   | 'search'
@@ -57,6 +59,7 @@ export type NameIconTypes =
   | 'doctor';
 
 export default {
+  emptyBox,
   marker,
   dose,
   search,
