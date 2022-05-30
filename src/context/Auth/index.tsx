@@ -4,7 +4,11 @@ import {UserDTO} from '~/@types/dtos/user';
 import {asyncUserKeys, AuthContextProp} from './types';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {signInResource} from '~/services/resource/auth';
+import {
+  checkIfExistUserResource,
+  signInAppleResource,
+  signInResource,
+} from '~/services/resource/auth';
 import {RequestSignInData} from '~/services/resource/auth/types';
 import {Alert} from 'react-native';
 import api from '~/services/api';
@@ -42,8 +46,8 @@ export const AuthProvider: React.FC = ({children}) => {
       setLoading(true);
       const response = await signInResource(data);
 
-      setUser(response.user);
-      await saveUserToStorageAndConfigToken(response.user);
+      setUser(response[0]);
+      await saveUserToStorageAndConfigToken(response[0]);
       setIsSignedIn(true);
     } catch (error) {
       Alert.alert('Não possível realizar o login', 'tente novamente!');
@@ -56,13 +60,29 @@ export const AuthProvider: React.FC = ({children}) => {
     try {
       setLoading(true);
       const response = await createUserResource(data);
-      console.log(response.user);
-      setUser(response.user);
-      await saveUserToStorageAndConfigToken(response.user);
+      console.log(response);
+      setUser(response);
+      await saveUserToStorageAndConfigToken(response);
       setIsSignedIn(true);
     } catch (error) {
       Alert.alert('Não possível realizar o cadastro', 'tente novamente!');
       console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const checkIfExistUser = async (data: Partial<UserDTO>) => {
+    try {
+      setLoading(true);
+      const response = await checkIfExistUserResource(data);
+
+      if (response.length > 0) {
+        return true;
+      }
+      return false;
+    } catch (error) {
+      return false;
     } finally {
       setLoading(false);
     }
@@ -87,7 +107,15 @@ export const AuthProvider: React.FC = ({children}) => {
 
   return (
     <AuthContext.Provider
-      value={{user, loading, isSignedIn, signIn, signUp, signOut}}>
+      value={{
+        user,
+        loading,
+        isSignedIn,
+        checkIfExistUser,
+        signIn,
+        signUp,
+        signOut,
+      }}>
       {!rehydrateLoading && children}
     </AuthContext.Provider>
   );

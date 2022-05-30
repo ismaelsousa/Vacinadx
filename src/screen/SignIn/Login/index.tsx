@@ -1,7 +1,7 @@
 import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {Platform, ScrollView, StatusBar} from 'react-native';
+import {Alert, Platform, ScrollView, StatusBar} from 'react-native';
 import {useTheme} from 'styled-components';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
@@ -29,7 +29,7 @@ const Login: React.FC = () => {
   /**
    * Hooks
    */
-  const {loading, signIn} = useAuth();
+  const {loading, signIn, checkIfExistUser, signUp} = useAuth();
 
   /**
    * Forms
@@ -65,7 +65,6 @@ const Login: React.FC = () => {
       requestedOperation: appleAuth.Operation.LOGIN,
       requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
     });
-    console.log(appleAuthRequestResponse);
 
     // get current authentication state for user
     // /!\ This method must be tested on a real device. On the iOS simulator it always throws an error.
@@ -76,15 +75,56 @@ const Login: React.FC = () => {
     // use credentialState response to ensure the user is authenticated
     if (credentialState === appleAuth.State.AUTHORIZED) {
       // user is authenticated
+      const hasUser = await checkIfExistUser({
+        userApple: appleAuthRequestResponse.user,
+      });
+
+      if (hasUser) {
+        await signIn({
+          userApple: appleAuthRequestResponse.user,
+        });
+      } else {
+        await signUp({
+          ...(appleAuthRequestResponse.user
+            ? {userApple: appleAuthRequestResponse.user}
+            : {}),
+          ...(appleAuthRequestResponse.email
+            ? {email: appleAuthRequestResponse.email}
+            : {}),
+          ...(appleAuthRequestResponse.fullName?.familyName
+            ? {lastName: appleAuthRequestResponse.fullName.familyName}
+            : {}),
+          ...(appleAuthRequestResponse.fullName?.givenName
+            ? {firstName: appleAuthRequestResponse.fullName.givenName}
+            : {}),
+        });
+      }
     }
   };
 
   const handleGoogleButton = async () => {
     try {
       const {user} = await GoogleSignin.signIn();
-      console.log(user);
+
+      const hasUser = await checkIfExistUser({
+        email: user.email,
+      });
+
+      if (hasUser) {
+        await signIn({
+          email: user.email,
+        });
+      } else {
+        await signUp({
+          ...(user.photo ? {avatar: user.photo} : {}),
+          ...(user.givenName ? {firstName: user.givenName} : {}),
+          ...(user.familyName ? {lastName: user.familyName} : {}),
+          email: user.email,
+        });
+      }
     } catch (error) {
       console.error(error);
+      Alert.alert('Ops!', 'Ocorreu um erro ao realizar o login');
     }
   };
 

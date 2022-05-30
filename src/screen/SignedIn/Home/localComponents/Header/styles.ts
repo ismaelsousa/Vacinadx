@@ -15,6 +15,7 @@ export const Avatar = styled.Image`
   height: 70px;
   width: 70px;
   border-radius: 35px;
+  background-color: ${({theme}) => theme.colors.surface50.main};
 `;
 
 export const Row = styled.View`
