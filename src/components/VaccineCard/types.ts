@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import {VaccineDTO} from '~/@types/dtos/vaccine';
+
 export interface VaccineCardProps {
-  title: string;
-  shot: 'single-dose' | 'first-dose' | 'second-dose';
-  date: string;
-  onPress?: () => void;
+  vaccine: VaccineDTO;
 }
 
 /**

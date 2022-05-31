@@ -37,7 +37,7 @@ const VaccineDetail = () => {
   /**
    * CallBacks
    */
-  const dose = useConvertDose({shot: vaccine.shot});
+  const dose = useConvertDose({shot: vaccine.dose});
 
   /**
    * Memos
@@ -69,7 +69,7 @@ const VaccineDetail = () => {
             <RowVaccine>
               <LogoVaccine resizeMode="contain" source={{uri: randomImage}} />
               <Separator width={spacing.md} />
-              <Text typography="subtitle2">{vaccine.title} </Text>
+              <Text typography="subtitle2">{vaccine.name} </Text>
             </RowVaccine>
             <RowTextDetail>
               <Icon

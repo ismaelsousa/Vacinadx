@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
-import {FlatList, Pressable, StatusBar} from 'react-native';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import {Alert, FlatList, Pressable, StatusBar} from 'react-native';
 import {useTheme} from 'styled-components';
 
 import HeaderOptions from '~/components/HeaderOptions';
@@ -14,16 +14,26 @@ import {FilterVaccine} from './types';
 import {RowFilterVaccine, Container} from './styles';
 import Text from '~/components/Text';
 import VaccineCard from '~/components/VaccineCard';
+import {VaccineDTO} from '~/@types/dtos/vaccine';
+import useAuth from '~/hooks/useAuth';
+import {getVaccines} from '~/services/resource/vaccine';
+import {isAfter} from 'date-fns';
+import {useDebouncedCallback} from 'use-debounce';
+import Empty from '~/components/Empty';
 
 const MyVaccine: React.FC = () => {
   const {goBack, navigate} = useNavigation<SignedInStackNavigatorProp>();
   const {spacing} = useTheme();
+
+  const {user} = useAuth();
 
   /**
    * States
    */
   const [toggleFilter, setToggleFilter] = useState<FilterVaccine>('all');
   const [searchInput, setSearchInput] = useState('');
+  const [vaccines, setVaccines] = useState<VaccineDTO[]>([]);
+  const [loading, setLoading] = useState(true);
 
   /**
    * CallBacks
@@ -31,8 +41,67 @@ const MyVaccine: React.FC = () => {
   const handleToggleFilter = () => {
     setToggleFilter(old => (old === 'all' ? 'next' : 'all'));
   };
-  const handleNavigateToVaccineDetail = vaccine =>
-    navigate('VaccineDetail', {vaccine});
+
+  const handleFetchVaccines = useCallback(async () => {
+    if (user) {
+      try {
+        setLoading(true);
+        const response = await getVaccines({userId: user.id});
+        setVaccines(response);
+      } catch (error) {
+        Alert.alert('Ops,', 'Não foi possível carregar as vacinas');
+      } finally {
+        setLoading(false);
+      }
+    }
+  }, [user]);
+
+  const handleSearchVaccines = useCallback(
+    async (search: string) => {
+      if (user) {
+        try {
+          console.log('vaccines2');
+          setLoading(true);
+          const response = await getVaccines({search});
+          setVaccines(response);
+        } catch (error) {
+          Alert.alert('Ops,', 'Não foi possível carregar as vacinas');
+        } finally {
+          setLoading(false);
+        }
+      }
+    },
+    [user],
+  );
+
+  const debounceHandleSearchVaccines = useDebouncedCallback(
+    handleSearchVaccines,
+    700,
+  );
+
+  useEffect(() => {
+    if (searchInput.length === 0) {
+      handleFetchVaccines();
+    }
+  }, [handleFetchVaccines, searchInput]);
+
+  useEffect(() => {
+    if (searchInput.length > 0) {
+      debounceHandleSearchVaccines(searchInput);
+    }
+  }, [searchInput, debounceHandleSearchVaccines]);
+
+  /**
+   * Memos
+   */
+  const filteredVaccines = useMemo(() => {
+    if (toggleFilter === 'all') {
+      return vaccines;
+    }
+    return vaccines.filter(e =>
+      isAfter(new Date(e.nextApplicationDate), new Date()),
+    );
+  }, [vaccines, toggleFilter]);
 
   return (
     <Container>
@@ -52,7 +121,6 @@ const MyVaccine: React.FC = () => {
         iconPosition="left"
         iconColor="lightGreen"
         placeholder="Busca de vacina"
-        //TODO: Implement debounce
         onChangeText={setSearchInput}
         value={searchInput}
       />
@@ -76,30 +144,16 @@ const MyVaccine: React.FC = () => {
       </RowFilterVaccine>
       <Separator height={15} />
       <FlatList
-        data={[1, 2, 3, 4, 5]}
-        keyExtractor={item => `${item}`}
+        data={filteredVaccines}
+        keyExtractor={item => `${item.id}`}
         ItemSeparatorComponent={() => <Separator height={15} />}
         ListFooterComponent={() => <Separator height={15} />}
         renderItem={({item}) => {
-          return (
-            <VaccineCard
-              //FIXME: Handle to open the detail screen
-              onPress={() => {
-                handleNavigateToVaccineDetail({
-                  shot: 'second-dose',
-                  title: 'Johnson',
-                });
-              }}
-              key={item}
-              date={
-                toggleFilter === 'all'
-                  ? new Date(2022, 21, 5).toISOString()
-                  : new Date(2020, 21, 5).toISOString()
-              }
-              shot={item % 2 === 0 ? 'second-dose' : 'first-dose'}
-              title={toggleFilter === 'all' ? 'Johnson' : 'Covid'}
-            />
-          );
+          // FIXME: Shimmer effect
+          return <VaccineCard vaccine={item} />;
+        }}
+        ListEmptyComponent={() => {
+          return <Empty title="Não foi possível encontrar" />;
         }}
       />
     </Container>

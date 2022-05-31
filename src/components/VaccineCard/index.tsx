@@ -17,29 +17,34 @@ import {
   VaccineDate,
   TitleContainer,
 } from './styles';
+import {useNavigation} from '@react-navigation/native';
 
-const VaccineCard = ({date, shot, title, onPress}: VaccineCardProps) => {
+const VaccineCard = ({vaccine}: VaccineCardProps) => {
   const {colors} = useTheme();
+  const {navigate} = useNavigation<SignedInStackNavigatorProp>();
 
   const isBeforeToday = useMemo(() => {
-    return isBefore(new Date(date), new Date());
-  }, [date]);
+    return isBefore(new Date(vaccine.nextApplicationDate), new Date());
+  }, [vaccine]);
 
   const formattedDate = useMemo(() => {
-    return format(new Date(date), 'dd/MM/yy');
-  }, [date]);
+    return format(new Date(vaccine.nextApplicationDate), 'dd/MM/yy');
+  }, [vaccine]);
 
-  const dose = useConvertDose({shot});
+  const dose = useConvertDose({shot: vaccine.dose});
+
+  const handleNavigateToVaccineDetail = () =>
+    navigate('VaccineDetail', {vaccine});
 
   return (
-    <Shadow onPress={onPress}>
+    <Shadow onPress={handleNavigateToVaccineDetail}>
       <Container>
         <BadgeLeft
           color={isBeforeToday ? colors.lightGreen.main : colors.orange.main}
         />
         <TitleContainer>
           <Text numberOfLines={1} typography="body2">
-            {title}
+            {vaccine.name}
           </Text>
           <Separator height={18} />
           <ChipWrap>

@@ -68,11 +68,7 @@ const Home: React.FC = () => {
         keyExtractor={item => String(item.id)}
         renderItem={({item}) => (
           <Content>
-            <VaccineCard
-              title={item.name}
-              shot={item.dose}
-              date={item.nextApplicationDate}
-            />
+            <VaccineCard vaccine={item} />
           </Content>
         )}
         refreshing={loading}
@@ -126,6 +122,7 @@ const Home: React.FC = () => {
         }}
         ItemSeparatorComponent={() => <Separator height={15} />}
         ListEmptyComponent={() => {
+          // FIXME: Shimmer effect
           return <Empty title="Você não possui novas vacinas" />;
         }}
       />
