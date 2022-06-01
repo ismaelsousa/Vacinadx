@@ -13,7 +13,7 @@ const CardMap = ({distance, image, title}: CardMapProps) => {
   const {bottom} = useSafeAreaInsets();
   return (
     <Container bottom={bottom}>
-      <ImageLocal source={image} />
+      <ImageLocal key={title + distance} source={image} />
       <Separator width={spacing.sm} />
       <ContainerDescription>
         <Text>{title}</Text>
