@@ -1,4 +1,5 @@
 import {useNavigation, useRoute} from '@react-navigation/native';
+import {format} from 'date-fns';
 import React, {useMemo} from 'react';
 import {Pressable, ScrollView, StatusBar, View} from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
@@ -69,7 +70,7 @@ const VaccineDetail = () => {
             <RowVaccine>
               <LogoVaccine resizeMode="contain" source={{uri: randomImage}} />
               <Separator width={spacing.md} />
-              <Text typography="subtitle2">{vaccine.name} </Text>
+              <Text typography="subtitle2">{vaccine.brand} </Text>
             </RowVaccine>
             <RowTextDetail>
               <Icon
@@ -83,7 +84,7 @@ const VaccineDetail = () => {
               </Text>
             </RowTextDetail>
             <RowTextDetail>
-              <Text typography="caption">HPV - Papilomavírus Humano</Text>
+              <Text typography="caption">{vaccine.name}</Text>
             </RowTextDetail>
             <RowTextDetail>
               <Icon
@@ -97,7 +98,9 @@ const VaccineDetail = () => {
               </Text>
             </RowTextDetail>
             <RowTextDetail>
-              <Text typography="caption">25/05/21</Text>
+              <Text typography="caption">
+                {format(new Date(vaccine.applicationDate), 'dd/MM/yyyy')}
+              </Text>
             </RowTextDetail>
             <RowTextDetail>
               <Icon icon="pin" size={24} activeColor={colors.primary.main} />
@@ -107,9 +110,7 @@ const VaccineDetail = () => {
               </Text>
             </RowTextDetail>
             <RowTextDetail>
-              <Text typography="caption">
-                Unidade de saúde de familia Campos do Iguaçu - Foz do Iguaçu, PR
-              </Text>
+              <Text typography="caption">{vaccine.place}</Text>
             </RowTextDetail>
             <RowTextDetail>
               <Icon icon="dose" size={24} activeColor={colors.primary.main} />
@@ -124,7 +125,7 @@ const VaccineDetail = () => {
             <Separator height={spacing.md} />
             <RowTextDetail>
               <Center>
-                <QRCode value="11515121351351" />
+                <QRCode value={vaccine.barCode} />
               </Center>
             </RowTextDetail>
           </Content>
