@@ -51,8 +51,8 @@ const Login: React.FC = () => {
   } = useForm({
     resolver: yupResolver(schemaLogin),
     defaultValues: {
-      email: __DEV__ ? 'ismael.sousa@gmail.com' : '',
-      password: __DEV__ ? 'B4gJQR@o@AnXVkU!A4CaYJl68LR!jhuVm&flaPu$C*0' : '',
+      email: '',
+      password: '',
     },
   });
   /**
@@ -114,10 +114,10 @@ const Login: React.FC = () => {
         await signIn({email: user.email});
       } else {
         await signUp({
-          avatar: user.photo ?? undefined,
-          email: user.email ?? undefined,
-          firstName: user.givenName ?? undefined,
-          lastName: user.familyName ?? undefined,
+          ...(user.photo ? {avatar: user.photo} : {}),
+          ...(user.email ? {email: user.email} : {}),
+          ...(user.givenName ? {firstName: user.givenName} : {}),
+          ...(user.familyName ? {lastName: user.familyName} : {}),
         });
       }
     } catch (error) {
