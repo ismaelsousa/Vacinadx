@@ -35,7 +35,8 @@ const Home: React.FC = () => {
     if (user) {
       try {
         setLoading(true);
-        const response = await getVaccines({userId: user.id});
+        // const response = await getVaccines({userId: user.id});
+        const response = await getVaccines();
         setVaccines(
           response.filter(e =>
             isAfter(new Date(e.nextApplicationDate), new Date()),
@@ -63,9 +64,9 @@ const Home: React.FC = () => {
       <FlatList
         data={vaccines}
         keyExtractor={item => item.id.toString()}
-        renderItem={({item}) => (
+        renderItem={({item, index}) => (
           <Content>
-            <VaccineCard vaccine={item} />
+            <VaccineCard vaccine={item} index={index} />
           </Content>
         )}
         refreshing={loading}

@@ -3,6 +3,7 @@ import {VaccineDTO} from '~/@types/dtos/vaccine';
 
 export interface VaccineDateProps {
   vaccine: VaccineDTO;
+  index?: number;
 }
 
 /**
