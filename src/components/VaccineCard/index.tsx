@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useMemo} from 'react';
-import {View} from 'react-native';
 
 import {format, isBefore} from 'date-fns';
 
 import Icon from '../Icon';
 import Separator from '../Separator';
 import Text from '../Text';
-
 import {
   BadgeLeft,
   Chip,
