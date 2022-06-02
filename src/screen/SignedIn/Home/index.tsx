@@ -46,8 +46,7 @@ const Home: React.FC = () => {
     if (user) {
       try {
         setLoading(true);
-        // const response = await getVaccines({userId: user.id});
-        const response = await getVaccines();
+        const response = await getVaccines({userId: user.id});
         setVaccines(
           response.filter(e =>
             isAfter(new Date(e.nextApplicationDate), new Date()),
