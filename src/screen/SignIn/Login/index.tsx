@@ -170,6 +170,7 @@ const Login: React.FC = () => {
               />
             )}
           />
+          <Separator height={spacing.sm} />
           <Controller
             control={control}
             name="password"
@@ -200,7 +201,7 @@ const Login: React.FC = () => {
             ou acesse com login social
           </AccessText>
           <Separator height={spacing.md} />
-          {(appleAuthAndroid.isSupported || Platform.OS === 'ios') && (
+          {appleAuthAndroid.isSupported && Platform.OS === 'ios' && (
             <>
               <Button
                 onPress={handleAppleButton}

@@ -115,9 +115,8 @@ const MyVaccine: React.FC = () => {
         placeholder="Busca de vacina"
         onChangeText={setSearchInput}
         value={searchInput}
-        // error={errors.name?.message}
       />
-      <Separator height={spacing.ty} />
+      <Separator height={spacing.sm} />
 
       <RowFilterVaccine>
         <Button

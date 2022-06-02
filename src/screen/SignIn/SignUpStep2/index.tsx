@@ -117,6 +117,7 @@ const SignUpStep2 = () => {
               />
             )}
           />
+          <Separator height={spacing.sm} />
           <Controller
             control={control}
             name="confirmPassword"

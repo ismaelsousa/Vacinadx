@@ -57,7 +57,6 @@ const SignUp = () => {
 
   const onSubmit = async () => {
     await handleSubmit(({email, firstName, lastName}) => {
-      console.log({email, firstName, lastName});
       navigation.navigate('signUpStep2', {
         email,
         firstName,
@@ -111,6 +110,7 @@ const SignUp = () => {
               />
             )}
           />
+          <Separator height={spacing.sm} />
           <Controller
             control={control}
             name="lastName"
@@ -130,6 +130,7 @@ const SignUp = () => {
               />
             )}
           />
+          <Separator height={spacing.sm} />
           <Controller
             control={control}
             name="email"

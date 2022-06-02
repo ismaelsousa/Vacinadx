@@ -26,9 +26,20 @@ const Home: React.FC = () => {
   const [vaccines, setVaccines] = useState<Array<VaccineDTO>>([]);
   const [loading, setLoading] = useState(true);
 
-  //FIXME: Refactor the navigation types
-  const handleAddVaccine = () => navigate('addVaccine');
-  const handleMyVaccine = () => navigate('MyVaccine');
+  const handleAddVaccine = () =>
+    navigate('BottomTabHome', {
+      screen: 'home',
+      params: {
+        screen: 'addVaccine',
+      },
+    });
+  const handleMyVaccine = () =>
+    navigate('BottomTabHome', {
+      screen: 'home',
+      params: {
+        screen: 'MyVaccine',
+      },
+    });
   const handleVaccineOnMaps = () => navigate('VaccineOnMaps');
 
   const handleFetchVaccines = useCallback(async () => {

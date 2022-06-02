@@ -206,31 +206,39 @@ const AddVaccineManually: React.FC = () => {
                 <Separator height={spacing.sm} />
               </>
             ) : (
-              <Controller
-                control={control}
-                name="applicationDate"
-                render={({field: {onBlur, onChange, value, ref}}) => (
-                  <Pressable
-                    onPress={() => handleDatePickerAndroid('applicationDate')}>
-                    <Input
-                      ref={ref}
-                      editable={false}
-                      label="Data da aplicação"
-                      onChange={onChange}
-                      onChangeText={text => setValue('applicationDate', text)}
-                      value={value ? format(new Date(value), 'dd/MM/yyyy') : ''}
-                      onBlur={onBlur}
-                      error={errors.applicationDate?.message}
-                      onSubmitEditing={() => {
-                        setFocus('applicationLocation');
-                      }}
-                      returnKeyType="next"
-                    />
-                  </Pressable>
-                )}
-              />
+              <>
+                <Separator height={spacing.sm} />
+                <Controller
+                  control={control}
+                  name="applicationDate"
+                  render={({field: {onBlur, onChange, value, ref}}) => (
+                    <Pressable
+                      onPress={() =>
+                        handleDatePickerAndroid('applicationDate')
+                      }>
+                      <Input
+                        ref={ref}
+                        editable={false}
+                        label="Data da aplicação"
+                        onChange={onChange}
+                        onChangeText={text => setValue('applicationDate', text)}
+                        value={
+                          value ? format(new Date(value), 'dd/MM/yyyy') : ''
+                        }
+                        onBlur={onBlur}
+                        error={errors.applicationDate?.message}
+                        onSubmitEditing={() => {
+                          setFocus('applicationLocation');
+                        }}
+                        returnKeyType="next"
+                      />
+                    </Pressable>
+                  )}
+                />
+              </>
             )}
 
+            <Separator height={spacing.sm} />
             <Controller
               control={control}
               name="applicationLocation"
