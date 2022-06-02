@@ -43,6 +43,7 @@ const QRCode: React.FC = () => {
   const handleBarCodeOnQrCode = async (qrCodeValue: string) => {
     try {
       setLoading(true);
+
       const response = await getVaccines({
         barCode: qrCodeValue,
       });

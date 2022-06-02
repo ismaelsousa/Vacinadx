@@ -142,7 +142,9 @@ const MyVaccine: React.FC = () => {
         keyExtractor={item => `${item.id}`}
         ItemSeparatorComponent={() => <Separator height={15} />}
         ListFooterComponent={() => <Separator height={15} />}
-        renderItem={({item}) => <VaccineCard vaccine={item} />}
+        renderItem={({item, index}) => (
+          <VaccineCard index={index} vaccine={item} />
+        )}
         ListEmptyComponent={() => {
           return <Empty title="Você não possui novas vacinas" />;
         }}
