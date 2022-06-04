@@ -1,21 +1,92 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Platform, Pressable, StyleSheet, View} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useTheme} from 'styled-components';
+import {useDebouncedCallback} from 'use-debounce';
+import {PlaceDTO} from '~/@types/dtos/place';
 import Icon from '~/components/Icon';
 import Input from '~/components/Input';
 import Separator from '~/components/Separator';
 import icons from '~/constants/icons';
+import useAuth from '~/hooks/useAuth';
+import {getPlaces} from '~/services/resource/places';
 import CardMap from './localComponents/CardMap';
 import {Header, HeaderContent, HeaderContentRow, InputRow} from './styles';
 
 // import {Container} from './styles'
 
 const VaccineOnMaps: React.FC = () => {
+  const {user} = useAuth();
+
   const {goBack} = useNavigation();
   const {colors, spacing} = useTheme();
-  const [selectedMarker, setSelectedMarker] = useState(false);
+  const [selectedMarker, setSelectedMarker] = useState<PlaceDTO | null>();
+
+  const [places, setPlaces] = useState<Array<PlaceDTO>>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchInput, setSearchInput] = useState('');
+  const [region, setRegion] = useState({
+    latitude: 37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.15,
+    longitudeDelta: 0.0421,
+  });
+
+  const handleFetchPlaces = useCallback(async () => {
+    try {
+      setLoading(true);
+      const response = await getPlaces();
+      setPlaces(response);
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const handleSearchPlaces = useCallback(
+    async (search?: string) => {
+      if (user) {
+        try {
+          setLoading(true);
+          setSelectedMarker(null);
+          const response = await getPlaces({search});
+          setPlaces(response);
+          if (response.length >= 1) {
+            setRegion(old => ({
+              ...old,
+              latitude: Number(response[0].latitude),
+              longitude: Number(response[0].longitude),
+            }));
+            setSelectedMarker(response[0]);
+          }
+        } catch (error) {
+        } finally {
+          setLoading(false);
+        }
+      }
+    },
+    [user],
+  );
+
+  const debouncedHandleSearchPlaces = useDebouncedCallback(
+    handleSearchPlaces,
+    500,
+  );
+
+  useEffect(() => {
+    if (searchInput.length === 0) {
+      setSelectedMarker(null);
+      handleFetchPlaces();
+    }
+  }, [handleFetchPlaces, searchInput]);
+
+  useEffect(() => {
+    if (searchInput.length > 0) {
+      debouncedHandleSearchPlaces(searchInput);
+    }
+  }, [debouncedHandleSearchPlaces, searchInput]);
 
   return (
     <View style={styles.container}>
@@ -32,6 +103,8 @@ const VaccineOnMaps: React.FC = () => {
             <Separator width={spacing.lg} />
             <InputRow>
               <Input
+                onChangeText={setSearchInput}
+                value={searchInput}
                 icon="search"
                 iconColor="primary"
                 iconPosition="left"
@@ -45,29 +118,28 @@ const VaccineOnMaps: React.FC = () => {
       <MapView
         provider={Platform.OS === 'android' ? PROVIDER_GOOGLE : undefined} // remove if not using Google Maps
         style={styles.map}
-        region={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}>
-        <Marker
-          onPress={e => {
-            setSelectedMarker(old => !old);
-            console.log(e);
-          }}
-          coordinate={{
-            latitude: 37.7885,
-            longitude: -122.4324,
-          }}
-          image={icons.marker}
-        />
+        onRegionChangeComplete={setRegion}
+        region={region}>
+        {places.map(place => (
+          <Marker
+            key={place.id}
+            onPress={() => {
+              setSelectedMarker(selectedMarker?.id === place.id ? null : place);
+            }}
+            coordinate={{
+              latitude: Number(place.latitude),
+              longitude: Number(place.longitude),
+            }}
+            image={icons.marker}
+          />
+        ))}
       </MapView>
       {!!selectedMarker && (
         <CardMap
-          distance="1,5 km"
-          image={require('~/assets/images/Banner/covid.png')}
-          title="Bairro do Hospital"
+          key={selectedMarker.id}
+          distance={`${selectedMarker.distance} km`}
+          image={{uri: `${selectedMarker.picture}?${new Date().getTime()}`}}
+          title={selectedMarker.address}
         />
       )}
     </View>

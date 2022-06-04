@@ -28,7 +28,7 @@ const Banner = ({source}: BannerProps) => {
   return (
     <Shadow>
       <Container
-        resizeMode="contain"
+        resizeMode="cover"
         source={source}
         h={HWBanner.height}
         w={HWBanner.width}

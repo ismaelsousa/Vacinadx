@@ -2,6 +2,8 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   shadow: {
+    margin: 3,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

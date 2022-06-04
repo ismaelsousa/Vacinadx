@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {yupResolver} from '@hookform/resolvers/yup';
-import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import {StackActions, useNavigation} from '@react-navigation/native';
+import React, {useCallback, useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
-import {Pressable, StatusBar} from 'react-native';
+import {Alert, Platform, Pressable, StatusBar} from 'react-native';
 
 import {useTheme} from 'styled-components';
 import Button from '~/components/Button';
@@ -16,14 +16,23 @@ import AvoidKeyboard from '~/components/AvoidKeyboard';
 import Select from './localComponents/Select';
 
 import {Container, ContainerSelect, Content, Scroll} from './styles';
-import {HasSecondShotEnum} from './types';
+import {Fields, HasSecondShotEnum} from './types';
 import {schemaAddVaccineManually} from './validation';
+import DateTimePicker, {
+  DateTimePickerAndroid,
+} from '@react-native-community/datetimepicker';
+import {format} from 'date-fns';
+import {createVaccine} from '~/services/resource/vaccine';
+import useAuth from '~/hooks/useAuth';
 
 const AddVaccineManually: React.FC = () => {
-  const {goBack} = useNavigation();
+  const {goBack, dispatch} = useNavigation();
   const {spacing} = useTheme();
+  const {user} = useAuth();
   const [hasSecondShot, setHasSecondShot] = useState(HasSecondShotEnum.YES);
+  const {colors} = useTheme();
 
+  const [loading, setLoading] = useState(false);
   /**
    * Forms
    */
@@ -38,11 +47,35 @@ const AddVaccineManually: React.FC = () => {
     defaultValues: {
       name: '',
       brand: '',
-      applicationDate: '',
+      applicationDate: new Date().toISOString(),
       applicationLocation: '',
       nextApplicationDate: '',
     },
   });
+
+  /**
+   * Callbacks
+   */
+
+  const handleChangeDateField = (field: Fields, date: number) => {
+    setValue(field, new Date(date).toISOString());
+    if (field === 'applicationDate') {
+      setFocus('applicationLocation');
+    }
+  };
+
+  const handleDatePickerAndroid = (field: Fields) => {
+    DateTimePickerAndroid.open({
+      value: new Date(),
+      onChange: e => {
+        if (e.nativeEvent.timestamp) {
+          handleChangeDateField(field, e.nativeEvent.timestamp);
+        }
+      },
+      mode: 'date',
+      is24Hour: true,
+    });
+  };
 
   const onSubmit = async () => {
     await handleSubmit(
@@ -52,7 +85,38 @@ const AddVaccineManually: React.FC = () => {
         brand,
         name,
         nextApplicationDate,
-      }) => {},
+      }) => {
+        if (!user?.id) {
+          return;
+        }
+
+        try {
+          setLoading(true);
+          const dose =
+            hasSecondShot === HasSecondShotEnum.YES
+              ? 'second-dose'
+              : 'single-dose';
+          await createVaccine({
+            dose: dose,
+            applicationDate,
+            place: applicationLocation,
+            brand,
+            name,
+            userId: user.id,
+            ...(hasSecondShot === HasSecondShotEnum.YES && nextApplicationDate
+              ? {nextApplicationDate}
+              : {nextApplicationDate: applicationDate}),
+          });
+          dispatch(StackActions.popToTop());
+        } catch (error) {
+          Alert.alert(
+            'Ops!',
+            'Ocorreu um erro ao salvar a vacina, tente novamente!',
+          );
+        } finally {
+          setLoading(false);
+        }
+      },
     )();
   };
 
@@ -97,6 +161,7 @@ const AddVaccineManually: React.FC = () => {
                 />
               )}
             />
+            <Separator height={spacing.sm} />
             <Controller
               control={control}
               name="brand"
@@ -110,31 +175,70 @@ const AddVaccineManually: React.FC = () => {
                   onBlur={onBlur}
                   error={errors.brand?.message}
                   onSubmitEditing={() => {
-                    setFocus('applicationDate');
+                    handleDatePickerAndroid('applicationDate');
                   }}
                   returnKeyType="next"
                 />
               )}
             />
-            <Controller
-              control={control}
-              name="applicationDate"
-              render={({field: {onBlur, onChange, value, ref}}) => (
-                <Input
-                  ref={ref}
-                  label="Data da aplicação"
-                  onChange={onChange}
-                  onChangeText={text => setValue('applicationDate', text)}
-                  value={value}
-                  onBlur={onBlur}
-                  error={errors.applicationDate?.message}
-                  onSubmitEditing={() => {
-                    setFocus('applicationLocation');
+            {Platform.OS === 'ios' ? (
+              <>
+                <Separator height={spacing.sm} />
+                <Text color="surface600" typography="body3">
+                  Data da próxima aplicação
+                </Text>
+                <Separator height={spacing.sm} />
+                <DateTimePicker
+                  themeVariant="light"
+                  accentColor={colors.primary.main}
+                  testID="dateTimePicker"
+                  value={new Date()}
+                  mode={'date'}
+                  onChange={e => {
+                    if (e.nativeEvent.timestamp) {
+                      handleChangeDateField(
+                        'nextApplicationDate',
+                        e.nativeEvent.timestamp,
+                      );
+                    }
                   }}
-                  returnKeyType="next"
                 />
-              )}
-            />
+                <Separator height={spacing.sm} />
+              </>
+            ) : (
+              <>
+                <Separator height={spacing.sm} />
+                <Controller
+                  control={control}
+                  name="applicationDate"
+                  render={({field: {onBlur, onChange, value, ref}}) => (
+                    <Pressable
+                      onPress={() =>
+                        handleDatePickerAndroid('applicationDate')
+                      }>
+                      <Input
+                        ref={ref}
+                        editable={false}
+                        label="Data da aplicação"
+                        onChange={onChange}
+                        onChangeText={text => setValue('applicationDate', text)}
+                        value={
+                          value ? format(new Date(value), 'dd/MM/yyyy') : ''
+                        }
+                        onBlur={onBlur}
+                        error={errors.applicationDate?.message}
+                        onSubmitEditing={() => {
+                          setFocus('applicationLocation');
+                        }}
+                        returnKeyType="next"
+                      />
+                    </Pressable>
+                  )}
+                />
+              </>
+            )}
+
+            <Separator height={spacing.sm} />
             <Controller
               control={control}
               name="applicationLocation"
@@ -180,32 +284,68 @@ const AddVaccineManually: React.FC = () => {
                 title="Dose única"
               />
             </ContainerSelect>
+
             {hasSecondShot === HasSecondShotEnum.YES && (
               <>
                 <Separator height={spacing.sm} />
-                <Controller
-                  control={control}
-                  name="nextApplicationDate"
-                  render={({field: {onBlur, onChange, value, ref}}) => (
-                    <Input
-                      ref={ref}
-                      label="Data da próxima aplicação"
-                      onChange={onChange}
-                      onChangeText={text =>
-                        setValue('nextApplicationDate', text)
-                      }
-                      value={value}
-                      onBlur={onBlur}
-                      error={errors.nextApplicationDate?.message}
-                      returnKeyType="done"
-                      onSubmitEditing={onSubmit}
+                {Platform.OS === 'ios' ? (
+                  <>
+                    <Text color="surface600" typography="body3">
+                      Data da próxima aplicação
+                    </Text>
+                    <Separator height={spacing.sm} />
+                    <DateTimePicker
+                      themeVariant="light"
+                      accentColor={colors.primary.main}
+                      testID="dateTimePicker"
+                      value={new Date()}
+                      mode={'date'}
+                      onChange={e => {
+                        if (e.nativeEvent.timestamp) {
+                          handleChangeDateField(
+                            'nextApplicationDate',
+                            e.nativeEvent.timestamp,
+                          );
+                        }
+                      }}
                     />
-                  )}
-                />
+                    <Separator height={spacing.sm} />
+                  </>
+                ) : (
+                  <Controller
+                    control={control}
+                    name="nextApplicationDate"
+                    render={({field: {onBlur, onChange, value, ref}}) => (
+                      <Pressable
+                        onPress={() =>
+                          handleDatePickerAndroid('nextApplicationDate')
+                        }>
+                        <Input
+                          editable={false}
+                          ref={ref}
+                          label="Data da próxima aplicação"
+                          onChange={onChange}
+                          onChangeText={text =>
+                            setValue('nextApplicationDate', text)
+                          }
+                          value={
+                            value ? format(new Date(value), 'dd/MM/yyyy') : ''
+                          }
+                          onBlur={onBlur}
+                          error={errors.nextApplicationDate?.message}
+                          returnKeyType="done"
+                          onSubmitEditing={onSubmit}
+                        />
+                      </Pressable>
+                    )}
+                  />
+                )}
               </>
             )}
             <Separator height={spacing.md} />
-            <Button>Salvar</Button>
+            <Button loading={loading} onPress={onSubmit}>
+              Salvar
+            </Button>
             <Separator height={spacing.xxl} />
           </Scroll>
         </Content>

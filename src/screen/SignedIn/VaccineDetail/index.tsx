@@ -17,6 +17,7 @@ import {
   RowTextDetail,
   RowVaccine,
 } from './styles';
+import {format} from 'date-fns';
 
 const VaccineDetail: React.FC = () => {
   const {goBack} = useNavigation();
@@ -26,11 +27,9 @@ const VaccineDetail: React.FC = () => {
     params: {vaccine},
   } = useRoute<VaccineSignedInStackRouteProp>();
 
-  console.log(vaccine);
-  //TODO: Add real data
-
   const randomImage = useMemo(() => getRandomImageUnsplash(100), []);
-  const dose = useConvertDose({shot: vaccine.shot});
+  const dose = useConvertDose({shot: vaccine.dose});
+
   return (
     <Container>
       <StatusBar barStyle={'dark-content'} />
@@ -48,7 +47,7 @@ const VaccineDetail: React.FC = () => {
             <RowVaccine>
               <LogoVaccine resizeMode="contain" source={{uri: randomImage}} />
               <Separator width={spacing.md} />
-              <Text typography="h5">{vaccine.title}</Text>
+              <Text typography="h5">{vaccine.brand}</Text>
             </RowVaccine>
             <RowTextDetail>
               <Icon
@@ -62,7 +61,7 @@ const VaccineDetail: React.FC = () => {
               </Text>
             </RowTextDetail>
             <RowTextDetail>
-              <Text typography="caption">HPV - Papilomavírus Humano</Text>
+              <Text typography="caption">{vaccine.name}</Text>
             </RowTextDetail>
             <RowTextDetail>
               <Icon
@@ -76,7 +75,9 @@ const VaccineDetail: React.FC = () => {
               </Text>
             </RowTextDetail>
             <RowTextDetail>
-              <Text typography="caption">25/05/21</Text>
+              <Text typography="caption">
+                {format(new Date(vaccine.applicationDate), 'dd/MM/yyyy')}
+              </Text>
             </RowTextDetail>
             <RowTextDetail>
               <Icon icon="pin" activeColor={colors.primary.main} size={24} />
@@ -87,7 +88,10 @@ const VaccineDetail: React.FC = () => {
             </RowTextDetail>
             <RowTextDetail>
               <Text typography="caption">
-                Unidade de saúde de familia Campos do Iguaçu - Foz do Iguaçu, PR
+                {/**
+                 * FIXME: Add real data
+                 * vaccine*/}
+                {vaccine.place}
               </Text>
             </RowTextDetail>
             <RowTextDetail>
@@ -103,7 +107,7 @@ const VaccineDetail: React.FC = () => {
             <Separator height={spacing.md} />
             <RowTextDetail>
               <Center>
-                <QRCode value="1283183" />
+                <QRCode value={vaccine.barCode} />
               </Center>
             </RowTextDetail>
           </Content>

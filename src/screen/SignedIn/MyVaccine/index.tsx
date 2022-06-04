@@ -1,13 +1,19 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import {isAfter} from 'date-fns';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {FlatList, Pressable, StatusBar} from 'react-native';
 import {useTheme} from 'styled-components';
+import {useDebouncedCallback} from 'use-debounce';
+import {VaccineDTO} from '~/@types/dtos/vaccine';
 import Button from '~/components/Button';
+import Empty from '~/components/Empty';
 import Icon from '~/components/Icon';
 import Input from '~/components/Input';
 import Separator from '~/components/Separator';
 import Text from '~/components/Text';
 import VaccineCard from '~/components/VaccineCard';
+import useAuth from '~/hooks/useAuth';
+import {getVaccines} from '~/services/resource/vaccine';
 
 import {Container, RowFilterVaccine} from './styles';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -16,12 +22,16 @@ import {FilterVaccine} from './types';
 const MyVaccine: React.FC = () => {
   const {goBack, navigate} = useNavigation<SignedInStackNavigatorProp>();
   const {spacing} = useTheme();
+  const {user} = useAuth();
 
   /**
    * States
    */
   const [toggleFilter, setToggleFilter] = useState<FilterVaccine>('all');
   const [searchInput, setSearchInput] = useState('');
+
+  const [vaccines, setVaccines] = useState<Array<VaccineDTO>>([]);
+  const [loading, setLoading] = useState(true);
 
   /**
    * Callbacks
@@ -30,8 +40,63 @@ const MyVaccine: React.FC = () => {
     setToggleFilter(old => (old === 'all' ? 'next' : 'all'));
   };
 
-  const handleNavigateToVaccineDetail = vaccine =>
-    navigate('VaccineDetail', {vaccine});
+  const handleFetchVaccines = useCallback(async () => {
+    if (user) {
+      try {
+        setLoading(true);
+        const response = await getVaccines({userId: user.id});
+        setVaccines(response);
+      } catch (error) {
+      } finally {
+        setLoading(false);
+      }
+    }
+  }, [user]);
+
+  const handleSearchVaccines = useCallback(
+    async (search?: string) => {
+      if (user) {
+        try {
+          setLoading(true);
+          const response = await getVaccines({search});
+          setVaccines(response.filter(e => e.userId === user.id));
+        } catch (error) {
+        } finally {
+          setLoading(false);
+        }
+      }
+    },
+    [user],
+  );
+
+  const debouncedHandleSearchVaccines = useDebouncedCallback(
+    handleSearchVaccines,
+    500,
+  );
+
+  /**
+   * Memos
+   */
+  const filteredListVaccines = useMemo(() => {
+    if (toggleFilter === 'all') {
+      return vaccines;
+    }
+    return vaccines.filter(vaccine =>
+      isAfter(new Date(vaccine.nextApplicationDate), new Date()),
+    );
+  }, [vaccines, toggleFilter]);
+
+  useEffect(() => {
+    if (searchInput.length === 0) {
+      handleFetchVaccines();
+    }
+  }, [handleFetchVaccines, searchInput]);
+
+  useEffect(() => {
+    if (searchInput.length > 0) {
+      debouncedHandleSearchVaccines(searchInput);
+    }
+  }, [debouncedHandleSearchVaccines, searchInput]);
 
   return (
     <Container>
@@ -50,9 +115,8 @@ const MyVaccine: React.FC = () => {
         placeholder="Busca de vacina"
         onChangeText={setSearchInput}
         value={searchInput}
-        // error={errors.name?.message}
       />
-      <Separator height={spacing.ty} />
+      <Separator height={spacing.sm} />
 
       <RowFilterVaccine>
         <Button
@@ -73,24 +137,17 @@ const MyVaccine: React.FC = () => {
       </RowFilterVaccine>
       <Separator height={15} />
       <FlatList
-        data={[1, 2, 3, 4, 5]}
-        keyExtractor={item => `${item}`}
+        key={'vaccines'}
+        data={filteredListVaccines}
+        keyExtractor={item => `${item.id}`}
         ItemSeparatorComponent={() => <Separator height={15} />}
         ListFooterComponent={() => <Separator height={15} />}
-        renderItem={({item}) => (
-          <VaccineCard
-            onPress={() => {
-              handleNavigateToVaccineDetail({
-                shot: 'second-dose',
-                title: 'Johnson',
-              });
-            }}
-            key={item}
-            date={new Date(2022, 1, 3).toISOString()}
-            shot="second-dose"
-            title="Johnson"
-          />
+        renderItem={({item, index}) => (
+          <VaccineCard index={index} vaccine={item} />
         )}
+        ListEmptyComponent={() => {
+          return <Empty title="Você não possui novas vacinas" />;
+        }}
       />
     </Container>
   );

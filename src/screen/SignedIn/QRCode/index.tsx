@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {useNavigation} from '@react-navigation/native';
-import React, {useMemo} from 'react';
+import {StackActions, useNavigation} from '@react-navigation/native';
+import React, {useMemo, useState} from 'react';
 import {
+  ActivityIndicator,
+  Alert,
   Pressable,
   StatusBar,
   useWindowDimensions,
@@ -15,11 +17,16 @@ import Separator from '~/components/Separator';
 import Text from '~/components/Text';
 
 import {Container, Content, Scroll} from './styles';
+import {getVaccines} from '~/services/resource/vaccine';
 
 const QRCode: React.FC = () => {
-  const {goBack} = useNavigation();
-  const {spacing} = useTheme();
+  const {goBack, navigate, dispatch} =
+    useNavigation<SignedInStackNavigatorProp>();
+  const {spacing, colors} = useTheme();
   const {width} = useWindowDimensions();
+
+  const [loading, setLoading] = useState(false);
+
   const cameraStyle = useMemo<ViewStyle>(
     () => ({
       marginTop: 40,
@@ -32,6 +39,29 @@ const QRCode: React.FC = () => {
     }),
     [width],
   );
+
+  const handleBarCodeOnQrCode = async (qrCodeValue: string) => {
+    try {
+      setLoading(true);
+
+      const response = await getVaccines({
+        barCode: qrCodeValue,
+      });
+
+      if (response.length > 0) {
+        dispatch(StackActions.popToTop());
+        navigate('VaccineDetail', {vaccine: response[0]});
+      } else {
+        throw new Error('Vacina não encontrada');
+      }
+    } catch (error) {
+      goBack();
+      Alert.alert('Ops', 'Não foi possível encontrar essa vacina.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Container>
       <Scroll>
@@ -50,11 +80,15 @@ const QRCode: React.FC = () => {
           <Separator height={spacing.lg} />
         </Content>
 
-        <QRCodeScanner
-          onRead={e => console.log(e.data)}
-          cameraStyle={cameraStyle}
-          flashMode={RNCamera.Constants.FlashMode.torch}
-        />
+        {loading ? (
+          <ActivityIndicator color={colors.primary.main} />
+        ) : (
+          <QRCodeScanner
+            onRead={e => handleBarCodeOnQrCode(e.data)}
+            cameraStyle={cameraStyle}
+            flashMode={RNCamera.Constants.FlashMode.auto}
+          />
+        )}
       </Scroll>
     </Container>
   );

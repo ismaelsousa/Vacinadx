@@ -3,10 +3,7 @@ import styled from 'styled-components/native';
 import Text from '../Text';
 import {InputProps} from './types';
 
-export const Container = styled.View`
-  /* margin-bottom: 10px; */
-  /* FIXME: Update screen that use the input */
-`;
+export const Container = styled.View``;
 
 export const InputInternal = styled.TextInput`
   flex: 1;
