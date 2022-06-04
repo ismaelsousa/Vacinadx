@@ -9,3 +9,10 @@ export const getVaccines = async (
   const {data} = await api.get('/vaccines', {params});
   return data;
 };
+
+export const createVaccine = async (
+  body?: Partial<VaccineDTO>,
+): Promise<Array<VaccineDTO>> => {
+  const {data} = await api.post('/vaccines', body);
+  return data;
+};
