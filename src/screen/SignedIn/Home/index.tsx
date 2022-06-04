@@ -7,6 +7,8 @@ import Empty from '~/components/Empty';
 import Separator from '~/components/Separator';
 import Text from '~/components/Text';
 import VaccineCard from '~/components/VaccineCard';
+import VaccineCardShimmer from '~/components/VaccineCard/localComponents/VaccineCardShimmer';
+import {spacing} from '~/constants/styles/themes/common';
 import useAuth from '~/hooks/useAuth';
 import {getVaccines} from '~/services/resource/vaccine';
 import Banner from './localComponents/Banner';
@@ -84,6 +86,7 @@ const Home: React.FC = () => {
               <Header />
 
               <ScrollViewItems horizontal>
+                <Separator width={spacing.md} />
                 <SmallCard
                   icon="vaccine"
                   onPress={handleMyVaccine}
@@ -101,6 +104,7 @@ const Home: React.FC = () => {
                   title={'Procurar local\n de vacinação'}
                   onPress={handleVaccineOnMaps}
                 />
+                <Separator width={spacing.md} />
               </ScrollViewItems>
               <Content>
                 <Text typography="h8">Próximas vacinas </Text>
@@ -113,16 +117,26 @@ const Home: React.FC = () => {
           return (
             <Content>
               <Separator height={15} />
-
               <Text typography="h8">Campanhas de vacinação</Text>
               <Separator height={15} />
               <Banner source={require('~/assets/images/banner/covid.png')} />
+              <Separator height={15} />
             </Content>
           );
         }}
         ItemSeparatorComponent={() => <Separator height={15} />}
         ListEmptyComponent={() => {
-          // FIXME: Shimmer effect
+          if (loading) {
+            return (
+              <Content>
+                <VaccineCardShimmer />
+                <Separator height={15} />
+                <VaccineCardShimmer />
+                <Separator height={15} />
+                <VaccineCardShimmer />
+              </Content>
+            );
+          }
           return <Empty title="Você não possui novas vacinas" />;
         }}
       />

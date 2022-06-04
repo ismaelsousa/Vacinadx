@@ -119,6 +119,7 @@ const VaccineOnMaps: React.FC = () => {
         region={region}>
         {places.map(place => (
           <Marker
+            key={place.id}
             image={icons.marker}
             onPress={() => {
               setSelectedMarker(selectedMarker?.id === place.id ? null : place);
