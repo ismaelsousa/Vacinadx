@@ -68,9 +68,9 @@ const Home: React.FC = () => {
       <FlatList
         data={vaccines}
         keyExtractor={item => String(item.id)}
-        renderItem={({item}) => (
+        renderItem={({item, index}) => (
           <Content>
-            <VaccineCard vaccine={item} />
+            <VaccineCard index={index} vaccine={item} />
           </Content>
         )}
         refreshing={loading}

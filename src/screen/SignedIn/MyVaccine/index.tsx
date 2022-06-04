@@ -60,7 +60,6 @@ const MyVaccine: React.FC = () => {
     async (search: string) => {
       if (user) {
         try {
-          console.log('vaccines2');
           setLoading(true);
           const response = await getVaccines({search});
           setVaccines(response);
@@ -124,7 +123,7 @@ const MyVaccine: React.FC = () => {
         onChangeText={setSearchInput}
         value={searchInput}
       />
-      <Separator height={spacing.ty} />
+      <Separator height={spacing.sm} />
       <RowFilterVaccine>
         <Button
           mode={toggleFilter === 'all' ? 'contained' : 'outlined'}
@@ -148,9 +147,8 @@ const MyVaccine: React.FC = () => {
         keyExtractor={item => `${item.id}`}
         ItemSeparatorComponent={() => <Separator height={15} />}
         ListFooterComponent={() => <Separator height={15} />}
-        renderItem={({item}) => {
-          // FIXME: Shimmer effect
-          return <VaccineCard vaccine={item} />;
+        renderItem={({item, index}) => {
+          return <VaccineCard index={index} vaccine={item} />;
         }}
         ListEmptyComponent={() => {
           return <Empty title="Não foi possível encontrar" />;
