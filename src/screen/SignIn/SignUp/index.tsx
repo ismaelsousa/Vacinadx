@@ -115,6 +115,7 @@ const SignUp = () => {
               />
             )}
           />
+          <Separator height={spacing.sm} />
           <Controller
             control={control}
             name="lastName"
@@ -134,6 +135,7 @@ const SignUp = () => {
               />
             )}
           />
+          <Separator height={spacing.sm} />
           <Controller
             control={control}
             name="email"

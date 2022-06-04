@@ -296,32 +296,37 @@ const AddVaccineManually = () => {
                     <Separator height={spacing.sm} />
                   </>
                 ) : (
-                  <Controller
-                    control={control}
-                    name="nextApplicationDate"
-                    render={({field: {name, onBlur, onChange, ref, value}}) => (
-                      <Pressable
-                        onPress={() =>
-                          handleDatePickerAndroid('nextApplicationDate')
-                        }>
-                        <Input
-                          editable={false}
-                          label="Data da próxima aplicação"
-                          ref={ref}
-                          value={
-                            value ? format(new Date(value), 'dd/MM/yyyy') : ''
-                          }
-                          onChange={onChange}
-                          onBlur={onBlur}
-                          onChangeText={text => setValue(name, text)}
-                          error={errors[name]?.message}
-                          onFocus={() => setFocus(name)}
-                          returnKeyType="done"
-                          onSubmitEditing={onSubmit}
-                        />
-                      </Pressable>
-                    )}
-                  />
+                  <>
+                    <Separator height={spacing.sm} />
+                    <Controller
+                      control={control}
+                      name="nextApplicationDate"
+                      render={({
+                        field: {name, onBlur, onChange, ref, value},
+                      }) => (
+                        <Pressable
+                          onPress={() =>
+                            handleDatePickerAndroid('nextApplicationDate')
+                          }>
+                          <Input
+                            editable={false}
+                            label="Data da próxima aplicação"
+                            ref={ref}
+                            value={
+                              value ? format(new Date(value), 'dd/MM/yyyy') : ''
+                            }
+                            onChange={onChange}
+                            onBlur={onBlur}
+                            onChangeText={text => setValue(name, text)}
+                            error={errors[name]?.message}
+                            onFocus={() => setFocus(name)}
+                            returnKeyType="done"
+                            onSubmitEditing={onSubmit}
+                          />
+                        </Pressable>
+                      )}
+                    />
+                  </>
                 )}
               </>
             )}

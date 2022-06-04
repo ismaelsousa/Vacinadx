@@ -10,7 +10,7 @@ import {Avatar, Container, Row, CardOption, Divider} from './styles';
 
 const Profile: React.FC = () => {
   const {spacing} = useTheme();
-  const {user} = useAuth();
+  const {user, signOut} = useAuth();
   return (
     <Container>
       <ScrollView>
@@ -32,7 +32,7 @@ const Profile: React.FC = () => {
             <Divider />
             <Option title="Suporte" icon="notification" />
             <Divider />
-            <Option title="Sair" icon="logout" />
+            <Option title="Sair" icon="logout" onPress={signOut} />
           </CardOption>
         </Shadow>
       </ScrollView>

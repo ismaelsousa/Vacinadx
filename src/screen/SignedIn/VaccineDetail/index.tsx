@@ -32,9 +32,6 @@ const VaccineDetail = () => {
     params: {vaccine},
   } = useRoute<VaccineSignedInStackRouteProp>();
 
-  //TODO: Add real data here
-  console.log(vaccine);
-
   /**
    * CallBacks
    */

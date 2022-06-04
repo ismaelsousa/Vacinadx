@@ -31,8 +31,22 @@ const Home: React.FC = () => {
    * CallBacks
    */
 
-  const handleAddVaccine = () => navigate('addVaccine');
-  const handleMyVaccine = () => navigate('myVaccine');
+  const handleAddVaccine = () =>
+    navigate('BottomTabHome', {
+      screen: 'home',
+      params: {
+        screen: 'addVaccine',
+      },
+    });
+
+  const handleMyVaccine = () =>
+    navigate('BottomTabHome', {
+      screen: 'home',
+      params: {
+        screen: 'myVaccine',
+      },
+    });
+
   const handleVaccineOnMaps = () => navigate('VaccineOnMaps');
 
   const handleFetchVaccines = useCallback(async () => {
