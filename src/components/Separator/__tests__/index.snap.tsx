@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Separator from '..';
 
-describe('Separator', () => {
+describe('Separator Snapshot', () => {
   it('should render without props', () => {
     const tree = renderer.create(<Separator />).toJSON();
     expect(tree).toMatchSnapshot();

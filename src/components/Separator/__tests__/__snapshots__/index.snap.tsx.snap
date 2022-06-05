@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Separator should render with height prop 1`] = `
+exports[`Separator Snapshot should render with height prop 1`] = `
 <View
   height={15}
   style={
@@ -12,10 +12,11 @@ exports[`Separator should render with height prop 1`] = `
       },
     ]
   }
+  testID="Separator"
 />
 `;
 
-exports[`Separator should render with width and height props 1`] = `
+exports[`Separator Snapshot should render with width and height props 1`] = `
 <View
   height={15}
   style={
@@ -30,11 +31,12 @@ exports[`Separator should render with width and height props 1`] = `
       },
     ]
   }
+  testID="Separator"
   width={15}
 />
 `;
 
-exports[`Separator should render with width prop 1`] = `
+exports[`Separator Snapshot should render with width prop 1`] = `
 <View
   style={
     Array [
@@ -45,16 +47,18 @@ exports[`Separator should render with width prop 1`] = `
       },
     ]
   }
+  testID="Separator"
   width={15}
 />
 `;
 
-exports[`Separator should render without props 1`] = `
+exports[`Separator Snapshot should render without props 1`] = `
 <View
   style={
     Array [
       Object {},
     ]
   }
+  testID="Separator"
 />
 `;
