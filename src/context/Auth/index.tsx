@@ -2,11 +2,11 @@
 import React, {createContext, useEffect, useState} from 'react';
 import {UserDTO} from '~/@types/dtos/user';
 import {asyncUserKeys, AuthContextProp} from './types';
-import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   checkIfExistAppleUserResource,
   checkIfExistUserResource,
+  signInAppleResource,
   signInResource,
 } from '~/services/resource/auth';
 import {RequestSignInData} from '~/services/resource/auth/types';
@@ -45,6 +45,20 @@ export const AuthProvider: React.FC = ({children}) => {
     try {
       setLoading(true);
       const response = await signInResource(data);
+
+      setUser(response[0]);
+      await saveUserToStorageAndConfigToken(response[0]);
+      setIsSignedIn(true);
+    } catch (error) {
+      Alert.alert('Não possível realizar o login', 'tente novamente!');
+    } finally {
+      setLoading(false);
+    }
+  };
+  const signInApple = async (userApple: string) => {
+    try {
+      setLoading(true);
+      const response = await signInAppleResource(userApple);
 
       setUser(response[0]);
       await saveUserToStorageAndConfigToken(response[0]);
@@ -128,6 +142,7 @@ export const AuthProvider: React.FC = ({children}) => {
         checkIfExistUser,
         checkIfExistAppleUser,
         signIn,
+        signInApple,
         signUp,
         signOut,
       }}>
