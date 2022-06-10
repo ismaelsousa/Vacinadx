@@ -2,7 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from '~/components/Icon';
 import Profile from '~/screen/SignedIn/Profile';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import HomeStack from './HomeStack';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();

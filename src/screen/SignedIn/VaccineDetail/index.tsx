@@ -1,7 +1,7 @@
 import {useNavigation, useRoute} from '@react-navigation/native';
 import React, {useMemo} from 'react';
 import {Pressable, ScrollView, StatusBar} from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import QRCode from 'react-native-qrcode-svg';
 import Icon from '~/components/Icon';
 import Separator from '~/components/Separator';

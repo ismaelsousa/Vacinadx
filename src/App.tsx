@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
 import React, {useEffect} from 'react';
-import {ThemeProvider} from 'styled-components';
+import {ThemeProvider} from 'styled-components/native';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {enableLatestRenderer} from 'react-native-maps';
 

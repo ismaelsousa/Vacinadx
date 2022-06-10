@@ -3,7 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 import {isAfter} from 'date-fns';
 import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList, RefreshControl, StatusBar} from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import {VaccineDTO} from '~/@types/dtos/vaccine';
 import Empty from '~/components/Empty';
 import Separator from '~/components/Separator';

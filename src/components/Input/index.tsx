@@ -9,7 +9,7 @@ import React, {
   useState,
 } from 'react';
 import {TouchableOpacity, View} from 'react-native';
-import {ThemeContext} from 'styled-components';
+import {ThemeContext} from 'styled-components/native';
 
 import {InputProps, InputValueRef} from './types';
 
@@ -132,7 +132,7 @@ const Input: React.ForwardRefRenderFunction<InputValueRef, InputProps> = (
         {iconPosition === 'right' && renderIcon()}
       </Border>
       {!!error && (
-        <Error color="error" typography="body1">
+        <Error testID="error-input" color="error" typography="body1">
           {error}
         </Error>
       )}

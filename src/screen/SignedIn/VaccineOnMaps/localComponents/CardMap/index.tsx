@@ -5,7 +5,7 @@ import {CardMapProps} from './types';
 import {Container, ContainerDescription, ImageLocal} from './styles';
 import Text from '~/components/Text';
 import Separator from '~/components/Separator';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const CardMap = ({distance, image, title}: CardMapProps) => {

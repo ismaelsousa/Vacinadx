@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useMemo} from 'react';
 import {useWindowDimensions} from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import Shadow from '~/components/Shadow';
 
 import {Container} from './styles';

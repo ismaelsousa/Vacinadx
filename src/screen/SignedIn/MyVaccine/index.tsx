@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {isAfter} from 'date-fns';
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {FlatList, Pressable, StatusBar} from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import {useDebouncedCallback} from 'use-debounce';
 import {VaccineDTO} from '~/@types/dtos/vaccine';
 import Button from '~/components/Button';

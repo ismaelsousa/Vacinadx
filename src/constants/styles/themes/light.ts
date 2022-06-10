@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {DefaultTheme} from 'styled-components';
+import {DefaultTheme} from 'styled-components/native';
 import * as Colors from '../colors';
 import {typographyCommon, borders, spacing} from './common';
 

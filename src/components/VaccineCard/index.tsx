@@ -15,7 +15,7 @@ import {
   VaccineDate,
 } from './styles';
 import {VaccineDateProps} from './types';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import Shadow from '../Shadow';
 import useConvertDose from '~/hooks/useConvertDose';
 import {useNavigation} from '@react-navigation/native';

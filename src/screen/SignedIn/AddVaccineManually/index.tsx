@@ -5,7 +5,7 @@ import React, {useCallback, useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {Alert, Platform, Pressable, StatusBar} from 'react-native';
 
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import Button from '~/components/Button';
 import Icon from '~/components/Icon';
 import Input from '~/components/Input';

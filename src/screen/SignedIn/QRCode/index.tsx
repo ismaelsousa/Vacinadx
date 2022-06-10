@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {RNCamera} from 'react-native-camera';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import Icon from '~/components/Icon';
 import Separator from '~/components/Separator';
 import Text from '~/components/Text';

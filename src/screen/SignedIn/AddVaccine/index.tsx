@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Pressable, StatusBar} from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import Icon from '~/components/Icon';
 import Separator from '~/components/Separator';
 import Shadow from '~/components/Shadow';

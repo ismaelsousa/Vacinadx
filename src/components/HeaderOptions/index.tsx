@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useMemo} from 'react';
 import {StatusBar} from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import Separator from '../Separator';
 
 import {Container} from './styles';

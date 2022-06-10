@@ -1,0 +1,613 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Array [
+      Array [
+        Object {
+          "flexGrow": 1,
+        },
+      ],
+      Object {
+        "paddingBottom": 0,
+      },
+    ]
+  }
+>
+  <RNCSafeAreaView
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "marginBottom": 0,
+          "marginLeft": 20,
+          "marginRight": 20,
+          "marginTop": 0,
+        },
+      ]
+    }
+  >
+    <View
+      height={20}
+      style={
+        Array [
+          Object {
+            "height": 20,
+            "maxHeight": 20,
+            "minHeight": 20,
+          },
+        ]
+      }
+      testID="Separator"
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "maxWidth": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "paddingBottom": 10,
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
+            },
+          ]
+        }
+      >
+        <Image
+          resizeMode="contain"
+          size={15}
+          source={
+            Object {
+              "testUri": "../../../src/assets/icons/closeX/Vector.png",
+            }
+          }
+          style={
+            Array [
+              Object {
+                "maxHeight": 15,
+                "maxWidth": 15,
+                "minHeight": 15,
+                "minWidth": 15,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        style={
+          Array [
+            Object {},
+          ]
+        }
+        testID="Separator"
+      />
+      <Text
+        color="primary"
+        style={
+          Array [
+            Object {
+              "color": "#3C9BA6",
+              "fontFamily": "OpenSans-Regular",
+              "fontSize": 14,
+            },
+          ]
+        }
+        typography="body3"
+      >
+        Esqueci minha senha
+      </Text>
+    </View>
+    <View
+      height={20}
+      style={
+        Array [
+          Object {
+            "height": 20,
+            "maxHeight": 20,
+            "minHeight": 20,
+          },
+        ]
+      }
+      testID="Separator"
+    />
+    <RCTScrollView>
+      <View>
+        <Text
+          color="surface"
+          style={
+            Array [
+              Object {
+                "color": "#000",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 32,
+              },
+            ]
+          }
+          typography="h3"
+        >
+          Login
+        </Text>
+        <View
+          height={20}
+          style={
+            Array [
+              Object {
+                "height": 20,
+                "maxHeight": 20,
+                "minHeight": 20,
+              },
+            ]
+          }
+          testID="Separator"
+        />
+        <View
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
+          <Text
+            color="surface600"
+            style={
+              Array [
+                Object {
+                  "color": "#41474D",
+                  "fontFamily": "OpenSans-Regular",
+                  "fontSize": 14,
+                },
+                Object {
+                  "marginBottom": 10,
+                },
+              ]
+            }
+            typography="body3"
+          >
+            Email
+          </Text>
+          <View
+            borderColor="#6B7785"
+            color="transparent"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderColor": "#6B7785",
+                  "borderRadius": 10,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "paddingBottom": 0,
+                  "paddingLeft": 15,
+                  "paddingRight": 15,
+                  "paddingTop": 0,
+                },
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              autoCapitalize="none"
+              autoCompleteType="email"
+              keyboardType="email-address"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onChangeText={[Function]}
+              onSubmitEditing={[Function]}
+              rejectResponderTermination={true}
+              returnKeyType="next"
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "OpenSans-Regular",
+                    "fontSize": 14,
+                    "minHeight": 48,
+                  },
+                ]
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />
+            <View
+              iconPosition="right"
+              style={
+                Array [
+                  Object {
+                    "paddingLeft": 10,
+                    "paddingRight": 0,
+                  },
+                ]
+              }
+            >
+              <Image
+                resizeMode="contain"
+                size={20}
+                source={
+                  Object {
+                    "testUri": "../../../src/assets/icons/checkCircle/Vector.png",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "maxHeight": 20,
+                      "maxWidth": 20,
+                      "minHeight": 20,
+                      "minWidth": 20,
+                    },
+                    Object {
+                      "tintColor": "#3C9BA6",
+                    },
+                    undefined,
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          height={10}
+          style={
+            Array [
+              Object {
+                "height": 10,
+                "maxHeight": 10,
+                "minHeight": 10,
+              },
+            ]
+          }
+          testID="Separator"
+        />
+        <View
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
+          <Text
+            color="surface600"
+            style={
+              Array [
+                Object {
+                  "color": "#41474D",
+                  "fontFamily": "OpenSans-Regular",
+                  "fontSize": 14,
+                },
+                Object {
+                  "marginBottom": 10,
+                },
+              ]
+            }
+            typography="body3"
+          >
+            Senha
+          </Text>
+          <View
+            borderColor="#6B7785"
+            color="transparent"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderColor": "#6B7785",
+                  "borderRadius": 10,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "paddingBottom": 0,
+                  "paddingLeft": 15,
+                  "paddingRight": 15,
+                  "paddingTop": 0,
+                },
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              autoCapitalize="none"
+              autoCompleteType="password"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onChangeText={[Function]}
+              onSubmitEditing={[Function]}
+              rejectResponderTermination={true}
+              returnKeyType="done"
+              secureTextEntry={true}
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "OpenSans-Regular",
+                    "fontSize": 14,
+                    "minHeight": 48,
+                  },
+                ]
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                iconPosition="right"
+                style={
+                  Array [
+                    Object {
+                      "paddingLeft": 10,
+                      "paddingRight": 0,
+                    },
+                  ]
+                }
+              >
+                <Image
+                  resizeMode="contain"
+                  size={20}
+                  source={
+                    Object {
+                      "testUri": "../../../src/assets/icons/openEye/Vector.png",
+                    }
+                  }
+                  style={
+                    Array [
+                      Object {
+                        "maxHeight": 20,
+                        "maxWidth": 20,
+                        "minHeight": 20,
+                        "minWidth": 20,
+                      },
+                      Object {
+                        "tintColor": "#3C9BA6",
+                      },
+                      undefined,
+                    ]
+                  }
+                />
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          height={20}
+          style={
+            Array [
+              Object {
+                "height": 20,
+                "maxHeight": 20,
+                "minHeight": 20,
+              },
+            ]
+          }
+          testID="Separator"
+        />
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#3C9BA6",
+              "borderColor": "#3C9BA6",
+              "borderRadius": 10,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "opacity": 1,
+              "paddingBottom": 12,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 12,
+            }
+          }
+          testID="button-login"
+        >
+          <Text
+            color="#fff"
+            style={
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "color": "#fff",
+                  "fontFamily": "OpenSans-Bold",
+                  "fontSize": 16,
+                },
+              ]
+            }
+            typography="body2"
+          >
+            Login
+          </Text>
+        </View>
+        <View
+          height={20}
+          style={
+            Array [
+              Object {
+                "height": 20,
+                "maxHeight": 20,
+                "minHeight": 20,
+              },
+            ]
+          }
+          testID="Separator"
+        />
+        <Text
+          color="surface500"
+          style={
+            Array [
+              Object {
+                "color": "#6B7785",
+                "fontFamily": "OpenSans-Regular",
+                "fontSize": 14,
+              },
+              Object {
+                "alignSelf": "center",
+              },
+            ]
+          }
+          typography="body3"
+        >
+          ou acesse com login social
+        </Text>
+        <View
+          height={20}
+          style={
+            Array [
+              Object {
+                "height": 20,
+                "maxHeight": 20,
+                "minHeight": 20,
+              },
+            ]
+          }
+          testID="Separator"
+        />
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "borderColor": "#072B59",
+              "borderRadius": 10,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "opacity": 1,
+              "paddingBottom": 12,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 12,
+            }
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "left": 20,
+                  "position": "absolute",
+                },
+              ]
+            }
+          >
+            <Image
+              resizeMode="contain"
+              size={20}
+              source={
+                Object {
+                  "testUri": "../../../src/assets/icons/google/Vector.png",
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "maxHeight": 20,
+                    "maxWidth": 20,
+                    "minHeight": 20,
+                    "minWidth": 20,
+                  },
+                ]
+              }
+            />
+          </View>
+          <Text
+            color="#072B59"
+            style={
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "color": "#072B59",
+                  "fontFamily": "OpenSans-Regular",
+                  "fontSize": 16,
+                },
+              ]
+            }
+            typography="caption"
+          >
+            Continuar com o Google
+          </Text>
+        </View>
+        <View
+          height={45}
+          style={
+            Array [
+              Object {
+                "height": 45,
+                "maxHeight": 45,
+                "minHeight": 45,
+              },
+            ]
+          }
+          testID="Separator"
+        />
+      </View>
+    </RCTScrollView>
+  </RNCSafeAreaView>
+</View>
+`;
