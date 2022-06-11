@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView, StatusBar, View} from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import Separator from '~/components/Separator';
 import Shadow from '~/components/Shadow';
 import Text from '~/components/Text';

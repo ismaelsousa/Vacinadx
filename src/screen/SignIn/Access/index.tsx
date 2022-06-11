@@ -13,7 +13,7 @@ import {
   IconVaccine,
   Column,
 } from './styles';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import useSignInNavigation from '~/hooks/useSignInNavigation';
 

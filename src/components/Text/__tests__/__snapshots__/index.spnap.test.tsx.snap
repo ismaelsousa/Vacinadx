@@ -1,0 +1,439 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text Snapshot should render with primary color 1`] = `
+<Text
+  color="primary"
+  style={
+    Array [
+      Object {
+        "color": "#3C9BA6",
+        "fontFamily": "OpenSans-Regular",
+        "fontSize": 14,
+      },
+    ]
+  }
+  theme={
+    Object {
+      "borders": Object {
+        "radius": Object {
+          "sm": 10,
+          "xs": 4,
+        },
+      },
+      "colors": Object {
+        "background": Object {
+          "main": "#fff",
+          "onMain": "#000",
+        },
+        "error": Object {
+          "main": "#D93936",
+          "onMain": "#fff",
+        },
+        "lightGreen": Object {
+          "main": "#95BFA7",
+          "onMain": "#fff",
+        },
+        "orange": Object {
+          "main": "#F28705",
+          "onMain": "#fff",
+        },
+        "primary": Object {
+          "main": "#3C9BA6",
+          "onMain": "#fff",
+        },
+        "secondary": Object {
+          "main": "#072B59",
+          "onMain": "#fff",
+        },
+        "surface": Object {
+          "main": "#000",
+          "onMain": "#fff",
+        },
+        "surface100": Object {
+          "main": "#4E4B59",
+          "onMain": "#fff",
+        },
+        "surface50": Object {
+          "main": "#E1E0E7",
+          "onMain": "#fff",
+        },
+        "surface500": Object {
+          "main": "#6B7785",
+          "onMain": "#fff",
+        },
+        "surface600": Object {
+          "main": "#41474D",
+          "onMain": "#fff",
+        },
+      },
+      "spacing": Object {
+        "lg": 25,
+        "md": 20,
+        "sm": 10,
+        "ty": 4,
+        "xl": 38,
+        "xs": 5,
+        "xxl": 45,
+        "xxxl": 100,
+      },
+      "typography": Object {
+        "body1": Object {
+          "fontFamily": "OpenSans-Regular",
+          "fontSize": 14,
+        },
+        "body2": Object {
+          "fontFamily": "OpenSans-Bold",
+          "fontSize": 16,
+        },
+        "body3": Object {
+          "fontFamily": "OpenSans-Regular",
+          "fontSize": 14,
+        },
+        "caption": Object {
+          "fontFamily": "OpenSans-Regular",
+          "fontSize": 16,
+        },
+        "h1": Object {
+          "fontFamily": "OpenSans-Light",
+          "fontSize": 96,
+        },
+        "h2": Object {
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 48,
+        },
+        "h3": Object {
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 32,
+        },
+        "h4": Object {
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 32,
+        },
+        "h5": Object {
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 24,
+        },
+        "h6": Object {
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 24,
+        },
+        "h7": Object {
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 24,
+        },
+        "h8": Object {
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 20,
+        },
+        "overline": Object {
+          "fontFamily": "OpenSans-SemiBold",
+          "fontSize": 14,
+        },
+        "subtitle1": Object {
+          "fontFamily": "OpenSans-Regular",
+          "fontSize": 18,
+        },
+        "subtitle2": Object {
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 18,
+        },
+      },
+    }
+  }
+  typography="body1"
+>
+  Hello world test
+</Text>
+`;
+
+exports[`Text Snapshot should render with typography caption 1`] = `
+<Text
+  color="surface"
+  style={
+    Array [
+      Object {
+        "color": "#000",
+        "fontFamily": "OpenSans-Regular",
+        "fontSize": 16,
+      },
+    ]
+  }
+  theme={
+    Object {
+      "borders": Object {
+        "radius": Object {
+          "sm": 10,
+          "xs": 4,
+        },
+      },
+      "colors": Object {
+        "background": Object {
+          "main": "#fff",
+          "onMain": "#000",
+        },
+        "error": Object {
+          "main": "#D93936",
+          "onMain": "#fff",
+        },
+        "lightGreen": Object {
+          "main": "#95BFA7",
+          "onMain": "#fff",
+        },
+        "orange": Object {
+          "main": "#F28705",
+          "onMain": "#fff",
+        },
+        "primary": Object {
+          "main": "#3C9BA6",
+          "onMain": "#fff",
+        },
+        "secondary": Object {
+          "main": "#072B59",
+          "onMain": "#fff",
+        },
+        "surface": Object {
+          "main": "#000",
+          "onMain": "#fff",
+        },
+        "surface100": Object {
+          "main": "#4E4B59",
+          "onMain": "#fff",
+        },
+        "surface50": Object {
+          "main": "#E1E0E7",
+          "onMain": "#fff",
+        },
+        "surface500": Object {
+          "main": "#6B7785",
+          "onMain": "#fff",
+        },
+        "surface600": Object {
+          "main": "#41474D",
+          "onMain": "#fff",
+        },
+      },
+      "spacing": Object {
+        "lg": 25,
+        "md": 20,
+        "sm": 10,
+        "ty": 4,
+        "xl": 38,
+        "xs": 5,
+        "xxl": 45,
+        "xxxl": 100,
+      },
+      "typography": Object {
+        "body1": Object {
+          "fontFamily": "OpenSans-Regular",
+          "fontSize": 14,
+        },
+        "body2": Object {
+          "fontFamily": "OpenSans-Bold",
+          "fontSize": 16,
+        },
+        "body3": Object {
+          "fontFamily": "OpenSans-Regular",
+          "fontSize": 14,
+        },
+        "caption": Object {
+          "fontFamily": "OpenSans-Regular",
+          "fontSize": 16,
+        },
+        "h1": Object {
+          "fontFamily": "OpenSans-Light",
+          "fontSize": 96,
+        },
+        "h2": Object {
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 48,
+        },
+        "h3": Object {
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 32,
+        },
+        "h4": Object {
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 32,
+        },
+        "h5": Object {
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 24,
+        },
+        "h6": Object {
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 24,
+        },
+        "h7": Object {
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 24,
+        },
+        "h8": Object {
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 20,
+        },
+        "overline": Object {
+          "fontFamily": "OpenSans-SemiBold",
+          "fontSize": 14,
+        },
+        "subtitle1": Object {
+          "fontFamily": "OpenSans-Regular",
+          "fontSize": 18,
+        },
+        "subtitle2": Object {
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 18,
+        },
+      },
+    }
+  }
+  typography="caption"
+>
+  Hello world test
+</Text>
+`;
+
+exports[`Text Snapshot should render without props 1`] = `
+<Text
+  color="surface"
+  style={
+    Array [
+      Object {
+        "color": "#000",
+        "fontFamily": "OpenSans-Regular",
+        "fontSize": 14,
+      },
+    ]
+  }
+  theme={
+    Object {
+      "borders": Object {
+        "radius": Object {
+          "sm": 10,
+          "xs": 4,
+        },
+      },
+      "colors": Object {
+        "background": Object {
+          "main": "#fff",
+          "onMain": "#000",
+        },
+        "error": Object {
+          "main": "#D93936",
+          "onMain": "#fff",
+        },
+        "lightGreen": Object {
+          "main": "#95BFA7",
+          "onMain": "#fff",
+        },
+        "orange": Object {
+          "main": "#F28705",
+          "onMain": "#fff",
+        },
+        "primary": Object {
+          "main": "#3C9BA6",
+          "onMain": "#fff",
+        },
+        "secondary": Object {
+          "main": "#072B59",
+          "onMain": "#fff",
+        },
+        "surface": Object {
+          "main": "#000",
+          "onMain": "#fff",
+        },
+        "surface100": Object {
+          "main": "#4E4B59",
+          "onMain": "#fff",
+        },
+        "surface50": Object {
+          "main": "#E1E0E7",
+          "onMain": "#fff",
+        },
+        "surface500": Object {
+          "main": "#6B7785",
+          "onMain": "#fff",
+        },
+        "surface600": Object {
+          "main": "#41474D",
+          "onMain": "#fff",
+        },
+      },
+      "spacing": Object {
+        "lg": 25,
+        "md": 20,
+        "sm": 10,
+        "ty": 4,
+        "xl": 38,
+        "xs": 5,
+        "xxl": 45,
+        "xxxl": 100,
+      },
+      "typography": Object {
+        "body1": Object {
+          "fontFamily": "OpenSans-Regular",
+          "fontSize": 14,
+        },
+        "body2": Object {
+          "fontFamily": "OpenSans-Bold",
+          "fontSize": 16,
+        },
+        "body3": Object {
+          "fontFamily": "OpenSans-Regular",
+          "fontSize": 14,
+        },
+        "caption": Object {
+          "fontFamily": "OpenSans-Regular",
+          "fontSize": 16,
+        },
+        "h1": Object {
+          "fontFamily": "OpenSans-Light",
+          "fontSize": 96,
+        },
+        "h2": Object {
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 48,
+        },
+        "h3": Object {
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 32,
+        },
+        "h4": Object {
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 32,
+        },
+        "h5": Object {
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 24,
+        },
+        "h6": Object {
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 24,
+        },
+        "h7": Object {
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 24,
+        },
+        "h8": Object {
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 20,
+        },
+        "overline": Object {
+          "fontFamily": "OpenSans-SemiBold",
+          "fontSize": 14,
+        },
+        "subtitle1": Object {
+          "fontFamily": "OpenSans-Regular",
+          "fontSize": 18,
+        },
+        "subtitle2": Object {
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 18,
+        },
+      },
+    }
+  }
+  typography="body1"
+>
+  Hello world test
+</Text>
+`;

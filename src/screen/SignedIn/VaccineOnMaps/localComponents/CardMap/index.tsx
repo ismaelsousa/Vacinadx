@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import {CardMapProps} from './types';
 
 import {Container, ContainerDescription, ImageLocal} from './styles';

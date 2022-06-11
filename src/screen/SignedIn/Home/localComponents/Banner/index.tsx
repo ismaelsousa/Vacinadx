@@ -4,7 +4,7 @@ import {useWindowDimensions, View} from 'react-native';
 import {BannerProp} from './types';
 
 import {Container} from './styles';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import Shadow from '~/components/Shadow';
 
 const Banner = ({source}: BannerProp) => {

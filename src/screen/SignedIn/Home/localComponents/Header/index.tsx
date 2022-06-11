@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import headerImage from '~/assets/images/header.png';
 import Separator from '~/components/Separator';
 import Text from '~/components/Text';

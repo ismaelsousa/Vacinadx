@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useWindowDimensions} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import Button from '~/components/Button';
 import Separator from '~/components/Separator';
 import Text from '~/components/Text';

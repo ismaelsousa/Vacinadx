@@ -2,7 +2,7 @@
 import {format, isBefore} from 'date-fns';
 import React, {useEffect, useMemo} from 'react';
 import {Pressable, useWindowDimensions, View} from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import useConvertDose from '~/hooks/useConvertDose';
 import Icon from '../Icon';
 import Separator from '../Separator';

@@ -2,11 +2,9 @@
 import React, {createContext, useEffect, useState} from 'react';
 import {UserDTO} from '~/@types/dtos/user';
 import {asyncUserKeys, AuthContextProp} from './types';
-import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   checkIfExistUserResource,
-  signInAppleResource,
   signInResource,
 } from '~/services/resource/auth';
 import {RequestSignInData} from '~/services/resource/auth/types';

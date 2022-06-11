@@ -2,7 +2,7 @@ import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {Alert, Platform, ScrollView, StatusBar} from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 import Button from '~/components/Button';
@@ -188,7 +188,11 @@ const Login: React.FC = () => {
             )}
           />
           <Separator height={spacing.md} />
-          <Button loading={loading} disabled={loading} onPress={onSubmit}>
+          <Button
+            testID="button-login-email"
+            loading={loading}
+            disabled={loading}
+            onPress={onSubmit}>
             Login
           </Button>
           <Separator height={spacing.md} />

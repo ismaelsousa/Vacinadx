@@ -2,7 +2,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {Alert, FlatList, Pressable, StatusBar} from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 
 import HeaderOptions from '~/components/HeaderOptions';
 import Icon from '~/components/Icon';

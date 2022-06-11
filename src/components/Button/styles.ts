@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {TypographyType} from 'styled-components';
+import {TypographyType} from 'styled-components/native';
 import styled, {css} from 'styled-components/native';
 
 import {Mode} from './types';

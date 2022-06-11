@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useContext, useMemo} from 'react';
-import {ThemeContext} from 'styled-components';
+import {ThemeContext} from 'styled-components/native';
 import {ButtonProps} from './types';
 
 import {Container, Title, Loading, AbsoluteIcon} from './styles';

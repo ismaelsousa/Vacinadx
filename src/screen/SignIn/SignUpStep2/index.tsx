@@ -2,7 +2,7 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import React, {useMemo} from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {ScrollView, StatusBar, useWindowDimensions} from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import Button from '~/components/Button';
 import HeaderOptions from '~/components/HeaderOptions';
 import Input from '~/components/Input';

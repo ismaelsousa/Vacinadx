@@ -9,7 +9,7 @@ import {
   useWindowDimensions,
   ViewStyle,
 } from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {RNCamera} from 'react-native-camera';
 

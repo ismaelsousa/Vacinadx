@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useCallback, useEffect, useState} from 'react';
 import {Alert, Platform, Pressable, StyleSheet, View} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import {useDebouncedCallback} from 'use-debounce';
 import {PlaceDTO} from '~/@types/dtos/place';
 import Icon from '~/components/Icon';

@@ -8,7 +8,7 @@ import {format} from 'date-fns';
 import React, {useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {Alert, Platform, Pressable, StatusBar} from 'react-native';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import AvoidKeyboard from '~/components/AvoidKeyboard';
 import Button from '~/components/Button';
 import HeaderOptions from '~/components/HeaderOptions';

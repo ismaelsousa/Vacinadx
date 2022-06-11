@@ -3,7 +3,7 @@ import {format} from 'date-fns';
 import React, {useMemo} from 'react';
 import {Pressable, ScrollView, StatusBar, View} from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import Center from '~/components/Center';
 import HeaderOptions from '~/components/HeaderOptions';
 import Icon from '~/components/Icon';
