@@ -49,7 +49,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Allow camera to scanner the QR code</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Allow to find places close to you on maps</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow microsphone to scanner the QR code</string>
 	<key>NSPhotoLibraryUsageDescription</key>
