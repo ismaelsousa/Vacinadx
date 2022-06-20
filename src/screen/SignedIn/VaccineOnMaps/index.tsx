@@ -147,9 +147,9 @@ export default VaccineOnMaps;
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    width: 400,
     justifyContent: 'flex-end',
     alignItems: 'center',
+    flex: 1,
   },
   map: {
     ...StyleSheet.absoluteFillObject,
