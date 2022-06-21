@@ -200,7 +200,7 @@ const Login: React.FC = () => {
             ou acesse com login social
           </AccessText>
           <Separator height={spacing.md} />
-          {Platform.OS === 'ios' && appleAuthAndroid.isSupported && (
+          {(Platform.OS === 'ios' || appleAuthAndroid.isSupported) && (
             <>
               <Button
                 onPress={handleAppleButton}
