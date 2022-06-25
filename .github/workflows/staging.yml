@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     name: Bump version and trigger circle ci release
-    runs-on: marcos-latest
+    runs-on: macos-latest
 
     steps:
       - name: Branch Checkout
