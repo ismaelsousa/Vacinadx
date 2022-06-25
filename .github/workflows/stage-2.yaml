@@ -3,7 +3,6 @@ name: Release stage version on stage branch
 on:
   push:
     branches: [stage]
-
 jobs:
   build:
     name: Bump version and trigger circle ci release
@@ -22,7 +21,7 @@ jobs:
       - name: Copying the config file to home directory
         run: cp .versioning.config.json ~/.projects.config.json
 
-      - name: Running Android bump version
+      - name: Running Android bump version RN_APP
         run: release android stage RN_APP
         env:
           FASTLANE_HIDE_CHANGELOG: 1
