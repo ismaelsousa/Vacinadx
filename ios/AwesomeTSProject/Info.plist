@@ -54,6 +54,8 @@
 	<string>Allow microsphone to scanner the QR code</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow photo library to scanner the QR code</string>
+  <key>ITSAppUsesNonExemptEncryption</key>
+  <false/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Black.ttf</string>
