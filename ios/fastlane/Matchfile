@@ -4,7 +4,7 @@ storage_mode("git")
 
 type("appstore") # The default type, can be: appstore, adhoc, enterprise or development
 
-app_identifier("club.catapulta.vacinadx.app")
+app_identifier(["club.catapulta.vacinadx.app", "club.catapulta.vacinadx.app.OneSignalNotificationServiceExtension"])
 username("ismaelsousa1998@outlook.com")
 
 # For all available options run `fastlane match --help`

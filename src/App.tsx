@@ -20,6 +20,11 @@ const App: React.FC = () => {
     OneSignal.setAppId('7fe620ab-c144-43e2-81f6-09bc608e7a87');
     //END OneSignal Init Code
 
+    //Prompt for push on iOS
+    OneSignal.promptForPushNotificationsWithUserResponse(response => {
+      console.log('Prompt response:', response);
+    });
+
     GoogleSignin.configure({
       offlineAccess: true,
       scopes: ['profile', 'email'],
