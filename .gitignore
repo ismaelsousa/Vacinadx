@@ -54,6 +54,7 @@ buck-out/
 */fastlane/screenshots
 
 play-store-credentials.json
+AuthKey_66234AW2S2.p8
 
 # Bundle artifact
 *.jsbundle
