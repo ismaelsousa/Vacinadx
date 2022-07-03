@@ -21,6 +21,12 @@ jobs:
       - name: Copying the config file to home directory
         run: cp .versioning.config.json ~/.projects.config.json
 
+      - name: Running iOS bump version
+        run: release ios stage RN_APP
+        env:
+          FASTLANE_HIDE_CHANGELOG: 1
+          FASTLANE_SKIP_UPDATE_CHECK: 1
+
       - name: Running Android bump version RN_APP
         run: release android stage RN_APP
         env:

@@ -1,0 +1,164 @@
+version: 2.1
+
+jobs:
+  build-stage-android:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/RN_APP
+    steps:
+      - checkout
+      - run:
+          name: 'Installing dependencies'
+          command: npm install --legacy-peer-deps
+      - persist_to_workspace:
+          root: ~/RN_APP
+          paths:
+            - node_modules
+
+  build-production-android:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/RN_APP
+    steps:
+      - checkout
+      - run:
+          name: 'Installing dependencies'
+          command: npm install --legacy-peer-deps
+      - persist_to_workspace:
+          root: ~/RN_APP
+          paths:
+            - node_modules
+
+  release-stage-android:
+    environment:
+      - GRADLE_OPTS: -Xmx2048m -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
+      - JAVA_OPTS: '-Xms512m -Xmx2048m'
+    working_directory: ~/RN_APP/android
+    docker:
+      - image: circleci/android:api-30-node
+    resource_class: medium+
+    steps:
+      - checkout:
+          path: ~/RN_APP
+      - attach_workspace:
+          at: ~/RN_APP
+      - run:
+          name: 'setup permissions'
+          command: chown -R $USER:$USER ~/RN_APP
+      - run:
+          name: 'Decoding deploy key from base64'
+          command: echo $ANDROID_KEY | base64 --decode > ./app/my-upload-key.keystore
+      - run:
+          name: 'Decoding fastlane-service from base64'
+          command: echo $PLAY_STORE_CREDENTIALS | base64 --decode > ./play-store-credentials.json
+      - run:
+          name: 'play store file'
+          command: cat ./play-store-credentials.json
+      - run:
+          name: 'Running bundle install'
+          command: bundle install
+      - run:
+          name: 'Deploying to play store beta lane'
+          command: bundle exec fastlane beta
+
+  release-production-android:
+    environment:
+      - GRADLE_OPTS: -Xmx2048m -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
+      - JAVA_OPTS: '-Xms512m -Xmx2048m'
+    working_directory: ~/RN_APP/android
+    docker:
+      - image: circleci/android:api-30-node
+    resource_class: medium+
+    steps:
+      - checkout:
+          path: ~/RN_APP
+      - attach_workspace:
+          at: ~/RN_APP
+      - run:
+          name: 'setup permissions'
+          command: chown -R $USER:$USER ~/RN_APP
+      - run:
+          name: 'Decoding deploy key from base64'
+          command: echo $ANDROID_KEY | base64 --decode > ./app/my-upload-key.keystore
+      - run:
+          name: 'Decoding fastlane-service from base64'
+          command: echo $PLAY_STORE_CREDENTIALS | base64 --decode > ./play-store-credentials.json
+      - run:
+          name: 'play store file'
+          command: cat ./play-store-credentials.json
+      - run:
+          name: 'Running bundle install'
+          command: bundle install
+      - run:
+          name: 'Deploying to play store deploy lane'
+          command: bundle exec fastlane deploy
+
+  release-stage-ios:
+    macos:
+      xcode: 13.4.0 # Specify the Xcode version to use
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - '36:25:15:d8:6e:6f:c8:6e:42:8f:e0:cc:6d:e7:65:e8'
+            - '12:93:5d:2b:c0:97:76:20:cc:69:da:8a:27:5c:61:ce'
+      - run:
+          name: 'bundle update'
+          command: cd ios && bundle update --bundler
+      - run:
+          name: 'Running bundle install'
+          command: cd ios && bundle install
+      - run:
+          name: 'Matching certificates'
+          command: cd ios && bundle exec fastlane cert
+      - run:
+          name: 'Installing npm dependencies'
+          command: npm install --legacy-peer-deps
+      - run:
+          name: 'Installing pods dependencies'
+          command: cd ios && pod install
+      - run:
+          name: 'Decoding apple key from base64 to Ios Folder'
+          command: echo $APPLE_KEY | base64 --decode > ./ios/AuthKey_66234AW2S2.p8
+      - run:
+          name: 'Deploying to testflight'
+          command: cd ios && bundle exec fastlane beta
+
+workflows:
+  version: 2.1
+  build_and_test:
+    jobs:
+      - build-stage-android:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^stage-android-[0-9]+(\.[0-9]+)*$/ # stage-android-1.0.1
+      - release-stage-android:
+          requires:
+            - build-stage-android
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^stage-android-[0-9]+(\.[0-9]+)*$/
+      - build-production-android:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^production-android-[0-9]+(\.[0-9]+)*$/
+      - release-production-android:
+          requires:
+            - build-production-android
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^production-android-[0-9]+(\.[0-9]+)*$/
+      - release-stage-ios:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^stage-ios-[0-9]+(\.[0-9]+)*$/
