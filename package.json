@@ -9,12 +9,15 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preandroid": "npx react-native-asset",
-    "preios": "npx react-native-asset"
+    "preios": "npx react-native-asset",
+    "rev": "adb reverse tcp:8081 tcp:8081",
+    "pod-install-x86": "arch -x86_64 pod install"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.3",
     "@invertase/react-native-apple-authentication": "^2.1.5",
     "@react-native-async-storage/async-storage": "^1.15.11",
+    "@react-native-community/datetimepicker": "^6.1.3",
     "@react-native-firebase/app": "^14.2.2",
     "@react-native-firebase/auth": "^14.2.2",
     "@react-native-google-signin/google-signin": "^7.0.4",
@@ -22,19 +25,34 @@
     "@react-navigation/native": "^6.0.4",
     "@react-navigation/native-stack": "^6.2.2",
     "axios": "^0.24.0",
+    "date-fns": "^2.28.0",
     "react": "17.0.1",
     "react-hook-form": "^7.20.4",
     "react-native": "0.64.1",
+    "react-native-camera": "^4.2.1",
+    "react-native-linear-gradient": "^2.5.6",
+    "react-native-maps": "^0.31.1",
+    "react-native-onesignal": "^4.3.11",
+    "react-native-permissions": "^3.3.1",
     "react-native-progress": "^5.0.0",
+    "react-native-qrcode-scanner": "^1.5.5",
+    "react-native-qrcode-svg": "^6.1.2",
+    "react-native-reanimated": "^2.8.0",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.8.0",
+    "react-native-shimmer-placeholder": "^2.0.8",
+    "react-native-svg": "^12.3.0",
     "styled-components": "^5.3.1",
+    "use-debounce": "^8.0.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/jest-native": "^4.0.5",
+    "@testing-library/react-hooks": "^8.0.0",
+    "@testing-library/react-native": "^9.1.0",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.64.5",
     "@types/react-test-renderer": "^16.9.2",
@@ -50,6 +68,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
+    "jest-styled-components": "^7.0.8",
     "metro-react-native-babel-preset": "^0.64.0",
     "miragejs": "^0.1.42",
     "prettier": "^2.3.2",
@@ -62,6 +81,16 @@
   },
   "jest": {
     "preset": "react-native",
+    "setupFiles": [
+      "<rootDir>/jest.setup.js"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!**/node_modules/**"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",

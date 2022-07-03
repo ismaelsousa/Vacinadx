@@ -53,8 +53,15 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 
+play-store-credentials.json
+AuthKey_66234AW2S2.p8
+
 # Bundle artifact
 *.jsbundle
 
 # CocoaPods
 /ios/Pods/
+
+
+# tests
+coverage

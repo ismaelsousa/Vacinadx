@@ -1,8 +1,8 @@
 import {yupResolver} from '@hookform/resolvers/yup';
 import React, {useMemo} from 'react';
 import {Controller, useForm} from 'react-hook-form';
-import {StatusBar, useWindowDimensions} from 'react-native';
-import {useTheme} from 'styled-components';
+import {ScrollView, StatusBar, useWindowDimensions} from 'react-native';
+import {useTheme} from 'styled-components/native';
 import Button from '~/components/Button';
 import HeaderOptions from '~/components/HeaderOptions';
 import Input from '~/components/Input';
@@ -14,6 +14,7 @@ import Bar from 'react-native-progress/Bar';
 
 import {Container} from './styles';
 import BackButton from '~/components/BackButton';
+import AvoidKeyboard from '~/components/AvoidKeyboard';
 
 const SignUp = () => {
   const {spacing, colors} = useTheme();
@@ -27,6 +28,7 @@ const SignUp = () => {
     control,
     handleSubmit,
     setValue,
+    setFocus,
     formState: {errors},
   } = useForm({
     resolver: yupResolver(schemaSignUp),
@@ -65,82 +67,102 @@ const SignUp = () => {
   };
 
   return (
-    <Container>
-      <StatusBar barStyle="dark-content" />
-      <HeaderOptions
-        left={<BackButton icon="closeX" onPress={handleGoBack} />}
-        center={<Separator width={spacing.md} />}
-        right={
-          <Bar
-            progress={0.5}
-            color={colors.primary.main}
-            unfilledColor={colors.surface50.main}
-            borderWidth={0}
-            height={6}
-            width={widthProgressBar}
+    <AvoidKeyboard>
+      <Container>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <StatusBar
+            barStyle="dark-content"
+            translucent
+            backgroundColor={'transparent'}
           />
-        }
-      />
-      <Separator height={spacing.md} />
-      <Text typography="h3">Cadastro</Text>
-      <Separator height={spacing.md} />
-      <Text color="surface100" typography="caption">
-        Informações pessoais
-      </Text>
-      <Separator height={spacing.md} />
-      <Controller
-        control={control}
-        name="firstName"
-        render={({field: {onBlur, onChange, value, ref}}) => (
-          <Input
-            ref={ref}
-            label="Nome"
-            onChange={onChange}
-            onChangeText={text => setValue('firstName', text)}
-            value={value}
-            onBlur={onBlur}
-            error={errors.firstName?.message}
+          <HeaderOptions
+            left={<BackButton icon="closeX" onPress={handleGoBack} />}
+            center={<Separator width={spacing.md} />}
+            right={
+              <Bar
+                progress={0.5}
+                color={colors.primary.main}
+                unfilledColor={colors.surface50.main}
+                borderWidth={0}
+                height={6}
+                width={widthProgressBar}
+              />
+            }
           />
-        )}
-      />
-      <Controller
-        control={control}
-        name="lastName"
-        render={({field: {onBlur, onChange, value, ref}}) => (
-          <Input
-            ref={ref}
-            label="Sobrenome"
-            onChange={onChange}
-            onChangeText={text => setValue('lastName', text)}
-            value={value}
-            onBlur={onBlur}
-            error={errors.lastName?.message}
+          <Separator height={spacing.md} />
+          <Text typography="h3">Cadastro</Text>
+          <Separator height={spacing.md} />
+          <Text color="surface100" typography="caption">
+            Informações pessoais
+          </Text>
+          <Separator height={spacing.md} />
+          <Controller
+            control={control}
+            name="firstName"
+            render={({field: {onBlur, onChange, value, ref}}) => (
+              <Input
+                ref={ref}
+                label="Nome"
+                onChange={onChange}
+                onChangeText={text => setValue('firstName', text)}
+                value={value}
+                onBlur={onBlur}
+                error={errors.firstName?.message}
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  setFocus('lastName');
+                }}
+              />
+            )}
           />
-        )}
-      />
-      <Controller
-        control={control}
-        name="email"
-        render={({field: {onBlur, onChange, value, ref}}) => (
-          <Input
-            ref={ref}
-            autoCapitalize="none"
-            autoCompleteType="email"
-            keyboardType="email-address"
-            onChange={onChange}
-            onChangeText={text => setValue('email', text)}
-            value={value}
-            onBlur={onBlur}
-            label="Email"
-            error={errors.email?.message}
+          <Separator height={spacing.sm} />
+          <Controller
+            control={control}
+            name="lastName"
+            render={({field: {onBlur, onChange, value, ref}}) => (
+              <Input
+                ref={ref}
+                label="Sobrenome"
+                onChange={onChange}
+                onChangeText={text => setValue('lastName', text)}
+                value={value}
+                onBlur={onBlur}
+                error={errors.lastName?.message}
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  setFocus('email');
+                }}
+              />
+            )}
           />
-        )}
-      />
+          <Separator height={spacing.sm} />
+          <Controller
+            control={control}
+            name="email"
+            render={({field: {onBlur, onChange, value, ref}}) => (
+              <Input
+                ref={ref}
+                autoCapitalize="none"
+                autoCompleteType="email"
+                keyboardType="email-address"
+                onChange={onChange}
+                onChangeText={text => setValue('email', text)}
+                value={value}
+                onBlur={onBlur}
+                label="Email"
+                error={errors.email?.message}
+                returnKeyType="done"
+                onSubmitEditing={onSubmit}
+              />
+            )}
+          />
 
-      <Separator height={spacing.md} />
-      <Button onPress={onSubmit}>Continuar</Button>
-      <Separator height={spacing.md} />
-    </Container>
+          <Separator height={spacing.md} />
+          <Button onPress={onSubmit}>Continuar</Button>
+          <Separator height={spacing.md} />
+        </ScrollView>
+      </Container>
+    </AvoidKeyboard>
   );
 };
 

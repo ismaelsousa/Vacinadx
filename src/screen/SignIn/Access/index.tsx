@@ -13,7 +13,7 @@ import {
   IconVaccine,
   Column,
 } from './styles';
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import useSignInNavigation from '~/hooks/useSignInNavigation';
 
@@ -30,7 +30,11 @@ const Access: React.FC = () => {
 
   return (
     <Container source={splashImage}>
-      <StatusBar barStyle="light-content" />
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor={'transparent'}
+      />
       <Column>
         <IconRoundedVaccine>
           <IconVaccine icon="vaccinePlus" size={80} />

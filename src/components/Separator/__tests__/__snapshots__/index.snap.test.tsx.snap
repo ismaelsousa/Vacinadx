@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Separator snap should render with height props 1`] = `
+<View
+  height={15}
+  style={
+    Array [
+      Object {
+        "height": 15,
+        "maxHeight": 15,
+        "minHeight": 15,
+      },
+    ]
+  }
+  testID="separator"
+/>
+`;
+
+exports[`Separator snap should render with width and height props 1`] = `
+<View
+  height={15}
+  style={
+    Array [
+      Object {
+        "height": 15,
+        "maxHeight": 15,
+        "maxWidth": 15,
+        "minHeight": 15,
+        "minWidth": 15,
+        "width": 15,
+      },
+    ]
+  }
+  testID="separator"
+  width={15}
+/>
+`;
+
+exports[`Separator snap should render with width props 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "maxWidth": 15,
+        "minWidth": 15,
+        "width": 15,
+      },
+    ]
+  }
+  testID="separator"
+  width={15}
+/>
+`;
+
+exports[`Separator snap should render without props 1`] = `
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+  testID="separator"
+/>
+`;

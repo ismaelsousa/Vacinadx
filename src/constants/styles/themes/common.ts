@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {Border, Spacing, Typography} from 'styled-components';
+import {Border, Spacing, Typography} from 'styled-components/native';
 import {Fonts} from '../fonts';
 
 export const typographyCommon: Typography = {
@@ -21,19 +21,27 @@ export const typographyCommon: Typography = {
   },
   h5: {
     fontSize: 24,
-    fontFamily: Fonts.montserratSemiBold,
+    fontFamily: Fonts.montserratBold,
   },
   h6: {
-    fontSize: 20,
+    fontSize: 24,
     fontFamily: Fonts.montserratRegular,
+  },
+  h7: {
+    fontSize: 24,
+    fontFamily: Fonts.montserratSemiBold,
+  },
+  h8: {
+    fontSize: 20,
+    fontFamily: Fonts.montserratSemiBold,
   },
   subtitle1: {
     fontSize: 18,
     fontFamily: Fonts.openSansRegular,
   },
   subtitle2: {
-    fontSize: 14,
-    fontFamily: Fonts.openSansLight,
+    fontSize: 18,
+    fontFamily: Fonts.montserratBold,
   },
   body1: {
     fontSize: 14,
@@ -53,7 +61,7 @@ export const typographyCommon: Typography = {
   },
   overline: {
     fontSize: 14,
-    fontFamily: Fonts.openSansLight,
+    fontFamily: Fonts.openSansSemiBold,
   },
 };
 

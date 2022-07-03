@@ -1,9 +1,9 @@
 /**
  * @format
  */
-if (__DEV__) {
-  require('./server');
-}
+// if (__DEV__) {
+//   require('./server');
+// }
 
 import {AppRegistry} from 'react-native';
 import App from './src/App';

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {TextInputProps} from 'react-native';
-import {ColorsType} from 'styled-components';
+import {ColorsType} from 'styled-components/native';
 import {NameIconTypes} from '../../constants/icons';
 
 export type IconPosition = 'left' | 'right';

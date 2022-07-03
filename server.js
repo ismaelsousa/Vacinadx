@@ -12,6 +12,8 @@ createServer({
       lastName: 'Sousa',
       email: 'ismael.sousa@gmail.com',
       password: 'B4gJQR@o@AnXVkU!A4CaYJl68LR!jhuVm&flaPu$C*0',
+      token: 'eyasdjasdnansasdna3e33ne3_3d3nd3djnd',
+      avatar: 'https://avatars.githubusercontent.com/u/28990749?v=4',
     });
   },
   routes() {
@@ -31,8 +33,17 @@ createServer({
       return user;
     });
     this.post('/user', (schema, request) => {
+      /** requestBody
+        firstName: string;
+        lastName: string;
+        token: string;
+        password: string;
+       */
       const body = JSON.parse(request.requestBody);
-      const user = schema.users.create(body);
+      const user = schema.users.create({
+        ...body,
+        token: 'eyasjdandajdnad_edadade-adeadax341',
+      });
       return user;
     });
   },

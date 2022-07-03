@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {DefaultTheme} from 'styled-components';
+import {DefaultTheme} from 'styled-components/native';
 import * as Colors from '../colors';
 import {borders, spacing, typographyCommon} from './common';
 
@@ -39,6 +39,14 @@ export const themeDark: DefaultTheme = {
     },
     surface600: {
       main: Colors.grey600,
+      onMain: Colors.white,
+    },
+    orange: {
+      main: Colors.orange,
+      onMain: Colors.white,
+    },
+    lightGreen: {
+      main: Colors.lightGreen,
       onMain: Colors.white,
     },
   },
