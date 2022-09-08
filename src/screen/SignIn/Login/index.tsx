@@ -143,6 +143,7 @@ const Login: React.FC = () => {
         <ScrollView showsVerticalScrollIndicator={false}>
           <Separator height={spacing.md} />
           <Text typography="h3">Login</Text>
+
           <Separator height={spacing.md} />
           <Controller
             control={control}
@@ -153,6 +154,7 @@ const Login: React.FC = () => {
                 autoCapitalize="none"
                 autoCompleteType="email"
                 keyboardType="email-address"
+                placeholder="exemplo@exemplo.com"
                 onChange={onChange}
                 onChangeText={text => setValue('email', text)}
                 value={value}
@@ -174,6 +176,7 @@ const Login: React.FC = () => {
                 ref={ref}
                 label="Senha"
                 autoCapitalize="none"
+                placeholder="Sua senha"
                 autoCompleteType="password"
                 secureTextEntry
                 iconColor="primary"

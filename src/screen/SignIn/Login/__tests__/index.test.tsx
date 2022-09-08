@@ -32,5 +32,5 @@ it('should render correctly even without text on textInputs and trying to login'
   await waitFor(() => findAllByTestId('error-input'));
 
   expect(getByText('Campo obrigatório')).toBeTruthy();
-  expect(getByText('Pelos menos 6 caracteres')).toBeTruthy();
+  expect(getByText('Pelo menos 6 caracteres')).toBeTruthy();
 });

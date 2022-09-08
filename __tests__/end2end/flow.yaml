@@ -1,0 +1,15 @@
+#
+appId: club.catapulta.vacinadx.app
+initFlow: login.yaml
+---
+- launchApp
+- assertVisible: Bem-vindx
+- tapOn: 'Minhas\nvacinas'
+- tapOn: 'Covid'
+- scroll
+- back
+- tapOn: 'Próximas vacinas'
+- back
+- tapOn: 'profile'
+- tapOn: 'Sair'
+- assertVisible: 'Começar'

@@ -1,0 +1,34 @@
+appId: club.catapulta.vacinadx.app
+---
+- launchApp:
+    clearState: true
+
+# Navigate
+- tapOn: 'Começar'
+- tapOn: 'Login'
+
+- tapOn:
+    id: button-login-email
+- assertVisible: Campo obrigatório
+- assertVisible: Pelo menos 6 caracteres
+
+- tapOn: 'exemplo@exemplo.com'
+- inputText: 'ismael1998sousa'
+- tapOn: 'Senha'
+- tapOn:
+    id: button-login-email
+- assertVisible: Email inválido
+
+- launchApp
+# Navigate
+- tapOn: 'Começar'
+- tapOn: 'Login'
+- tapOn: 'exemplo@exemplo.com'
+- inputText: 'ismael1998sousa@gmail.com'
+
+- tapOn: 'Sua senha'
+- inputText: 'ismael123456'
+- tapOn: 'Senha'
+- tapOn:
+    id: button-login-email
+- assertVisible: Bem-vindx
