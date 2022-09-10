@@ -14,21 +14,23 @@ appId: club.catapulta.vacinadx.app
 
 - tapOn: 'exemplo@exemplo.com'
 - inputText: 'ismael1998sousa'
-- tapOn: 'Senha'
+- tapOn: Senha
 - tapOn:
     id: button-login-email
 - assertVisible: Email inválido
 
+# Case login
 - launchApp
 # Navigate
 - tapOn: 'Começar'
 - tapOn: 'Login'
 - tapOn: 'exemplo@exemplo.com'
 - inputText: 'ismael1998sousa@gmail.com'
+- tapOn: Senha
 
-- tapOn: 'Sua senha'
+- tapOn: Sua senha
 - inputText: 'ismael123456'
-- tapOn: 'Senha'
+- tapOn: Senha
 - tapOn:
     id: button-login-email
 - assertVisible: Bem-vindx

@@ -1,4 +1,3 @@
-#
 appId: club.catapulta.vacinadx.app
 initFlow: login.yaml
 ---
@@ -12,4 +11,4 @@ initFlow: login.yaml
 - back
 - tapOn: 'profile'
 - tapOn: 'Sair'
-- assertVisible: 'Começar'
+- assertVisible: Começar
