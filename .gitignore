@@ -65,3 +65,6 @@ AuthKey_66234AW2S2.p8
 
 # tests
 coverage
+
+# fastlane
+google-services.json
